@@ -1,0 +1,152 @@
+{
+  "users": [
+    {
+      "id": "admin",
+      "username": "Admin",
+      "email": "admin@admin.admins",
+      "password": "admin",
+      "role": "admin"
+    },
+    {
+      "id": "10ee",
+      "username": "Kabelo",
+      "email": "kab@e.mail",
+      "password": "123"
+    },
+    {
+      "id": "1ff8",
+      "username": "Pete",
+      "email": "pete@e.mail",
+      "password": "123"
+    },
+    {
+      "id": "c763",
+      "email": "newa@e.mail",
+      "password": "123"
+    },
+    {
+      "id": "2f1d",
+      "username": "Lee",
+      "email": "lee@e.mail",
+      "password": "123"
+    },
+    {
+      "id": "a1c8",
+      "username": "Rod",
+      "email": "rod@e.mail",
+      "password": "123"
+    }
+  ],
+  "shoppingList": [
+    {
+      "id": "2",
+      "uid": "admin",
+      "shoppingItem": "Milk",
+      "price": "30",
+      "quantity": "2",
+      "category": "Dairy",
+      "extraNotes": "Brand 2L",
+      "purchased": false
+    },
+    {
+      "id": "3",
+      "uid": "1ff8",
+      "shoppingItem": "Bread",
+      "price": "14",
+      "quantity": "2",
+      "category": "Dairy",
+      "extraNotes": "Brand, Brown",
+      "purchased": false
+    },
+    {
+      "id": "1724851803332",
+      "uid": "2f1d",
+      "shoppingItem": "Apples",
+      "price": "20",
+      "quantity": "2",
+      "category": "Dairy",
+      "extraNotes": "Green Apples, 2kg"
+    },
+    {
+      "id": "1724914490986",
+      "uid": "1ff8",
+      "shoppingItem": "Apples",
+      "price": "18",
+      "quantity": 1,
+      "category": "Dairy",
+      "extraNotes": "Red Apples, 2kg"
+    },
+    {
+      "id": "1724925190670",
+      "uid": "1ff8",
+      "shoppingItem": "Milk",
+      "price": "25",
+      "quantity": "2",
+      "category": "Dairy",
+      "extraNotes": "2L, Full Cream, Fresh"
+    },
+    {
+      "id": "1724933277455",
+      "uid": "1ff8",
+      "shoppingItem": "Mixed Vegetable",
+      "price": "10",
+      "quantity": "2",
+      "category": "Dairy",
+      "extraNotes": "1kg"
+    },
+    {
+      "id": "1725001828052",
+      "uid": "admin",
+      "shoppingItem": "A",
+      "price": "0",
+      "quantity": "0",
+      "category": "",
+      "extraNotes": ""
+    },
+    {
+      "id": "1725016010221",
+      "uid": "1ff8",
+      "shoppingItem": "Marshmello",
+      "price": "50",
+      "quantity": "1",
+      "category": "Snacks",
+      "extraNotes": "500g"
+    },
+    {
+      "id": "1725016010237",
+      "uid": "1ff8",
+      "shoppingItem": "",
+      "price": "0",
+      "quantity": "1",
+      "category": "",
+      "extraNotes": ""
+    },
+    {
+      "id": "1725257785662",
+      "uid": "10ee",
+      "shoppingItem": "Apples",
+      "price": "25",
+      "quantity": "2",
+      "category": "Fresh Produce",
+      "extraNotes": "2kg, Green Apples"
+    },
+    {
+      "id": "1725258852862",
+      "uid": "10ee",
+      "shoppingItem": "Notebook",
+      "price": "20",
+      "quantity": "2",
+      "category": "Paper Goods",
+      "extraNotes": "A4, Quire4"
+    },
+    {
+      "id": "1725268235810",
+      "uid": "10ee",
+      "shoppingItem": "Apples",
+      "price": "30",
+      "quantity": "1",
+      "category": "Fresh Produce",
+      "extraNotes": "Red Apples, 2.5kg"
+    }
+  ]
+}
