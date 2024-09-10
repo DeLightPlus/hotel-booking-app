@@ -6,7 +6,9 @@ import Login from './components/Login.jsx';
 import Dashboard from './components/Dashboard.jsx';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { useState } from 'react';
+import { useState } from 'react'; 
+import Home from './components/Home.jsx';
+import HomePage from './components/HomePage.jsx';
 
 
 function App() 
@@ -27,7 +29,9 @@ function App()
         <Routes>          
           <Route path='/register' element={<Register/>} />
           <Route path='/login' element={<Login/>} />
-          <Route path='/' element={<Dashboard/>} />                           
+          <Route path='/' element={<HomePage/>} /> {/* include HomePage */}
+          <Route path='/Home' element={<Home/>} /> 
+
         </Routes>      
       </BrowserRouter>           
     </div>

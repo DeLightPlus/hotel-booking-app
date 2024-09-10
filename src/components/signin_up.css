@@ -53,12 +53,14 @@
     padding-right: 24px;
   }
   
-  .headline {
+  .headline 
+  {
     font-size: 2.5rem;
     font-weight: bold;
   }
   
-  .hidden-break {
+  .hidden-break 
+  {
     display: none;
   }
   
@@ -90,19 +92,22 @@
   }
   
   /* Sign In Form Section */
-  .sign-in-form-section {
+  .sign-in-form-section 
+  {
     display: flex;
     justify-content: center;
     padding: 10px;
     background-color: white;
   }
   
-  .form-container {
+  .form-container 
+  {
     max-width: 400px;
     width: 100%;
   }
   
-  .form-title {
+  .form-title 
+  {
     font-size: 2rem;
     font-weight: bold;
     margin-bottom: 4px;
@@ -115,7 +120,8 @@
     color: #4b5563;
   }
   
-  .create-account-link {
+  .create-account-link 
+  {
     color: #1d4ed8;
     text-decoration: underline;
   }
@@ -150,7 +156,8 @@
     font-size: 0.86rem;
   }
   
-  .submit-button {
+  .submit-button 
+  {
     width: 100%;
     padding: 12px;
     font-size: 1rem;
@@ -162,7 +169,8 @@
     cursor: pointer;
   }
   
-  .submit-button:hover {
+  .submit-button:hover 
+  {
     opacity: 0.8;
   }
   
@@ -190,11 +198,13 @@
     transition: background-color 0.3s;
   }
   
-  .social-button:hover {
+  .social-button:hover 
+  {
     background-color: #f3f4f6;
   }
   
-  .social-icon {
+  .social-icon 
+  {
     margin-right: 8px;
     width: 24px;
     height: 24px;

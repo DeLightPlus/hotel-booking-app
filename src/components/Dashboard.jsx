@@ -20,10 +20,11 @@ function Dashboard()
 
 
   return (
-    <>
+    <>        
+        <HomePage/>
         { showWelcome && <h1>Welcome to Rest-Le-BnB!</h1> }
         <AddShoppingItem /> 
-        <HomePage/>
+        
     </>
   );
 }

@@ -39,9 +39,7 @@ const Header = ({ showEntry, setShowEntry }) => {
 
   return (
     <div className='HeaderContainer'>
-      <div className='HeaderTitle'>
-        <label>Rest-Le-BnB</label>
-        <div>Hotel Booking Website</div>
+      <div className='HeaderTitle-Logo'>        
       </div>
 
 

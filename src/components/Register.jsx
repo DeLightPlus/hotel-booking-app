@@ -3,67 +3,54 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-// function Register() {
-//   const navigate = useNavigate();
-//   const [username, setName] = useState('');
-//   const [email, setEmail] = useState('');
-//   const [password, setPassword] = useState('');
-//   const [confirmPassword, setConfirmPassword] = useState('');
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../config/firebase';
+import { setDoc, doc } from 'firebase/firestore';
 
-//   const handleSubmit = async (event) => 
-//   {
-//     event.preventDefault();
-//     try {
-//       const response = await axios.post('http://localhost:8000/users', 
-//         { username, email, password, });
+import './signin_up.css'; // Make sure to create this CSS file
+import SocialButton from './SocialButton';
 
-//         console.log(response.status);
-//         if(response.status === 201)
-//         {
-//             navigate('/login');
-//         }
-//       // Redirect to login page or dashboard
-//     } catch (error) {
-//       alert(error.message);
-//     }
-//   };
+const Register = () => 
+{
+  const naviate = useNavigate();
 
-//   return (
-//     <div className="register-form">
-//       <h2 className="form-title">Register</h2>
-//       <form onSubmit={handleSubmit} className="form">
-//         <label className="form-label">
-//           Name:
-//           <input type="text" value={username} onChange={(e) => setName(e.target.value)} className="form-input" />
-//         </label>
-//         {/* <br /> */}
-//         <label className="form-label">
-//           Email:
-//           <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} className="form-input" />
-//         </label>
-//         {/* <br /> */}
-//         <label className="form-label">
-//           Password:
-//           <input type="password" value={password} onChange={(e) => setPassword(e.target.value)} className="form-input" />
-//         </label>
-//         {/* <br /> */}
-//         <label className="form-label">
-//           Confirm Password:
-//           <input type="password" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} className="form-input" />
-//         </label>
-//         {/* <br /> */}
-//         <button type="submit" className="form-button">Register</button>
-//       </form>
-//       <p className="form-text">Already have an account? <Link to="/login" className="form-link">Login</Link></p>
-//     </div>
-//   );
-// }
+  const [firstname, setFirstname] = useState("");  
+  const [lastname, setLastname] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
+  const handleSignup = async (e) =>
+  {
+    e.preventDefault();
+    
+    try
+    {   
+      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+      const user = userCredential.user;  
+      console.log(user);
+      if(user)
+      {
+        const docRef = doc(db, "users", user.uid);
+        await setDoc(docRef,
+          {            
+            email: user.email,
+            firstname: firstname,
+            lastname: lastname,
+          });
 
+        alert('User Registered Successfully!!');        
+        naviate('/')
+      }      
+    }
+    catch (error) { alert( error.message ); }
 
-import './signinOup.css'; // Make sure to create this CSS file
+  }
 
-const Register = () => {
+    
+
+  
+  
+
   return (
     <section className="container">
       <div className="grid">
@@ -90,43 +77,45 @@ const Register = () => {
         {/* Sign In Form Section */}
         <div className="sign-in-form-section">
           <div className="form-container">
-            <h2 className="form-title">Sign up to </h2>
+            <h2 className="form-title">Sign up to Rest-Le-BnB</h2>
             <p className="form-subtitle">
               Don’t have an account?{' '}
               <Link to="/login" className="create-account-link">Login</Link>
             </p>
-            <form className="form">
-            <div className="form-field">
-                <label className="form-label">Firstname & Lastname</label>
-                <input
-                  type="email"
-                  placeholder="Enter your full name"
-                  className="form-input"
+            <form className="form" onSubmit={handleSignup}>
+              <div className="form-field">
+                <label className="form-label">Firstname</label>
+                <input type="text" className="form-input"
+                  placeholder="Enter your firstname"                  
+                  onChange={(e) => setFirstname(e.target.value)}
+                />
+              </div>
+
+              <div className="form-field">
+                <label className="form-label">Lastname</label>
+                <input type="text" className="form-input"
+                  placeholder="Enter your surname"                  
+                  onChange={(e) => setLastname(e.target.value)}
                 />
               </div>
 
               <div className="form-field">
                 <label className="form-label">Email Address</label>
-                <input
-                  type="email"
+                <input type="email" className="form-input"
                   placeholder="Enter email to get started"
-                  className="form-input"
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
 
               <div className="form-field">
                 <label className="form-label">Password</label>
-                <input
-                  type="password"
+                <input type="password" className="form-input"
                   placeholder="create your password"
-                  className="form-input"
+                  onChange={(e) => setPassword(e.target.value)}                  
                 />
               </div>
-              <button
-                type="submit"
-                className="submit-button"
-              >
-                Log in
+              <button type="submit" className="submit-button">
+                Sign up
               </button>
             </form>
             <div className="social-buttons">
@@ -137,24 +126,7 @@ const Register = () => {
         </div>
       </div>
     </section>
-  );
-};
-
-const SocialButton = ({ provider, color }) => (
-  <button
-    type="button"
-    className="social-button"
-    style={{ borderColor: color, color }}
-  >
-    <svg className="social-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-      {provider === 'Google' ? (
-        <path d="M20.283 10.356h-8.327v3.451h4.792c-.446 2.193-2.313 3.453-4.792 3.453a5.27 5.27 0 0 1-5.279-5.28 5.27 5.27 0 0 1 5.279-5.279c1.259 0 2.397.447 3.29 1.178l2.6-2.599c-1.584-1.381-3.615-2.233-5.89-2.233a8.908 8.908 0 0 0-8.934 8.934 8.907 8.907 0 0 0 8.934 8.934c4.467 0 8.529-3.249 8.529-8.934 0-.528-.081-1.097-.202-1.625z" />
-      ) : (
-        <path d="M13.397 20.997v-8.196h2.765l.411-3.209h-3.176V7.548c0-.926.258-1.56 1.587-1.56h1.684V3.127A22.336 22.336 0 0 0 14.201 3c-2.444 0-4.122 1.492-4.122 4.231v2.355H7.332v3.209h2.753v8.202h3.312z" />
-      )}
-    </svg>
-    Sign in with {provider}
-  </button>
-);
+  )
+}
 
 export default Register;
