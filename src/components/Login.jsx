@@ -4,6 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { signInUser } from '../redux/userSlice';
 
 import './signin_up.css'; // Make sure to create this CSS file
+import { signInWithEmailAndPassword } from 'firebase/auth';
+import { auth, db } from '../config/firebase';
 
 const Login = () => 
 {
@@ -12,9 +14,18 @@ const Login = () =>
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleSignin = async () =>
+  const handleSignin = async (e) =>
   {
-    navigate('/Home');
+    e.preventDefault();
+    try 
+    {
+      await signInWithEmailAndPassword(auth, email, password);
+      alert('Login Successful!!!')
+      navigate('/profile');
+    }
+    catch (error) { console.error(error.message) }
+
+    
   }
 
 
@@ -49,27 +60,22 @@ const Login = () =>
               Don’t have an account?{' '}
               <Link to="/register" className="create-account-link">Create a free account</Link>
             </p>
-            <form className="form">
+            <form className="form" onSubmit={handleSignin}>
               <div className="form-field">
                 <label className="form-label">Email Address</label>
-                <input
-                  type="email"
+                <input type="email" className="form-input"
                   placeholder="Enter email to get started"
-                  className="form-input"
+                  onChange={(e)=> setEmail(e.target.value)}
                 />
               </div>
               <div className="form-field">
                 <label className="form-label">Password</label>
-                <input
-                  type="password"
-                  placeholder="Enter your password"
-                  className="form-input"
+                <input type="password" className="form-input"
+                  placeholder="Enter your password"                  
+                  onChange={(e)=> setPassword(e.target.value)}
                 />
               </div>
-              <button
-                type="submit"
-                className="submit-button"
-              >
+              <button type="submit" className="submit-button" >
                 Log in
               </button>
             </form>

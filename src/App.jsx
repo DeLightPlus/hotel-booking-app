@@ -7,8 +7,9 @@ import Dashboard from './components/Dashboard.jsx';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { useState } from 'react'; 
-import Home from './components/Home.jsx';
+import Home from './components/Profile.jsx';
 import HomePage from './components/HomePage.jsx';
+import Profile from './components/Profile.jsx';
 
 
 function App() 
@@ -30,7 +31,7 @@ function App()
           <Route path='/register' element={<Register/>} />
           <Route path='/login' element={<Login/>} />
           <Route path='/' element={<HomePage/>} /> {/* include HomePage */}
-          <Route path='/Home' element={<Home/>} /> 
+          <Route path='/profile' element={<Profile/>} /> 
 
         </Routes>      
       </BrowserRouter>           

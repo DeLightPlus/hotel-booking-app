@@ -90,7 +90,7 @@ const HomePage = () =>
           <button className='getStarted-btn'
             onClick={()=> { navigate('/register')}}> Get Started
           </button> 
-          <div>Already have an account? <br/><Link to={'/signin'}>Signin</Link></div>
+          <div>Already have an account? <br/><Link to={'/login'}>Signin</Link></div>
       </div>  
       
         
@@ -132,12 +132,52 @@ const HomePage = () =>
               <li>Wi-Fi</li>  
               <li>Pool</li>
               <li>Restaurant</li>
-              <li>Bar</li>              
+              <li>Bar</li>   
+
+              <li> <i className="fas fa-users"></i> Meetings </li>           
             </ul>
           </div>
           <div className="showcase">
            
           </div>
+        </div>        
+      </div>
+
+      <div className='rectangle'>
+        <div className="check-compare">
+          <input type="date" /><br/>
+          Check-In
+        </div>
+
+        <div className="check-compare">
+          <input type="date" /><br/>
+          Check-Out
+        </div>
+
+        <div className="check-compare">
+          <select>
+            <option value="0">KIDS (0)</option>
+            <option value="1">KIDS (1)</option>
+            <option value="2">KIDS (2)</option>
+            <option value="3">KIDS (3)</option>
+            <option value="4">KIDS (4)</option>
+          </select>
+          {/* Kids(0) */}
+        </div>
+
+        <div className="check-compare">
+          <select>
+              <option value="0">ADULTS (0)</option>
+              <option value="1">ADULTS (1)</option>
+              <option value="2">ADULTS (2)</option>
+              <option value="3">ADULTS (3)</option>
+              <option value="4">ADULTS (4)</option>
+            </select>
+            {/* Adults(0) */}
+        </div>
+
+        <div className="check-compare">
+          <button>COMPARE NOW</button>
         </div>
       </div>
 

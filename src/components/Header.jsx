@@ -42,7 +42,6 @@ const Header = ({ showEntry, setShowEntry }) => {
       <div className='HeaderTitle-Logo'>        
       </div>
 
-
       <nav className="nav">
         <ul className="nav-list">
           <li className="nav-item" onClick={() => setShowEntry(false)}>
@@ -71,10 +70,16 @@ const Header = ({ showEntry, setShowEntry }) => {
         {console.log(signedIn)}
           {signIn && ( 
             <li className="nav-item">
-              <div></div>
+              <div className='userBtn'>
+                <button><i className="fa fa-user"
+                style={{ fontSize: 32}}/></button>
+              </div>
+
               <Link to="/" className="nav-link">{user}</Link><br/>
-               <button className='signOut' onClick={() =>  handleLogout() }>
-                  Logout</button> 
+              <button className='signOut' 
+                onClick={() =>  handleLogout() }>
+                  Logout
+              </button> 
             </li>
           )}
       </nav>
