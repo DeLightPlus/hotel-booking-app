@@ -1,13 +1,13 @@
-// Register.js
-import axios from 'axios';
+import '../App.css'; 
+import './signin_up.css';
+
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword } from 'firebase/auth';
 import { auth, db } from '../config/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 
-import './signin_up.css'; // Make sure to create this CSS file
 import SocialButton from './SocialButton';
 
 const Register = () => 
@@ -16,6 +16,7 @@ const Register = () =>
 
   const [firstname, setFirstname] = useState("");  
   const [lastname, setLastname] = useState("");
+  
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -45,10 +46,6 @@ const Register = () =>
     catch (error) { alert( error.message ); }
 
   }
-
-    
-
-  
   
 
   return (
@@ -118,6 +115,7 @@ const Register = () =>
                 Sign up
               </button>
             </form>
+            <span>...or continue with </span>
             <div className="social-buttons">
               <SocialButton provider="Google" color="#DB4437" />
               <SocialButton provider="Facebook" color="#4267B2" />

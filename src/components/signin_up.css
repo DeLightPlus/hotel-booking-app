@@ -1,10 +1,4 @@
-/* General Container */
-.container 
-{
-    background-color: white;
-    padding: 4%;
-}
-  
+
 /* Grid Layout */
 .grid 
 {
@@ -104,6 +98,11 @@
   {
     max-width: 400px;
     width: 100%;
+  }
+
+  .form-container span
+  {
+color: #858585;
   }
   
   .form-title 

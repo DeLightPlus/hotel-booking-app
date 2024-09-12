@@ -19,11 +19,14 @@
   
   .nav-item 
   {
-    display: block;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
   
-    padding: 4px;
+    /* padding: 4px; */
     /* background: #a5a5a5; */
-    height: 32px;
+    /* height: 32px; */
     width: 100px;
     
     text-align: center;
@@ -33,6 +36,9 @@
 
   .nav-item .signOut 
   {
+    position: absolute;
+    top:86px;
+
     display: none;
     color: antiquewhite;
   }
@@ -47,7 +53,7 @@
   
   
   .nav-link 
-  {
+  {   
     color: #333;
     font-weight: 500;
     text-decoration: none;
@@ -60,10 +66,15 @@
     
   }
 
+  .nav-link span
+  {
+    text-align: start;
+  }
+
   
-  /* Form Styles */
-  
-  .register-form, .login-form {
+  /* Form Styles */  
+  .register-form, .login-form 
+  {
     max-width: 400px;
     margin: 10% auto;
     padding: 20px;

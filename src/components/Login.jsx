@@ -79,6 +79,8 @@ const Login = () =>
                 Log in
               </button>
             </form>
+            <span>...or continue with </span>
+
             <div className="social-buttons">
               <SocialButton provider="Google" color="#DB4437" />
               <SocialButton provider="Facebook" color="#4267B2" />
