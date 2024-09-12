@@ -167,13 +167,15 @@ const HomePage = ({user}) =>
               </ul>
             </div>
 
-            <div className="showcase">
-              <br/>
+            <div className="showcase"><hr/>
+              <p><i class="fa fa-map-pin"/> 
+                 {'  '}South Africa, 
+                <small> ... show locations</small>
+                </p>
               <h3 className="headline">
-                Experience the ultimate in luxury and comfort at our hotel and restaurant.
-                <br className="hidden-break" />           
+                Experience the ultimate in luxury and comfort at our hotel and restaurant.          
               </h3>
-
+              
               <button>Show More</button>      
             </div>
           </div>        
@@ -219,7 +221,16 @@ const HomePage = ({user}) =>
       </div>
       
       <div className="rooms-container">
-          
+          <div className="rooms-showcase">
+            <div className="rooms-showcase-title">
+              <small>Rest-Le-BnB</small> | Luxury Suite
+              <hr/>
+              <div className="grid-container">
+                
+              </div>
+            </div>
+            
+          </div>
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import './App.css';
+import './index.js';
 
 import Header from './components/Header.jsx';
 import Register from './components/Register.jsx';

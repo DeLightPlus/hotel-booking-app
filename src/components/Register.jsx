@@ -16,7 +16,7 @@ const Register = () =>
 
   const [firstname, setFirstname] = useState("");  
   const [lastname, setLastname] = useState("");
-  
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -117,8 +117,8 @@ const Register = () =>
             </form>
             <span>...or continue with </span>
             <div className="social-buttons">
-              <SocialButton provider="Google" color="#DB4437" />
-              <SocialButton provider="Facebook" color="#4267B2" />
+              <SocialButton provider="Google" color="#DB4437" action='signup'/>
+              <SocialButton provider="Facebook" color="#4267B2" action='signup'/>
             </div>
           </div>
         </div>
