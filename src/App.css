@@ -87,6 +87,13 @@ body
   width: 45px;
   height: 45px;
 }
+.userBtn img
+{
+  border-radius: 50%;
+  width: 43px;
+  height:43px;
+}
+
 .home-page
 {
   display: flex;

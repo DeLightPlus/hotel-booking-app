@@ -228,36 +228,53 @@ const HomePage = ({user}) =>
             </div>
             <div className="grid-content">            
 
-              <div className="grid-item item1">               
+              <div className="grid-item item1">  
+
                 <div className="grid-li">
-                  <div className='room-img'>
+                  <div className="grid-li-body">
                     <img src="https://i.imgur.com/8Q6zZ8B.jpg"/>
+                    <div className="box">Book Now</div>
                   </div>
-                  
-                  <p>a</p>
+
+                  <div className='bottom-section'>
+                    <p>a</p>
+                  </div>                  
                 </div>
 
                 <div className="grid-li">
-                  
+                  <div className="grid-li-body">
+                    <img src="https://i.imgur.com/8Q6zZ8B.jpg"/>
+                    <div className="box">Book Now</div>
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>a</p>
+                  </div>                  
+                </div> 
+
+                <div className="grid-li">
+                  <div className="grid-li-body">
+                    <img src="https://i.imgur.com/8Q6zZ8B.jpg"/>
+                    <div className="box">Book Now</div>
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>a</p>
+                  </div>                  
                 </div>
 
                 <div className="grid-li">
-                  
-                </div>
+                  <div className="grid-li-body">
+                    <img src="https://i.imgur.com/8Q6zZ8B.jpg"/>
+                    <div className="box">Book Now</div>
+                  </div>
 
-                <div className="grid-li">
-                  
+                  <div className='bottom-section'>
+                    <p>a</p>
+                  </div>                  
                 </div>
-                
-                <div className="grid-li">
-                  
-                </div>
-                  
-                <div className="grid-li">
-                  
-                </div>
-                
               </div>  
+              <p>Show More Available Rooms</p>
 
               {/* <div class="grid-item item1">Item 1</div> */}
               <div class="grid-item item2"></div>

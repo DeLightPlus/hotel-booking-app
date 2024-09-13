@@ -60,7 +60,7 @@ const Header = ({ user, handleLogout }) =>
                   {/*  */}
                   {
                     user.displayName ?
-                    <img src={user.photoURL} width={46} height={46}/>
+                    <img src={user.photoURL} />
                     : <i className="fa fa-user" style={{ fontSize: 32}}/>
                   }
                   
