@@ -1,4 +1,5 @@
-import '@mdi/font/css/materialdesignicons.min.css';
+import '../index.css';
+
 
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
@@ -59,7 +60,7 @@ const HomePage = ({user}) =>
 
   return (
     <div className="home-page"> 
-      <div className='container'>
+      <div className='grid-container'>
         {
           !user &&
           <div className="getStarted">          
@@ -176,62 +177,138 @@ const HomePage = ({user}) =>
                 Experience the ultimate in luxury and comfort at our hotel and restaurant.          
               </h3>
               
-              <button>Show More</button>      
+              ----<button>Show More</button>----      
             </div>
           </div>        
-        </div>
+        </div>       
 
-        <div className='checkin-rectangle'>
-          <div className="check-compare">
-            <input type="date" /><br/>
-            Check-In
-          </div>
-
-          <div className="check-compare">
-            <input type="date" /><br/>
-            Check-Out
-          </div>
-
-          <div className="check-compare">
-            <select>
-              <option value="0">KIDS (0)</option>
-              <option value="1">KIDS (1)</option>
-              <option value="2">KIDS (2)</option>
-              <option value="3">KIDS (3)</option>
-              <option value="4">KIDS (4)</option>
-            </select>
-            {/* Kids(0) */}
-          </div>
-
-          <div className="check-compare">
-            <select>
-                <option value="0">ADULTS (0)</option>
-                <option value="1">ADULTS (1)</option>
-                <option value="2">ADULTS (2)</option>
-                <option value="3">ADULTS (3)</option>
-                <option value="4">ADULTS (4)</option>
-              </select>
-              {/* Adults(0) */}
-          </div>
-
-          <div className="check-compare">
-            <button>COMPARE NOW</button>
-          </div>
-        </div>
-      </div>
-      
-      <div className="rooms-container">
+        <div className="rooms-container">
+          
           <div className="rooms-showcase">
-            <div className="rooms-showcase-title">
-              <small>Rest-Le-BnB</small> | Luxury Suite
-              <hr/>
-              <div className="grid-container">
-                
+            <div className='checkin-rectangle'>
+              <div className="check-compare">
+                <input type="date" /><br/>
+                Check-In
               </div>
+
+              <div className="check-compare">
+                <input type="date" /><br/>
+                Check-Out
+              </div>
+
+              <div className="check-compare">
+                <select>
+                  <option value="0">KIDS (0)</option>
+                  <option value="1">KIDS (1)</option>
+                  <option value="2">KIDS (2)</option>
+                  <option value="3">KIDS (3)</option>
+                  <option value="4">KIDS (4)</option>
+                </select>
+                {/* Kids(0) */}
+              </div>
+
+              <div className="check-compare">
+                <select>
+                    <option value="0">ADULTS (0)</option>
+                    <option value="1">ADULTS (1)</option>
+                    <option value="2">ADULTS (2)</option>
+                    <option value="3">ADULTS (3)</option>
+                    <option value="4">ADULTS (4)</option>
+                  </select>
+                  {/* Adults(0) */}
+              </div>
+
+              <div className="check-compare">
+                <button>COMPARE NOW</button>
+              </div>
+            </div>
+            <div className="rooms-showcase-title">
+              <small>Rest-Le-BnB</small> | Available Rooms
+              <hr/>              
+            </div>
+            <div className="grid-content">            
+
+              <div className="grid-item item1">               
+                <div className="grid-li">
+                  <div className='room-img'>
+                    <img src="https://i.imgur.com/8Q6zZ8B.jpg"/>
+                  </div>
+                  
+                  <p>a</p>
+                </div>
+
+                <div className="grid-li">
+                  
+                </div>
+
+                <div className="grid-li">
+                  
+                </div>
+
+                <div className="grid-li">
+                  
+                </div>
+                
+                <div className="grid-li">
+                  
+                </div>
+                  
+                <div className="grid-li">
+                  
+                </div>
+                
+              </div>  
+
+              {/* <div class="grid-item item1">Item 1</div> */}
+              <div class="grid-item item2"></div>
+              <div class="grid-item item3"></div>
+
+                        
             </div>
             
           </div>
+
+          <div className="rooms-showcase">            
+            <div className="rooms-showcase-title">
+              <small>Rest-Le-BnB</small> | Luxury Suite
+              <hr/>              
+            </div>
+            <div className="grid-content">
+              {/* <div className="grid-item item1">
+                <p>
+                  Hotel, nestled in the vibrant and trendy Green Point neighborhood,
+                  offers a unique retreat in Cape Town.
+                  Just a short walk from iconic spots like the V&A Waterfront,
+                  Bo-Kaap, Cape Quarter, Cape Town Stadium, and the Central Business District,
+                  it provides a prime location for exploring the city's best attractions.
+                </p>   
+
+                <p>
+                  Surrounded by lush trees, the hotel lives up to its name with stunning panoramic views.
+                  Its design eschews mainstream trends in favor of creating a space that celebrates local creativity and color. 
+                  The hotel's understated and minimalist design elements are thoughtfully blended with natural inspiration,
+                  offering guests a serene escape that feels both refreshing and deeply connected to nature.
+                </p> 
+
+                <p>
+                  Overall, The Tree House Boutique Hotel promises a distinctive and memorable experience, allowing guests to unwind and marvel at the natural beauty of Cape Town while enjoying a unique, artistic environment.
+                </p>
+              </div> */}
+
+              <div class="grid-item item1">Item 1</div>
+              <div class="grid-item item2">Item 2</div>
+              <div class="grid-item item3">Item 3</div>
+
+
+            
+            </div>
+            
+          </div>
+
       </div>
+      </div>
+      
+      
     </div>
   );
 };

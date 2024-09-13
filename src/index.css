@@ -66,3 +66,87 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 } */
+
+/* src/GridBox.css */
+.grid-container 
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+  background-color: #fff;
+  padding: 20px;
+  margin-top: 86px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.grid-content
+{
+  margin-top: 10px;
+  display: grid;
+  grid-template-areas:
+        "item1 item2"
+        "item1 item3";
+  grid-template-columns: 70% 30%; /* Adjust the width of columns */
+  grid-template-rows: auto auto; /* Adjust the height of rows */
+  gap: 10px; /* Space between grid items */
+  background-color: #fff;
+  height: 70vh;
+}
+
+.grid-item 
+{
+  background-color: #c4c4c4; /* Green background */
+  color: white;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  /* height: 200px; */
+}
+
+.item1 
+{
+  grid-area: item1;
+
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 3 equal columns */
+  grid-auto-rows: minmax(100px, auto);
+  gap: 10px; /* Space between grid items */
+
+  background: #a5966d00;
+  color: black;
+
+  height: 680px; /* Fixed height for scrollable container */
+  overflow: auto; 
+  
+}
+
+.grid-li
+{
+  display: flex;
+  flex-direction: row;
+  background-color: #c4c4c4; /* Green background */
+  color: white;
+  
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  height: 210px; 
+  padding: 10px;
+  gap: 10px
+}
+
+.item2 
+{
+  grid-area: item2;
+}
+
+.item3 
+{
+  grid-area: item3;
+}
+
+
+

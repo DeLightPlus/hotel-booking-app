@@ -56,13 +56,24 @@ const Header = ({ user, handleLogout }) =>
           {user && ( 
             <li className="nav-item">
               <div className='userBtn'>
-                <button><i className="fa fa-user"
-                style={{ fontSize: 32}}/></button>
+                <button>
+                  {/*  */}
+                  {
+                    user.displayName ?
+                    <img src={user.photoURL} width={46} height={46}/>
+                    : <i className="fa fa-user" style={{ fontSize: 32}}/>
+                  }
+                  
+                </button>
               </div>
 
-              <Link to="/profile" className="nav-link">
+              <Link to="/profile" className="nav-link" >
                 <span>
-                  {`${user.firstname.substring(0, 1).toUpperCase()} ${user.lastname}`}
+                  {
+                    !user.displayName ? `${user.firstname.substring(0, 1).toUpperCase()} ${user.lastname}` : 
+                    `${user.displayName.substring(0, 1).toUpperCase()}
+                    ${user.displayName.split(" ").pop()}`
+                  }
                 </span>
               </Link>
               <button className='signOut' 

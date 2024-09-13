@@ -1,5 +1,6 @@
 import './App.css';
 import './index.js';
+import './index.css';
 
 import Header from './components/Header.jsx';
 import Register from './components/Register.jsx';
@@ -43,6 +44,10 @@ function App()
             }
             else
             {
+              if(user.displayName)
+              {
+                setUser(user)
+              }
               alert('Failed to login')
             }
           } 
