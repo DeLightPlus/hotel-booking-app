@@ -17,7 +17,7 @@
 
 body 
 {
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   font-family: Arial, sans-serif;
   line-height: 1.6;
@@ -33,65 +33,7 @@ body
   justify-content: center;
   background: #ffffff;
   max-width: 100%;
-  /* height: 100%; */
- 
-}
-
-.HeaderContainer
-{
-  position: fixed;
-  top: 0;
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 86px;
-  background-color: #D9D9D9;
-  color: #000000;
-  margin: 0px;
-  padding: 0.5rem 0rem 0.1rem 0rem;
-  text-align: start;
-  z-index: 10;
-}
-
-.HeaderTitle-Logo
-{  
-  margin: 0px 0px;
-  padding: 0;
-  width: 256px;
-  height: 86px;
-  background: url('./assets/logo.png');
-  background-size: contain;
-  background-position: 0 0;
-  background-repeat: no-repeat;
-}
-
-.HeaderTitle label
-{
-  font-size: 1.5rem;
-  font-weight: bold;
-  letter-spacing: 3px;
-}
-
-.userBtn
-{
-  background-color: #c9c9c9;
-  /* margin-right: 50%;
-  margin-top: 10%; */
-  border-radius: 25px;
-}
-.userBtn button
-{
-  background: #9e9e9e42;
-  border-radius: 25px;
-  border: solid black 1px;
-  width: 45px;
-  height: 45px;
-}
-.userBtn img
-{
-  border-radius: 50%;
-  width: 43px;
-  height:43px;
+  /* height: 100%; */ 
 }
 
 .home-page
@@ -112,164 +54,14 @@ body
   /* height: 100%; */
 }
 
-.search-group
-{ 
-  display: flex;
-  width: 40%;
-  background: #afafaf05;
-  margin: 0px;
-  padding: 10px;
-  transform: translateX(75%);
-}
-.search-group input
-{
-  padding: 10px 126px;
-  width: 100%;
-  border-radius: 25px;
-  border: #222222 solid 1px;
-}
-.search-group select
-{
-  background: #aaaaaa;
-  width: 16%;
-  height: 32px;
-  border-radius: 25px;
-  transform: translate(102.5%, 8%);
-  z-index: 0;
-}
-.search-group button
-{
-  background: #aaaaaa;
-  width: 48px;
-  height: 34px;
-  border-radius: 50px;
-  transform: translate(-104%, 4%);
-  border: none;
-}
-.search-group button:hover
-{
-  background: #dadada;
-  box-shadow: #7e7e7e 0px 1px 5px;
-}
-
-.getStarted
-{
-  position: fixed;
-  top: 127px;
-  right: 4%;
-  display: flex;
-  flex-direction: column;
-  justify-content: end;
-  align-items: center;
-  gap: 8px;
-}
-
-.getStarted button
-{ 
-  padding: 8px 1px; 
-  width: 150px;
-  border: none;   
-  border-radius: 25px;
-  background: #333;
-  color: #ccc;
-  font-size: medium;
-  font-weight: 600;
-  letter-spacing: 2px;
-  cursor: pointer;
-}
-
-.getStarted button:hover
-{ 
-  padding: 8px; 
-  border: 2px solid #2c2c2c; 
-  background: #aaaaaa;
-  color: #222222;
-  font-size: small;
-  font-weight: 800;
-  
-}
-
-.getStarted a
-{   
-  color: #0084ff;
-  font-size: medium;
-  font-weight: 600;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-.getStarted a:hover
-{ 
-  color: #e20000;
-  font-size: medium;
-  font-weight: 700;
-  text-decoration: underline;
-  cursor: pointer;
-}
-
-.socials-btn-group
-{
-  position: absolute;
-  top: calc(0.45*50vw);
-  right: 6.5%;
-  display: flex;
-  flex-direction: column;
-  background: transparent;
-  padding: 10px;
-  gap:32px;
-}
-
-.socials-btn-group .horizontal
-{
-  display: flex;
-  flex-direction: row;  
-}
-
-.socials-btn-group button
-{
-  background: #00a5bb77;
-
-  padding: 10px;
-  height: 64px;
-  width: 64px;
-  border: none;
-  
-  border-radius: 50%;
-  font-size: 25px;
-  box-shadow: #7a7a7aad 0px 0px 15px;
-
-}
-
-.socials-btn-group button:hover
-{
-  background: #b9b9b9;
-  font-size: 24px;
-  box-shadow: #7a7a7aad 0px 4px 15px;
-
-}
-
 .showcase-container 
 {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 16px;  
+  gap: 1px;  
 }
-
-.showcase-container h2
-{
-  font-size: 28px;
-
-  font-family: "Inknut Antiqua", serif;
-  font-weight: 500;
-  font-style: normal;
-/*   
-  font-family: "Italianno", cursive;
-  font-weight: 400;
-  font-style: normal; */
-}
-
 .showcase-container p
 {
   width: 500px;
@@ -292,6 +84,10 @@ hr
 
 .showcase 
 {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   min-width: 800px;
   min-height: 400px;
   width: 60svw;
@@ -307,6 +103,7 @@ hr
 
 .showcase button
 {
+  width: 16%;
   font-size: 16px;
   font-weight: 600;
   padding: 10px;
@@ -324,12 +121,41 @@ hr
 
 .showcase .headline
 {
-  padding: 15%;
+  padding: 8%;
   font-size: 32px;
   font-weight: 800;
   color: white;
   text-shadow: #222222 0px 0px 16px; 
+
+  width: 90%;
+
+  font-family: "Inknut Antiqua", serif;
+
+  font-style: normal;
+  text-align: center;
 }
+
+.showcase p
+{
+  position: absolute;
+  top:36%;
+  left: 50%;
+  color: whitesmoke;
+  text-decoration: underline;
+}
+
+.showcase small
+{ 
+  text-decoration:overline;
+  cursor:pointer;
+}
+
+.showcase small:hover
+{ 
+  text-decoration:wavy;
+  color: #7ebfdd;
+}
+
 
 .amenities
 {
@@ -342,7 +168,9 @@ hr
 {
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  gap: 4px;
+  
+  margin-top: 10px;
   text-align: start;
   list-style: none;
   width: 250px;
@@ -354,7 +182,8 @@ hr
   justify-content: space-between;
   align-items: center;
   gap: 2px;
-  font-weight: 550;
+  font-size: 12px;
+  font-weight: 600;
   text-align: start;
   list-style: none;
   width: 90%;
@@ -364,41 +193,26 @@ hr
 
 .amenities  i
 {
-  font-size: 18px;
+  font-size: 14px;
   width: 32px;
+}
+
+.amenities h3
+{
+  margin-left: 16px;
 }
 
 .rooms-container
 {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 10px;
+  gap: 2px;
   background-color: #fff;
   padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 5px;
+  border-radius: 25px;
   width: 100%;
   
-}
-
-.rooms-showcase
-{
-  display: flex;
-  flex-direction: column;
-  width: 98%;
-  justify-self: center;
-  margin-bottom: 128px;
-}
-.rooms-showcase-title
-{
-  font-size: 24px;
-  text-align: start;
-}
-.rooms-showcase-title small
-{
-  font-size: 12px;
-  text-align: start;
-  font-weight: 700;
 }
 
 .checkin-rectangle
@@ -414,7 +228,6 @@ hr
   transform: translate(0, -30px);
   gap: 10px;
 }
-
 .check-compare
 {
   background: #D9D9D9;
@@ -425,7 +238,6 @@ hr
   padding-top: 0px;
   
 }
-
 .check-compare input
 {
   margin-top: 4px;
@@ -435,7 +247,6 @@ hr
   border: 1px solid grey;
   background: none;
 }
-
 .check-compare select
 {
   width: 90%;
@@ -445,7 +256,6 @@ hr
   border: none;
   background: none;
 }
-
 .check-compare button
 {
   background-color: #3f3c35;
@@ -456,11 +266,40 @@ hr
   height: 100%;
   width: 100%;
 }
-
 .check-compare button:hover
 {
   color: #4d4d4d;
   background: wheat;
+}
+
+.rooms-showcase
+{
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  justify-self: center;
+  margin-bottom: 16px;
+}
+.rooms-showcase-title
+{
+  font-size: 24px;
+  text-align: start;
+}
+.rooms-showcase-title small
+{  
+  font-size: 12px;
+  text-align: start;
+  font-weight: 700;
+}
+
+
+.restaurant-showcase
+{
+  display: flex;
+  flex-direction: column;
+  width: 98%;
+  justify-self: center;
+  margin-bottom: 16px;
 }
 
 .grid-container

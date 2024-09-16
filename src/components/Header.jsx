@@ -27,8 +27,22 @@ const Header = ({ user, handleLogout }) =>
       <div className='HeaderTitle-Logo'>        
       </div>
 
+
       <nav className="nav">
+        
         <ul className="nav-list">
+          <li >            
+            <div className='search-group'>
+              <select placeholder={``}>
+                <option value="">Location</option>
+              </select>          
+              <input placeholder='Search' />          
+              <button>
+                <i className="fas fa-search"/>
+              </button>
+            </div>
+          </li>
+
           <li className="nav-item" >
               <Link to="/" className="nav-link">Home</Link>
             </li>

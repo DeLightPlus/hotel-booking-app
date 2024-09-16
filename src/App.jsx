@@ -1,4 +1,6 @@
 import './App.css';
+import './components/styles.css';
+
 import './index.js';
 import './index.css';
 
@@ -15,6 +17,7 @@ import { useEffect, useState } from 'react';
 
 import { auth, db } from './config/firebase';
 import { getDoc, doc } from 'firebase/firestore';
+import RoomBookingModal from './components/roomBookingModal.jsx';
 
 
 function App() 
@@ -83,12 +86,15 @@ function App()
         <Routes>       
 
           <Route path='/' element={<HomePage user={user}/>} /> 
+
           <Route path='/register' 
             element={user ? <Navigate to='/profile'/> : <Register />} />
           <Route path='/login' 
             element={user ? <Navigate to='/profile'/> : <Login />} />          
           <Route path='/profile' 
             element={user ? <Profile user={user}/> : <Navigate to='/'/>} /> 
+
+          <Route path='/booking' element={<RoomBookingModal />} /> 
 
         </Routes>      
       </BrowserRouter>           

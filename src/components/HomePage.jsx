@@ -57,6 +57,11 @@ const HomePage = ({user}) =>
   //   }
   // };
 
+  const handleBookingModal = () =>
+  {
+    navigate('/booking');
+  }
+
 
   return (
     <div className="home-page"> 
@@ -67,20 +72,9 @@ const HomePage = ({user}) =>
               <button className='getStarted-btn'
                 onClick={()=> { navigate('/register')}}> Get Started
               </button> 
-              <div>Already have an account? <br/><Link to={'/login'}>Signin</Link></div>
+              <div><small>Already have an account? </small><br/><Link to={'/login'}>Signin</Link></div>
           </div>  
-        }     
-          
-        <div className='search-group'>
-          <select placeholder={``}>
-            <option value="">Location</option>
-          </select>          
-          <input placeholder='Search' />
-          
-          <button>
-            <i className="fas fa-search"/>
-          </button>
-        </div>
+        }  
         
         <div className="socials-btn-group">
           <button>
@@ -104,7 +98,7 @@ const HomePage = ({user}) =>
           <hr></hr>
           <div className='showcase-h-group'>
             <div className="amenities">
-              <h3>Hotel Amenities</h3>
+              <h3>Hotel Amenities</h3><hr/>
               <ul>
                 <li><i class="fa fa-wifi"/> 
                   Free Wi-Fi
@@ -168,14 +162,14 @@ const HomePage = ({user}) =>
               </ul>
             </div>
 
-            <div className="showcase"><hr/>
+            <div className="showcase">
               <p><i class="fa fa-map-pin"/> 
                  {'  '}South Africa, 
                 <small> ... show locations</small>
                 </p>
-              <h3 className="headline">
+              <strong className="headline">
                 Experience the ultimate in luxury and comfort at our hotel and restaurant.          
-              </h3>
+              </strong>
               
               ----<button>Show More</button>----      
             </div>
@@ -226,14 +220,134 @@ const HomePage = ({user}) =>
               <small>Rest-Le-BnB</small> | Available Rooms
               <hr/>              
             </div>
-            <div className="grid-content">            
+            <div className="available-rooms-container">            
 
-              <div className="grid-item item1">  
+              <div className="rooms-ul">  
 
-                <div className="grid-li">
+                <div className="rooms-li">
+                  <div className="grid-li-body">
+                    <img src="https://cdn.pixabay.com/photo/2016/10/18/09/02/hotel-1749602_960_720.jpg"/>
+
+                    {/* <div className="box">&hearts;</div> */}
+                  </div>
+
+                  <div className='bottom-section' onClick={handleBookingModal}>
+                    <p>Tiny Home of Linden <small>⭐ 4.86 (218)</small></p>
+                    <small>4 guests • 2 bedrooms • 2 beds •  1 bathroom </small>
+                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
+                    <span>Show More Details</span>
+                  </div>                  
+                </div>
+
+                <div className="rooms-li">
+                  <div className="grid-li-body">
+                    <img src="https://thelivingjourneycollection.co.za/wp-content/uploads/2022/09/Rectangle-120@2x.jpg"/>
+
+                    {/* <div className="box">&hearts;</div> */}
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>The Secret Garden Suite <small>⭐ 4.86 (218)</small></p>
+                    <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
+                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
+                    <span>Show More Details</span>
+                  </div>                  
+                </div>
+
+                <div className="rooms-li">
+                  <div className="grid-li-body">
+                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
+
+                    {/* <div className="box">&hearts;</div> */}
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
+                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
+                    <span>Show More Details</span>
+                  </div>                  
+                </div>
+
+                <div className="rooms-li">
+                  <div className="grid-li-body">
+                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
+
+                    {/* <div className="box">&hearts;</div> */}
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
+                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
+                    <span>Show More Details</span>
+                  </div>                  
+                </div>
+
+                <div className="rooms-li">
+                  <div className="grid-li-body">
+                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
+
+                    {/* <div className="box">&hearts;</div> */}
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
+                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
+                    <span>Show More Details</span>
+                  </div>                  
+                </div>
+
+                <div className="rooms-li">
+                  <div className="grid-li-body">
+                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
+
+                    {/* <div className="box">&hearts;</div> */}
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
+                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
+                    <span>Show More Details</span>
+                  </div>                  
+                </div>
+
+                <div className="rooms-li">
+                  <div className="grid-li-body">
+                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
+
+                    {/* <div className="box">&hearts;</div> */}
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
+                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
+                    <span>Show More Details</span>
+                  </div>                  
+                </div>
+
+                <div className="rooms-li">
+                  <div className="grid-li-body">
+                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
+
+                    {/* <div className="box">&hearts;</div> */}
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
+                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
+                    <span>Show More Details</span>
+                  </div>                  
+                </div>
+
+                <div className="rooms-li">
                   <div className="grid-li-body">
                     <img src="https://i.imgur.com/8Q6zZ8B.jpg"/>
-                    <div className="box">Book Now</div>
+                    {/* <div className="box">&hearts;</div> */}
                   </div>
 
                   <div className='bottom-section'>
@@ -241,21 +355,10 @@ const HomePage = ({user}) =>
                   </div>                  
                 </div>
 
-                <div className="grid-li">
+                <div className="rooms-li">
                   <div className="grid-li-body">
                     <img src="https://i.imgur.com/8Q6zZ8B.jpg"/>
-                    <div className="box">Book Now</div>
-                  </div>
-
-                  <div className='bottom-section'>
-                    <p>a</p>
-                  </div>                  
-                </div> 
-
-                <div className="grid-li">
-                  <div className="grid-li-body">
-                    <img src="https://i.imgur.com/8Q6zZ8B.jpg"/>
-                    <div className="box">Book Now</div>
+                    {/* <div className="box">&hearts;</div> */}
                   </div>
 
                   <div className='bottom-section'>
@@ -263,31 +366,28 @@ const HomePage = ({user}) =>
                   </div>                  
                 </div>
 
-                <div className="grid-li">
+                <div className="rooms-li">
                   <div className="grid-li-body">
                     <img src="https://i.imgur.com/8Q6zZ8B.jpg"/>
-                    <div className="box">Book Now</div>
+                    {/* <div className="box">&hearts;</div> */}
                   </div>
 
                   <div className='bottom-section'>
                     <p>a</p>
                   </div>                  
                 </div>
-              </div>  
-              <p>Show More Available Rooms</p>
-
-              {/* <div class="grid-item item1">Item 1</div> */}
-              <div class="grid-item item2"></div>
-              <div class="grid-item item3"></div>
-
+                
+              </div>                        
                         
             </div>
             
-          </div>
+          </div>     
 
-          <div className="rooms-showcase">            
-            <div className="rooms-showcase-title">
-              <small>Rest-Le-BnB</small> | Luxury Suite
+        </div>
+
+        <div className="restaurant-showcase">            
+            <div className="restaurant-showcase-title">
+              <small>Rest-Le-BnB</small> | Restaurent
               <hr/>              
             </div>
             <div className="grid-content">
@@ -321,9 +421,9 @@ const HomePage = ({user}) =>
             </div>
             
           </div>
+      </div>
 
-      </div>
-      </div>
+      
       
       
     </div>
