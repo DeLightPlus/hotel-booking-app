@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const RoomBookingModal = () => {
   const [roomType, setRoomType] = useState('');
@@ -27,7 +28,7 @@ const RoomBookingModal = () => {
             {/* <h5>Room Details</h5> */}
             <div style={{display:'flex', flexDirection:'column'}}>
                 <label>Room: The Lookout Suite • 1 Luxury Room • 2 Adults</label>
-                <label>Availablity: 2-nights stay <sub>• <strong>Check-in</strong> [Fri, Sep 27] • <strong>Check-out</strong> [Sun, Sep 29]</sub></label>
+                <label>Availablity: 2-nights stay <sup>• <strong>Check-in</strong> [Fri, Sep 27] • <strong>Check-out</strong> [Sun, Sep 29]</sup></label>
                 <label>Availablity:</label>
                 
             </div>
@@ -91,34 +92,98 @@ const RoomBookingModal = () => {
             </div>
 
             <div className="grid-content"> 
-                <div class="grid-item item1">
-                    <button type="submit">Book Room</button>
+                <div className="grid-item item1">
+                    <div className='booking-pay'>
+                        
+                        <div className='who-checking'>
+                            <strong>Who's checking in?</strong><br/>
+                            <div>
+                                <input type='text' id='fname' placeholder='First name'/> 
+                                <input type='text' id='lname' placeholder='Last name'/>
+                            </div>
+                            <input text='email' id='email' placeholder='Email address' /><br/>
+                            
+                            <div>
+                                <select name="" id="code">
+                                    <option value="USA +1">USA +1</option>
+                                    <option value="ZAR +27">ZAR +27</option>
+                                </select><input type='text'/>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" />{' '}
+                                    <small> 
+                                        Receive text alerts about this trip.
+                                        <h5> Message and data rates may apply.</h5>
+                                    </small>
+                            </div>
+                        </div>
+
+                        <div className='pay-method'>
+                            <strong>Payment Method</strong>
+                            <h6>Name on Card</h6>
+                            <input type='text' id='cardname'/><br/>
+                            <h6>Debit/Credit card number</h6>
+                            <input type='number' id='cardnumber' placeholder="0000 0000 0000 0000"/><br/>
+                            <h6>Expiration date</h6>
+                            <select id='exp-mon'>
+                                <option value="Month">Month</option>
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                            </select>/ 
+                            <select id='exp-yr'>
+                                <option value="Year">Year</option>
+                                <option value="1">01</option>
+                                <option value="2">02</option>
+                            </select>                            
+                            <h6>security code</h6>
+                            <input id='sec-code' placeholder='__/10'/> 
+                        </div>
+                          
+                    </div>
+                    <div className="room-showcase">
+                        <img width='400' src="https://cdn.pixabay.com/photo/2016/10/18/09/02/hotel-1749602_960_720.jpg"/>
+                        <br/>
+                        <select>
+                            <option value="">Bedding Request(optional)</option>   
+                            <option value="">1 Double Bed</option>   
+                            <option value="">2 Twin Beds</option>   
+                        </select>
+                        <br/><textarea placeholder='special requests'/>
+
+                        <br /><button type="submit">Complete Booking</button>
+                    </div>
+                    
                 </div>
 
-                <div class="grid-item item2">
-                    <h5>Payment Method</h5>
-                    <small>Name on Card</small><br/>
-                    <input placeholder='name'/><br/>
-                    <small>Debit/Credit card number</small><br/>
-                    <input placeholder="Debit/Credit card number"/><br/>
-                    <small>Expiration date</small><br/>
-                    <select>
-                        <option value="Month">Month</option>
-                        <option value="1">01</option>
-                        <option value="2">02</option>
-                    </select>
-                    <select>
-                        <option value="Year">Year</option>
-                        <option value="1">01</option>
-                        <option value="2">02</option>
-                    </select>
-                    <br/> 
-                    <small>security code</small><br/>
-                    <input placeholder='__/10'/>
+                <div className="grid-item item2">                   
+                    <div className="gmap-frame">    
+                        <h4>Polokwane, Limpopo Connexion</h4>                    
+                        <iframe width="90%" height="100%" frameBorder="0" scrolling="yes" marginHeight="0" marginWidth="0" 
+                            src="https://maps.google.com/maps?width=300&amp;height=200&amp;hl=en&amp;q=polokwane+(Limpopo%20Connexion)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                            <Link href="https://www.gps.ie/">gps trackers</Link>
+                        </iframe>                        
+                    </div>  
                 </div>
 
 
-                <div class="grid-item item3">Map</div>
+                <div className="grid-item item3">
+                    <div className='pricing-info'>
+                        <strong>Pricing Information</strong>
+                        <hr/>
+                        <p>1 room x 2 nights <span>R900.00</span></p>
+                        <p>Taxes <span>R200.00</span></p>
+                        <hr/>
+                        <p>
+                            <strong>Total <span>R2000.00</span></strong> 
+                            <br /> <h5>Deposits collected by property</h5>
+                            <small>Your first payment <span>R1000.00</span></small>
+                            <h6>Today</h6>
+                            <small> Remaining amount <span>R1000.00</span></small>
+                            <h6>Estimated by Sep 27, 2024</h6>
+                        </p>
+                    </div>            
+                </div>
             </div>  
 
             

@@ -296,3 +296,61 @@ hr
   height: 90%;
   width: 90%;
 }
+
+.booking-modal .booking-pay
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+}
+
+.booking-modal .who-checking
+{
+  padding: 4px 8px;
+  background: #ddd;
+  border: 1px solid grey;
+  text-align: start;
+  border-radius: 5px;
+}
+
+.booking-modal .pay-method
+{
+  margin-top: 4px;
+  padding: 4px 8px;
+  background: #ddd;
+  border: 1px solid grey;
+  text-align: start;
+  border-radius: 5px;
+}
+.booking-modal .pay-method#sec-code
+{
+  padding: 2px;
+  width: 86px;
+  text-align: center;
+}
+
+.who-checking input[type='text']
+{
+  padding: 2px;
+  margin: 0px 4px 2px 0px;
+  width: 124px;
+}
+.who-checking input#email
+{
+  padding: 2px;
+  margin: 0px 4px 4px 0px;
+  width: 200px;
+}
+.who-checking select
+{
+  width: 74px;
+  margin-right: 2px;
+  padding: 2px;
+}
+#sec-code
+{
+  padding: 2px;
+  width: 86px;
+  text-align: center;
+}
