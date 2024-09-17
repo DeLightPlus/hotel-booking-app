@@ -249,11 +249,13 @@ button:focus-visible {
 .item2 
 {
   grid-area: item2;
+  padding: 0;
 }
 
 .item3 
 {
   grid-area: item3;
+  padding: 0;
 }
 
 

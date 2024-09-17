@@ -179,6 +179,64 @@
   box-shadow: #7a7a7aad 0px 4px 15px;
 }
 
+.checkin-rectangle
+{
+  display: flex;
+  justify-self: center;
+  align-self: center;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+  height: 60px;
+  background: #22222200;
+  transform: translate(0, -30px);
+  gap: 10px;
+}
+.check-compare
+{
+  background: #D9D9D9;
+  height: 100%;
+  width:148px;
+  font-weight: 600;
+  text-align: center;
+  padding-top: 0px;
+  border-radius: 4px;
+  
+}
+.check-compare input
+{
+  margin-top: 4px;
+  width: 96%;
+  height: 26px;  
+  text-align: center;
+  border: 1px solid grey;
+  background: none;
+}
+.check-compare select
+{
+  width: 90%;
+  height: 100%;
+  text-align: center;
+  font-weight: 600;
+  border: none;
+  background: none;
+}
+.check-compare button
+{
+  background-color: #3f3c35;
+  color: rgb(248, 232, 202);
+  font-weight: 700;
+  font-size: 16px;
+  border: none;
+  height: 100%;
+  width: 100%;
+}
+.check-compare button:hover
+{
+  color: #4d4d4d;
+  background: wheat;
+}
+
 /* Global Styles */  
   .nav 
   {

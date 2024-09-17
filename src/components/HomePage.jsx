@@ -217,7 +217,7 @@ const HomePage = ({user}) =>
               </div>
             </div>
             <div className="rooms-showcase-title">
-              <small>Rest-Le-BnB</small> | Available Rooms
+              <small>Rest-Le-BnB</small> | Available Rooms ( 8 )
               <hr/>              
             </div>
             <div className="available-rooms-container">            
@@ -256,13 +256,13 @@ const HomePage = ({user}) =>
 
                 <div className="rooms-li">
                   <div className="grid-li-body">
-                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
+                    <img src="https://pix8.agoda.net/hotelImages/146267/813381930/ea9801c79dce663d418a57855365b8f7.jpg?ce=0&s=1024x768"/>
 
                     {/* <div className="box">&hearts;</div> */}
                   </div>
 
                   <div className='bottom-section'>
-                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <p>The Lookout Delux Suite <small>⭐ 4.86 (218)</small></p>
                     <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
                     <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
                     <span>Show More Details</span>
@@ -277,7 +277,7 @@ const HomePage = ({user}) =>
                   </div>
 
                   <div className='bottom-section'>
-                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <p>The Villa leView Suite <small>⭐ 4.86 (218)</small></p>
                     <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
                     <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
                     <span>Show More Details</span>
@@ -286,13 +286,28 @@ const HomePage = ({user}) =>
 
                 <div className="rooms-li">
                   <div className="grid-li-body">
-                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
+                    <img src="https://q-xx.bstatic.com/xdata/images/hotel/840x460/424239879.jpg?k=2ab5f9714ab19458093206728eda63b8d46c83ac69d9dedaca8c07bc29e998af&o="/>
 
                     {/* <div className="box">&hearts;</div> */}
                   </div>
 
                   <div className='bottom-section'>
-                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <p>The Standard Double <small>⭐ 4.86 (218)</small></p>
+                    <small>4 guests • 1 bedrooms • 2 beds •  1 bathroom </small>
+                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
+                    <span>Show More Details</span>
+                  </div>                  
+                </div>
+
+                <div className="rooms-li">
+                  <div className="grid-li-body">
+                    <img src="https://z.cdrst.com/foto/hotel-sf/74da8/medianaresp/afrique-boutique-hotel-o-r-tambo-habitacion-bd6725b.jpg"/>
+
+                    {/* <div className="box">&hearts;</div> */}
+                  </div>
+
+                  <div className='bottom-section'>
+                    <p>The Superior Double <small>⭐ 4.86 (218)</small></p>
                     <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
                     <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
                     <span>Show More Details</span>
@@ -301,28 +316,13 @@ const HomePage = ({user}) =>
 
                 <div className="rooms-li">
                   <div className="grid-li-body">
-                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
+                    <img src="https://pix2.agoda.net/hotelimages/142/1423250/1423250_17011315010050301637.jpg"/>
 
                     {/* <div className="box">&hearts;</div> */}
                   </div>
 
                   <div className='bottom-section'>
-                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
-                    <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
-                    <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
-                    <span>Show More Details</span>
-                  </div>                  
-                </div>
-
-                <div className="rooms-li">
-                  <div className="grid-li-body">
-                    <img src="https://tbb-prod-emea.imgix.net/attachments/room_type_photos/images/823033/823033/b51acdc4-287b-4d55-b81a-88163e801a74.jpg?auto=format,compress&fit=crop&crop=entropy&w=1872&q=75"/>
-
-                    {/* <div className="box">&hearts;</div> */}
-                  </div>
-
-                  <div className='bottom-section'>
-                    <p>The Lookout Suite <small>⭐ 4.86 (218)</small></p>
+                    <p>InnsCape on Castle Suite <small>⭐ 4.86 (218)</small></p>
                     <small>2 guests • 1 bedrooms • 1 beds •  1 bathroom </small>
                     <p><i>R1800</i> | <strong>R1000 night</strong> • <small>3600 total</small> </p>
                     <span>Show More Details</span>
