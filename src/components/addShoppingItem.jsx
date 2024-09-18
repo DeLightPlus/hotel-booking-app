@@ -1,4 +1,4 @@
-import { addShoppingItem } from "../redux/shoppingListReducer";
+import { addShoppingItem } from "../redux/bookingRequestsReducer";
 
 import { useDispatch, useSelector } from 'react-redux';
 import { useState } from "react";

@@ -4,7 +4,7 @@ import './signin_up.css';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-import { createUserWithEmailAndPassword } from 'firebase/auth';
+import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
 import { auth, db } from '../config/firebase';
 import { setDoc, doc } from 'firebase/firestore';
 
@@ -22,25 +22,31 @@ const Register = () =>
 
   const handleSignup = async (e) =>
   {
-    e.preventDefault();
-    
+    e.preventDefault();    
     try
     {   
       const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+
       const user = userCredential.user;  
       console.log(user);
       if(user)
-      {
-        const docRef = doc(db, "users", user.uid);
-        await setDoc(docRef,
-          {            
-            email: user.email,
-            firstname: firstname,
-            lastname: lastname,
-          });
+      {  
+        await sendEmailVerification(user)
+        .then(async ()=>
+          { 
+          
+            const docRef = doc(db, "users", user.uid);
+            await setDoc(docRef,
+            {
+              email: user.email,
+              firstname: firstname,
+              lastname: lastname,
+            });
 
-        alert('User Registered Successfully!!');        
-        naviate('/')
+            alert('Check your email for verification')
+            naviate('/login');
+          });   
+        
       }      
     }
     catch (error) { alert( error.message ); }

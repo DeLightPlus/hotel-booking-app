@@ -5,7 +5,7 @@ const SocialButton = ({ provider, color, action }) =>
 {
     const signInWithGoogle = () =>
     {
-        alert('trying login with '+ provider);
+        // alert('trying login with '+ provider);
         const _provider = new GoogleAuthProvider();
         signInWithPopup(auth, _provider)
         .then(async (result) => { console.log(result)});
@@ -25,7 +25,7 @@ const SocialButton = ({ provider, color, action }) =>
                     )
                 }
             </svg>
-            Sign in with {provider}
+            {action}
         </button>
     );
   }

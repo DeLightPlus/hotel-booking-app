@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const RoomBookingModal = () => {
+const RoomBookingModal = ({user}) => 
+{
+    
   const [roomType, setRoomType] = useState('');
   const [checkInDate, setCheckInDate] = useState('');
   const [checkOutDate, setCheckOutDate] = useState('');
@@ -20,6 +22,11 @@ const RoomBookingModal = () => {
     console.log('Booking submitted:', roomType, checkInDate, checkOutDate, guests, adults, children, roomDescription);
   };
 
+  const handleCheckout = () =>
+  {
+
+  }
+
   return (
     <div className='booking-modal'>
       
@@ -28,9 +35,8 @@ const RoomBookingModal = () => {
             {/* <h5>Room Details</h5> */}
             <div style={{display:'flex', flexDirection:'column'}}>
                 <label>Room: The Lookout Suite • 1 Luxury Room • 2 Adults</label>
-                <label>Availablity: 2-nights stay <sup>• <strong>Check-in</strong> [Fri, Sep 27] • <strong>Check-out</strong> [Sun, Sep 29]</sup></label>
-                <label>Availablity:</label>
-                
+                <label>Availablity: 2-nights stay <small>• <strong>Check-in</strong> [Fri, Sep 27] • <strong>Check-out</strong> [Sun, Sep 29]</small></label>
+                {/* <label>Availablity:</label> */}                
             </div>
         </div>
         <form onSubmit={handleSubmit}>
@@ -94,20 +100,21 @@ const RoomBookingModal = () => {
             <div className="grid-content"> 
                 <div className="grid-item item1">
                     <div className='booking-pay'>
-                        
+
                         <div className='who-checking'>
                             <strong>Who's checking in?</strong><br/>
                             <div>
-                                <input type='text' id='fname' placeholder='First name'/> 
-                                <input type='text' id='lname' placeholder='Last name'/>
+                                {console.log(user)}
+                                <input type='text' id='fname' placeholder={user !== null ? `eg.(${user.firstname})` : 'Firstname'}/> 
+                                <input type='text' id='lname' placeholder={user !== null ? `eg.(${user.lastname})` : 'Last name'}/>
                             </div>
-                            <input text='email' id='email' placeholder='Email address' /><br/>
+                            <input text='email' id='email' placeholder={user !== null ? `eg.(${user.email})` : 'Email address'} /><br/>
                             
                             <div>
                                 <select name="" id="code">
                                     <option value="USA +1">USA +1</option>
                                     <option value="ZAR +27">ZAR +27</option>
-                                </select><input type='text'/>
+                                </select><input type='text' placeholder=' 00 000 0000'/>
                             </div>
 
                             <div>
@@ -138,6 +145,7 @@ const RoomBookingModal = () => {
                             </select>                            
                             <h6>security code</h6>
                             <input id='sec-code' placeholder='__/10'/> 
+                            <button onClick={handleCheckout}> checkout</button>
                         </div>
                           
                     </div>
@@ -151,7 +159,7 @@ const RoomBookingModal = () => {
                         </select>
                         <br/><textarea placeholder='special requests'/>
 
-                        <br /><button type="submit">Complete Booking</button>
+                        <br /><button type="submit">Send Request</button>
                     </div>
                     
                 </div>
@@ -159,8 +167,8 @@ const RoomBookingModal = () => {
                 <div className="grid-item item2">                   
                     <div className="gmap-frame">    
                         <h4>Polokwane, Limpopo Connexion</h4>                    
-                        <iframe width="90%" height="100%" frameBorder="0" scrolling="yes" marginHeight="0" marginWidth="0" 
-                            src="https://maps.google.com/maps?width=300&amp;height=200&amp;hl=en&amp;q=polokwane+(Limpopo%20Connexion)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+                        <iframe width="100%" height="100%" frameBorder="0" scrolling="yes" marginHeight="0" marginWidth="0" 
+                            src="https://maps.google.com/maps?width=100%&amp;height=100%&amp;hl=en&amp;q=polokwane+(Limpopo%20Connexion)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
                             <Link href="https://www.gps.ie/">gps trackers</Link>
                         </iframe>                        
                     </div>  
@@ -171,21 +179,20 @@ const RoomBookingModal = () => {
                     <div className='pricing-info'>
                         <strong>Pricing Information</strong>
                         <hr/>
-                        <p>1 room x 2 nights <span>R900.00</span></p>
+                        <p>1 room x 2 nights <span>R1800.00</span></p>
                         <p>Taxes <span>R200.00</span></p>
                         <hr/>
-                        <p>
+                        <>
                             <strong>Total <span>R2000.00</span></strong> 
                             <br /> <h5>Deposits collected by property</h5>
-                            <small>Your first payment <span>R1000.00</span></small>
+                            <p><small>Your first payment <span>R1000.00</span></small></p>
                             <h6>Today</h6>
-                            <small> Remaining amount <span>R1000.00</span></small>
+                            <p><small> Remaining amount <span>R1000.00</span></small></p>
                             <h6>Estimated by Sep 27, 2024</h6>
-                        </p>
+                        </>
                     </div>            
                 </div>
             </div>  
-
             
         </form>
       

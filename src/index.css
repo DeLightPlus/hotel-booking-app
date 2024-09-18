@@ -136,7 +136,7 @@ button:focus-visible {
 
 .grid-content
 {
-  margin-top: 10px;
+  margin-top: 1px;
   display: grid;
   grid-template-areas:
         "item1 item2"
@@ -173,6 +173,8 @@ button:focus-visible {
 
   background: #a5966d00;
   color: black;
+  border: #3333334b solid 1px;
+  border-radius: 5px;
 
   max-height: 680px; /* Fixed height for scrollable container */
   overflow: auto; 
@@ -252,14 +254,44 @@ button:focus-visible {
 .item2 
 {
   grid-area: item2;
-  padding: 0;
+  padding: 4px;
+  align-items: start;
+  color: black;  
+}
+.item2 iframe
+{
+  border-radius: 4px;
 }
 
 .item3 
 {
   grid-area: item3;
-  padding: 0;
+  padding: 10px;
+  align-items: start;
+  color: black;
 }
+
+.pricing-info
+{
+  width: 98%;
+}
+.pricing-info p
+{
+  display: flex;
+  width: 100%;
+  text-align:start;
+  justify-content: space-between;
+}
+.pricing-info span
+{
+  align-self: end;
+}
+
+.pricing-info h6, h5
+{
+  text-align: start;
+}
+
 
 
 

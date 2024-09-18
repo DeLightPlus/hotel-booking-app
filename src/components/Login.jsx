@@ -14,19 +14,38 @@ const Login = () =>
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [verified, setVerified] = useState(false);
 
   const handleSignin = async (e) =>
   {
     e.preventDefault();
+    
     try 
     {
-      await signInWithEmailAndPassword(auth, email, password);
-      alert('Login Successful!!!')
-      navigate('/profile');
-    }
-    catch (error) { console.error(error.message) }
+      await signInWithEmailAndPassword(auth, email, password)
+      .then((userCreds)=>
+        { 
+          const user = userCreds.user;
+          console.log(user);
+          
+          setVerified(userCreds.user.verified);
 
-    
+          if(userCreds.user.verified)
+          {
+            alert('Login Successful!!!')
+            navigate('/profile');
+          }
+          else
+          {
+            alert('Please verify your email address');
+          }
+        })
+      .catch((error)=>{console.error(error.message); });
+
+      
+      // navigate('/profile');
+    }
+    catch (error) { console.error(error.message) }    
   }
 
 

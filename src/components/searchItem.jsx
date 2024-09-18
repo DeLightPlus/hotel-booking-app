@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchShoppingList, searchShoppingList } from '../redux/shoppingListReducer';
+import { fetchShoppingList, searchShoppingList } from '../redux/bookingRequestsReducer';
 
 import { SORT_OPTIONS } from '../SortOptions';
 

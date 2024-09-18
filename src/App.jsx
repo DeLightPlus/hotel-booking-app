@@ -10,6 +10,7 @@ import Login from './components/Login.jsx';
 import Profile from './components/Profile.jsx';
 
 import HomePage from './components/HomePage.jsx';
+import RoomBookingModal from './components/roomBookingModal.jsx';
 import Dashboard from './components/Dashboard.jsx';
 
 import { BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
@@ -17,7 +18,8 @@ import { useEffect, useState } from 'react';
 
 import { auth, db } from './config/firebase';
 import { getDoc, doc } from 'firebase/firestore';
-import RoomBookingModal from './components/roomBookingModal.jsx';
+
+
 
 
 function App() 
@@ -39,25 +41,22 @@ function App()
             const userRef = doc(db, "users", user.uid);
             const userData = await getDoc(userRef);
             if(userData.exists())
-            {            
-              setUser(userData.data());
-              console.log('userData', userData.data());
-              
-              alert('Welcome to Rest-Le-BnB, '+ userData.data().firstname)
+            {     
+              if(user.emailVerified) 
+              {
+                setUser(userData.data());
+                console.log('userData', userData.data());                
+                // alert('Welcome to Rest-Le-BnB, '+ userData.data().firstname)
+              } 
+              else { console.log('Please verify your email address to continue'); } 
             }
             else
             {
               if(user.displayName)
-              {
-                setUser(user)
-              }
-              alert('Failed to login')
+              { setUser(user); }              
             }
           } 
-          else 
-          {
-            setUser(null);
-          }
+          else { setUser(null); }
       });
   }  
     
@@ -94,7 +93,7 @@ function App()
           <Route path='/profile' 
             element={user ? <Profile user={user}/> : <Navigate to='/'/>} /> 
 
-          <Route path='/booking' element={<RoomBookingModal />} /> 
+          <Route path='/booking' element={<RoomBookingModal user={user}/>} /> 
 
         </Routes>      
       </BrowserRouter>           

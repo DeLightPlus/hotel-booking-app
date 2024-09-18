@@ -3,7 +3,7 @@ import '../index.css';
 
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchShoppingList, deleteShoppingItem, editShoppingItem, searchShoppingList } from '../redux/shoppingListReducer';
+import { fetchShoppingList, deleteShoppingItem, editShoppingItem, searchShoppingList } from '../redux/bookingRequestsReducer';
 import SearchItem from './searchItem';
 import { Link, useNavigate } from 'react-router-dom';
 
@@ -412,12 +412,10 @@ const HomePage = ({user}) =>
                 </p>
               </div> */}
 
-              <div class="grid-item item1">Item 1</div>
-              <div class="grid-item item2">Item 2</div>
-              <div class="grid-item item3">Item 3</div>
+              <div className="grid-item item1">Item 1</div>
+              <div className="grid-item item2">Item 2</div>
+              <div className="grid-item item3">Item 3</div>
 
-
-            
             </div>
             
           </div>
