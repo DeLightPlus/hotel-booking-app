@@ -118,7 +118,7 @@ const Register = () =>
                 />
               </div>
               <button type="submit" className="submit-button">
-                Sign up
+                Create Account
               </button>
             </form>
             <span>...or continue with </span>

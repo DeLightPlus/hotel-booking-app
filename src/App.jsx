@@ -18,6 +18,7 @@ import { useEffect, useState } from 'react';
 
 import { auth, db } from './config/firebase';
 import { getDoc, doc } from 'firebase/firestore';
+import AdminPanel from './components/Admin/AdminPanel.jsx';
 
 
 
@@ -85,6 +86,7 @@ function App()
         <Routes>       
 
           <Route path='/' element={<HomePage user={user}/>} /> 
+          <Route path='/Admin' element={<AdminPanel/>} /> 
 
           <Route path='/register' 
             element={user ? <Navigate to='/profile'/> : <Register />} />
