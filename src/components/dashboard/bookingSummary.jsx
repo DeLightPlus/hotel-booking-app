@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
 
 const BookingSummary = ({room}) =>
 {
+    const user = useSelector((state) => state.auth.user);
+    const userData = useSelector((state) => state.auth.userData); 
+    const adminUserData = useSelector((state) => state.auth.adminUserData);
+
     const [newRoom, setNewRoom] = useState({}); 
 
     const handleSubmit = (room) => 
@@ -37,9 +42,20 @@ const BookingSummary = ({room}) =>
                         <small>{room.capacity} guests • {room.room_description} </small>
                         <p><i>R1800</i> | <strong>R{room.price} night</strong> • <small>{room.price * room.avail_night} total</small> </p>
                         <span>
-                        { room.id && <button onClick={() => setNewRoom(room) }>Edit</button> }
-                        { room.id && <button onClick={() => handleDelete(room.id) }>Delete</button> }
-                            BOOK NOW
+                        {
+                            adminUserData && (
+                            <div>
+                            {room.id && (
+                                <div>
+                                <button onClick={() => setNewRoom(room)}>Edit</button>
+                                <button onClick={() => handleDelete(room.id)}>Delete</button>
+                                </div>
+                            )}
+                            </div>
+                        )}
+                        
+                           
+                         BOOK NOW
                         </span>
                 </div>
                 

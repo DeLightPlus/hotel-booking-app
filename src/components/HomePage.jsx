@@ -187,11 +187,8 @@ const HomePage = () =>
             <div className="rooms-showcase-title">
               <small>Rest-Le-BnB</small> | Available Rooms ( 8 )
               <hr/>
-               {/* <AvailableRooms /> */}
-               
-              <div>
-                <RoomDetails />
-              </div>             
+               <BookingList />              
+                         
             </div>
 
            

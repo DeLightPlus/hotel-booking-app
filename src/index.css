@@ -12,13 +12,13 @@
 .rooms-ul 
 {
   display: flex;
-  flex-wrap: nowrap;
+  flex-wrap: wrap;
+  justify-content: space-between;
   gap: 16px; 
 
   padding: 10px;
   max-height: 680px; /* Fixed height for scrollable container */ 
-  max-width: 80vw;
-  width: 100%;
+  
 
   background-color: #c4c4c4; /* Green background */
   color: white;  
@@ -28,6 +28,12 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   
   overflow: auto;
+}
+
+.rooms-ul .hv
+{
+  max-width: 80vw;
+  width: 100%;
 }
 
 .item1 

@@ -8,6 +8,10 @@ import { useDispatch, useSelector } from "react-redux";
 
 const BookingList = () =>
 {
+    const user = useSelector((state) => state.auth.user);
+    const userData = useSelector((state) => state.auth.userData); 
+    const adminUserData = useSelector((state) => state.auth.adminUserData);
+
     const dispatch = useDispatch();
     const rooms_all = useSelector((state) => state.rooms.rooms_all);
     
@@ -27,13 +31,10 @@ const BookingList = () =>
 
             <div className="available-rooms-container">            
 
-                <div className="rooms-ul"> 
+                <div className={`rooms-ul ${adminUserData ? 'hv' : '' }`}> 
                 {   
-                    rooms_all.length == 0 ? <>Loading</> :                 
-                        
-                    rooms_all.map((room) => (  <BookingSummary room={room} /> ))
-                        
-                    
+                    rooms_all.length == 0 ? <>Loading</> :             
+                    rooms_all.map((room) => (  <BookingSummary room={room} /> ))   
                 }
                 </div>                       
                         
