@@ -1,104 +1,94 @@
 import './App.css';
 import './components/styles.css';
-
-import './index.js';
 import './index.css';
 
-import Header from './components/Header.jsx';
-import Register from './components/Register.jsx';
-import Login from './components/Login.jsx';
-import Profile from './components/Profile.jsx';
-
-import HomePage from './components/HomePage.jsx';
-import RoomBookingModal from './components/roomBookingModal.jsx';
-import Dashboard from './components/Dashboard.jsx';
-
-import { BrowserRouter, Route, Routes, Navigate} from 'react-router-dom';
-import { useEffect, useState } from 'react'; 
+import { BrowserRouter, Navigate, Route,Routes } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 
 import { auth, db } from './config/firebase';
 import { getDoc, doc } from 'firebase/firestore';
-import AdminPanel from './components/Admin/AdminPanel.jsx';
+import { onAuthStateChanged } from 'firebase/auth';
+
+import Header from './components/Header.jsx';
+import HomePage from './components/HomePage.jsx';
+// import Profile from './components/dashboard/dashboard.jsx';
+import Signup from './components/auth/signup.jsx';
+import Signin from './components/auth/signin.jsx';
+
+import AdminPanel from './components/admin/AdminPanel.jsx';
+import Dashboard from './components/dashboard/dashboard.jsx';
+import RoomDetails from './components/RoomDetails.jsx';
+
+import { useDispatch, useSelector } from 'react-redux';
+import { clearUser, setUser } from './redux/authSlice.js';
+import { fetchRooms, setRooms } from "./redux/roomsSlice.js";
 
 
+function App() {
+  const { user, userData, adminUserData, loading, error } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    console.log('User state changed:', user);
+    console.log('UserData state changed:', userData);
 
-function App() 
-{      
-  // const navigate = useNavigate();
-
-  const [user, setUser] = useState(null);
-  const [signedIn, setSignedIn] = useState(false);
-
-  if(signedIn) console.log('h-signed-in', signedIn); 
-
-  const fetchUserData = async () =>
-  {
-      auth.onAuthStateChanged(async (user) => 
-      {
-          console.log('user',user);        
-          if (user) 
-          {           
-            const userRef = doc(db, "users", user.uid);
-            const userData = await getDoc(userRef);
-            if(userData.exists())
-            {     
-              if(user.emailVerified) 
-              {
-                setUser(userData.data());
-                console.log('userData', userData.data());                
-                // alert('Welcome to Rest-Le-BnB, '+ userData.data().firstname)
-              } 
-              else { console.log('Please verify your email address to continue'); } 
-            }
-            else
-            {
-              if(user.displayName)
-              { setUser(user); }              
-            }
-          } 
-          else { setUser(null); }
-      });
-  }  
-    
-  useEffect(() => 
+    onAuthStateChanged(auth, (user) => 
     {
-      fetchUserData();
-    }, []);
-  
-  const handleLogout = async () =>
+      if (user) 
+      {
+        getDoc(doc(db, 'users', user.uid))
+        .then((doc) => {
+          const userData = doc.data();
+
+          console.log('user ', user.uid, ' | ' , user.email , ' verified:', user.emailVerified ); 
+          console.log('userData | ' , userData ); 
+
+          dispatch( setUser( { user,
+             userData: (userData.role ==='user') ? userData : null,
+             adminUserData: (userData.role ==='admin') ? userData : null  }
+            ));
+        });
+      }
+      else { dispatch(clearUser()); }
+    });
+
+    const fetchRoomsAsynch = async () =>
+    { 
+      const rooms = await dispatch( fetchRooms() ).unwrap(); 
+      console.log('fetchRooms', rooms);                    
+    }
+      fetchRoomsAsynch();
+    
+  }, [dispatch])
+
+  const handleLogout = async () => 
   {
-    try
+    try 
     {
       await auth.signOut();
-      setUser(null);
-      window.location.href='/';
-    }
-    catch (error){ console.error(error); }
+      dispatch(clearUser())
+      // window.location.href = '/';
+      console.log('Signed out');      
+    } catch (error) { console.error(error); }
   }
-  
-  
+
   return (
-    <div className='Hotel-App'>      
+    <div className='Hotel-App'>
       <BrowserRouter>
-        <Header user={user} handleLogout={handleLogout}/>  
+        {console.log('userData?, ', userData, ' | adminUser?, ',  adminUserData)  }
+        {console.log('user?, ', user)  }
+        <Header handleLogout={handleLogout} />
+        <Routes>
+          <Route exact path='/' element={<HomePage/>  } />
           
-        <Routes>       
+          <Route path='/signup' element={!user ? <Signup /> : <Navigate to={'/dashboard'}/>} />
+          <Route path='/signin' element={ user ? <Navigate to={'/dashboard'} /> : <Signin /> } /> 
 
-          <Route path='/' element={<HomePage user={user}/>} /> 
-          <Route path='/Admin' element={<AdminPanel/>} /> 
-
-          <Route path='/register' 
-            element={user ? <Navigate to='/profile'/> : <Register />} />
-          <Route path='/login' 
-            element={user ? <Navigate to='/profile'/> : <Login />} />          
-          <Route path='/profile' 
-            element={user ? <Profile user={user}/> : <Navigate to='/'/>} /> 
-
-          <Route path='/booking' element={<RoomBookingModal user={user}/>} /> 
-
-        </Routes>      
-      </BrowserRouter>           
+          <Route exact path='/dashboard' element={ user ? <Dashboard /> : <Navigate to={'/'}/> } />
+          <Route path='/bookings/:id' element={<RoomDetails/>} />
+          <Route path='/dashboard/Admin' element={ adminUserData ? <AdminPanel /> : <Navigate to={'/'} /> } />
+        </Routes>
+      </BrowserRouter>
     </div>
   )
 }

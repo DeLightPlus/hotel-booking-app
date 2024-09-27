@@ -1,3 +1,4 @@
+import '../styles.css'
 import React, { useState } from 'react';
 
 const RoomForm = ({ onSubmit, room }) => 
@@ -25,57 +26,73 @@ const RoomForm = ({ onSubmit, room }) =>
       rating,
       image,
     });
+
+    setRoomName('');
+    setRoomDescription(''); 
+    setCapacity('');
+    setPrice('');
+    setAvailability('');
+    setAvailNights('');
+    setStatus('');
+    setRating('');
+    setImageURL('');
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <label>
-        Room Name:
-        <input type="text" value={roomName} onChange={(event) => setRoomName(event.target.value)} />
-      </label>
-      <br />
-      <label>
-        Room Description:
-        <input type="text" value={roomDescription} onChange={(event) => setRoomDescription(event.target.value)} />
-      </label>
-      <br />
-      <label>
-        Capacity:
-        <input type="number" value={capacity} onChange={(event) => setCapacity(event.target.value)} />
-      </label>
-      <br />
-      <label>
-        Price:
-        <input type="number" value={price} onChange={(event) => setPrice(event.target.value)} />
-      </label>
-      <br />
-      <label>
-        Availability:
-        <input type="text" value={availability} onChange={(event) => setAvailability(event.target.value)} />
-      </label>
-      <br />
-      <label>
-        Available Nights:
-        <input type="number" value={availNights} onChange={(event) => setAvailNights(event.target.value)} />
-      </label>
-      <br />
-      <label>
-        Status:
-        <input type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
-      </label>
-      <br />
-      <label>
-        Rating:
-        <input type="text" value={rating} onChange={(event) => setRating(event.target.value)} />
-      </label>
-      <br />
-      <label>
-        Image:
-        <input type="text" onChange={(event) => setImageURL(event.target.value)} />
-      </label>
-      <br />
-      <button type="submit">Save</button>
-    </form>
+    <div className='form-container'>
+      <form onSubmit={handleSubmit}>
+          <h4>Add Room</h4>
+        
+          <label>
+            Room Name:
+            <input type="text" value={roomName} onChange={(event) => setRoomName(event.target.value)} />
+          </label>
+          
+          <label>
+            Room Description:
+            <input type="text" value={roomDescription} onChange={(event) => setRoomDescription(event.target.value)} />
+          </label>
+         
+          <label>
+            Capacity:
+            <input type="number" value={capacity} onChange={(event) => setCapacity(event.target.value)} />
+          </label>
+          
+          <label>
+            Price:
+            <input type="number" value={price} onChange={(event) => setPrice(event.target.value)} />
+          </label>
+         
+          <label>
+            Availability:
+            <input type="text" value={availability} onChange={(event) => setAvailability(event.target.value)} />
+          </label>
+          
+          <label>
+            Available Nights:
+            <input type="number" value={availNights} onChange={(event) => setAvailNights(event.target.value)} />
+          </label>
+          
+          <label>
+            Status:
+            <input type="text" value={status} onChange={(event) => setStatus(event.target.value)} />
+          </label>
+          
+          <label>
+            Rating:
+            <input type="text" value={rating} onChange={(event) => setRating(event.target.value)} />
+          </label>
+          
+          <label>
+            Image:
+            <input type="text" onChange={(event) => setImageURL(event.target.value)} />
+          </label>
+          
+          <button type="submit">Save</button>
+        
+        
+      </form>
+    </div>
   );
 };
 

@@ -1,103 +1,110 @@
-
 import './styles.css';
-import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { signIn, signOut } from '../redux/userSlice';
 
-const Header = ({ user, handleLogout }) => 
-{
-  const navigate = useNavigate();
-  const dispatch = useDispatch();
-  // const signedIn = useSelector((state) => state.user.signedIn);
-  // const user = useSelector((state) => state.user.username);
+import { useSelector } from 'react-redux';
+import { Link, Navigate } from 'react-router-dom';
 
-  // const handleLogout = () => 
-  // {
-  //   alert('Trying To Logout');    
-  //   dispatch(signOut());
-  //   localStorage.removeItem('user');
-  //   // navigate('/login');
-    
-  // }; 
-
+const Header = ({ handleLogout }) => {
+  const user = useSelector((state) => state.auth.user);
+  const userData = useSelector((state) => state.auth.userData); 
+  const adminUserData = useSelector((state) => state.auth.adminUserData);
 
   return (
     <div className='HeaderContainer'>
       <div className='HeaderTitle-Logo'>        
       </div>
 
-
       <nav className="nav">
-        
         <ul className="nav-list">
-          <li >            
+          <li>
             <div className='search-group'>
               <select placeholder={``}>
                 <option value="">Location</option>
-              </select>          
-              <input placeholder='Search' />          
+              </select>
+              <input placeholder='Search' />
               <button>
                 <i className="fas fa-search"/>
               </button>
             </div>
           </li>
 
-          <li className="nav-item" >
-              <Link to="/" className="nav-link">Home</Link>
-            </li>
-            <li className="nav-item" >
-              <Link to="/" className="nav-link">Rooms</Link>
-            </li>
-            <li className="nav-item" >
-              <Link to="/" className="nav-link">Restaurent</Link>
-            </li>
-        </ul>
-
-        <ul className="nav-list">
-          <li className="nav-item" >
-            <Link to="/" className="nav-link">Services</Link>
+          <li className="nav-item">
+            <Link to="/" className="nav-link">Home</Link>
           </li>
-          <li className="nav-item" >
-            <Link to="/" className="nav-link">About</Link>
+          <li className="nav-item">
+            <Link to="/" className="nav-link">Rooms</Link>
           </li>
-          <li className="nav-item" >
-            <Link to="/" className="nav-link">Contact</Link>
-          </li>          
+          <li className="nav-item">
+            <Link to="/" className="nav-link">Restaurent</Link>
+          </li>
         </ul>
-
-        {/* {console.log(signedIn)} */}
-          {user && ( 
+        
+        {
+          adminUserData ? (
+          <ul className="nav-list">
             <li className="nav-item">
-              <div className='userBtn'>
-                <button>
-                  {/*  */}
-                  {
-                    user.displayName ?
-                    <img src={user.photoURL} />
-                    : <i className="fa fa-user" style={{ fontSize: 32}}/>
-                  }
-                  
-                </button>
-              </div>
-
-              <Link to="/profile" className="nav-link" >
-                <span>
-                  {
-                    !user.displayName ? `${user.firstname.substring(0, 1).toUpperCase()} ${user.lastname}` : 
-                    `${user.displayName.substring(0, 1).toUpperCase()}
-                    ${user.displayName.split(" ").pop()}`
-                  }
-                </span>
-              </Link>
-              <button className='signOut' 
-                onClick={() =>  handleLogout() }>
-                  Logout
-              </button> 
+              <Link to="/" className="nav-link">_</Link>
             </li>
-          )}
-      </nav>
+            <li className="nav-item">
+              <Link to="/Admin" className="nav-link">Admin</Link>
+            </li>
+            <li className="nav-item">
+              <Link to="/dashboard" className="nav-link">Dashboard</Link>
+            </li>
+          </ul>
+          ) : (
+            <ul className="nav-list">
+              <li className="nav-item">
+                <Link to="/" className="nav-link">Services</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/" className="nav-link">About</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/" className="nav-link">Contact</Link>
+              </li>
+            </ul>
+          ) 
 
+        }
+        
+
+
+        {console.log('u:', user) }
+        {console.log('u.dat:', userData, ' | au.dat:', adminUserData) }
+        {
+          user && (
+          <li className="nav-item">
+            <div className='userBtn'>
+              <Link>
+                {user.photoURL ? (
+                  <img src={user.photoURL}/>
+                ) : (
+                  <i className="fa fa-user" style={{ fontSize: 32}}/>
+                )}
+              </Link>
+            </div>
+
+            <Link to="/dashboard" className="nav-link">
+              <span>                 
+              {
+                (userData) ? (
+                  `${userData.firstname.substring(0, 1).toUpperCase()} ${userData.lastname}`
+                ) : (
+                  (adminUserData) ? (
+                    `${adminUserData.firstname.substring(0, 1).toUpperCase()} ${adminUserData.lastname}`
+                  ) : (
+                    ` ${user.email} `
+                  )
+                )
+              }
+              </span>
+            </Link>
+            <button className='signOut' onClick={handleLogout}>
+              Logout
+            </button>
+          </li>
+        )}
+      </nav>
     </div>
   );
 };

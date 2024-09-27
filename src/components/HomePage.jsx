@@ -1,62 +1,28 @@
 import '../index.css';
 
-
 import React, { useEffect, useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { fetchShoppingList, deleteShoppingItem, editShoppingItem, searchShoppingList } from '../redux/bookingRequestsReducer';
-import SearchItem from './searchItem';
+import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
-import AvailableRooms from './availableRooms';
+import BookingList from './dashboard/bookingsList';
+import RoomDetails from './RoomDetails';
+
+// import AvailableRooms from './availableRooms';
 
 
-// import { hotelPic1 } from '../assets/valeriia.jpg';
+const HomePage = () => 
+{  
+  const user = useSelector((state) => state.auth.user);
+  const userData = useSelector((state) => state.auth.userData); 
+  const adminUserData = useSelector((state) => state.auth.adminUserData);
 
-const SORT_OPTIONS = {
-  NAME_ASC: 'Name (A-Z)',
-  NAME_DESC: 'Name (Z-A)',
-  PRICE_ASC: 'Price (Low to High)',
-  PRICE_DESC: 'Price (High to Low)',
-  QUANTITY_ASC: 'Quantity (Low to High)',
-  QUANTITY_DESC: 'Quantity (High to Low)',
-};
+  const rooms_all = useSelector((state) => state.rooms.rooms_all);
 
-const HomePage = ({user}) => 
-{
-  const dispatch = useDispatch();
+  // console.log('home-user?, ',user);
+  // console.log('home-userData?, ',userData);
+  // console.log('home-adminUserData?, ',adminUserData);
+  console.log('rooms_all', rooms_all);
+
   const navigate = useNavigate();
-
-  // const signedIn = useSelector((state) => state.user.signedIn);
-  // const user = useSelector((state) => state.user);
-  // const shoppingList = useSelector((state) => state.shoppingList);
-  
-  // const [editing, setEditing] = useState(null);
-  // const [editInput, setEditInput] = useState('');
-  // const [editPrice, setEditPrice] = useState(0); 
-  // const [editQuant, setEditQuant] = useState(1); 
-  // const [editCategory, setEditCategory] = useState(''); 
-  // const [editExtraNotes, setEditExtraNotes] = useState('');
-  // const [searchTerm, setSearchTerm] = useState('');
-  // const [sortOption, setSortOption] = useState(SORT_OPTIONS.NAME_ASC);
-  // const [categoryFilter, setCategoryFilter] = useState('');
-
-  // useEffect(() => {
-  //   if (signedIn) {
-  //     dispatch(fetchShoppingList(user.id));
-  //   }
-  // }, [signedIn, user.id, dispatch]);
-
-  // useEffect(() => {
-  //   // Console log for debugging
-  //   console.log('shoppingList', shoppingList);
-  // }, []);
-
-  // const handleSearch = (event) => 
-  // {
-  //   event.preventDefault();
-  //   if (searchTerm && user) {
-  //     dispatch(searchShoppingList({ searchTerm, uid: user.id }));
-  //   }
-  // };
 
   const handleBookingModal = () =>
   {
@@ -66,14 +32,15 @@ const HomePage = ({user}) =>
 
   return (
     <div className="home-page"> 
+
       <div className='grid-container'>
         {
-          !user &&
+          user == null &&
           <div className="getStarted">          
               <button className='getStarted-btn'
-                onClick={()=> { navigate('/register')}}> Get Started
+                onClick={()=> { navigate('/signup')}}> Get Started
               </button> 
-              <div><small>Already have an account? </small><br/><Link to={'/login'}>Signin</Link></div>
+              <div><small>Already have an account? </small><br/><Link to={'/signin'}>Signin</Link></div>
           </div>  
         }  
         
@@ -101,7 +68,7 @@ const HomePage = ({user}) =>
             <div className="amenities">
               <h3>Hotel Amenities</h3><hr/>
               <ul>
-                <li><i class="fa fa-wifi"/> 
+                <li><i className="fa fa-wifi"/> 
                   Free Wi-Fi
                   <i className='far fa-check-circle'/>
                 </li>
@@ -116,12 +83,12 @@ const HomePage = ({user}) =>
                   <i className='far fa-check-circle'/>
                 </li>
 
-                <li><i class="fa fa-utensils"/>
+                <li><i className="fa fa-utensils"/>
                   Restaurant On Site
                   <i className='far fa-check-circle'/>
                 </li>
 
-                <li><i class="fa fa-cocktail"/>
+                <li><i className="fa fa-cocktail"/>
                   MiniBar Lounge
                   <i className='far fa-check-circle'/>
                 </li>              
@@ -164,7 +131,7 @@ const HomePage = ({user}) =>
             </div>
 
             <div className="showcase">
-              <p><i class="fa fa-map-pin"/> 
+              <p><i className="fa fa-map-pin"/> 
                  {'  '}South Africa, 
                 <small> ... show locations</small>
                 </p>
@@ -219,10 +186,15 @@ const HomePage = ({user}) =>
             </div>
             <div className="rooms-showcase-title">
               <small>Rest-Le-BnB</small> | Available Rooms ( 8 )
-              <hr/>              
+              <hr/>
+               {/* <AvailableRooms /> */}
+               
+              <div>
+                <RoomDetails />
+              </div>             
             </div>
 
-            <AvailableRooms />
+           
             
           </div>     
 
@@ -233,27 +205,8 @@ const HomePage = ({user}) =>
               <small>Rest-Le-BnB</small> | Restaurent
               <hr/>              
             </div>
-            <div className="grid-content">
-              {/* <div className="grid-item item1">
-                <p>
-                  Hotel, nestled in the vibrant and trendy Green Point neighborhood,
-                  offers a unique retreat in Cape Town.
-                  Just a short walk from iconic spots like the V&A Waterfront,
-                  Bo-Kaap, Cape Quarter, Cape Town Stadium, and the Central Business District,
-                  it provides a prime location for exploring the city's best attractions.
-                </p>   
 
-                <p>
-                  Surrounded by lush trees, the hotel lives up to its name with stunning panoramic views.
-                  Its design eschews mainstream trends in favor of creating a space that celebrates local creativity and color. 
-                  The hotel's understated and minimalist design elements are thoughtfully blended with natural inspiration,
-                  offering guests a serene escape that feels both refreshing and deeply connected to nature.
-                </p> 
-
-                <p>
-                  Overall, The Tree House Boutique Hotel promises a distinctive and memorable experience, allowing guests to unwind and marvel at the natural beauty of Cape Town while enjoying a unique, artistic environment.
-                </p>
-              </div> */}
+            <div className="grid-content">              
 
               <div className="grid-item item1">Item 1</div>
               <div className="grid-item item2">Item 2</div>
@@ -261,11 +214,9 @@ const HomePage = ({user}) =>
 
             </div>
             
-          </div>
-      </div>
+        </div>
 
-      
-      
+      </div>
       
     </div>
   );

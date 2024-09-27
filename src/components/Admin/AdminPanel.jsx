@@ -1,54 +1,60 @@
 import React, { useState, useEffect } from 'react';
 import RoomForm from './RoomForm';
-
 import { auth, db } from '../../config/firebase';
 import { collection, onSnapshot, addDoc, doc, updateDoc, deleteDoc } from 'firebase/firestore';
+import BookingList from '../dashboard/bookingsList';
+import styles from '../dashboard/dashboard.module.css';
+import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 
 const AdminPanel = () => 
 {
-  const [rooms, setRooms] = useState([]);
+  const user = useSelector((state) => state.auth.user);
+  const adminUserData = useSelector((state) => state.auth.adminUserData);
+
+  const [rooms_all, setRoomsAll] = useState([]);
   const [newRoom, setNewRoom] = useState({});
-
-  useEffect(() => {
-    const roomsCollection = collection(db, 'rooms');
-    onSnapshot(roomsCollection, (snapshot) => {
-      const rooms = snapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
-      setRooms(rooms);
-    });
-  }, []);
-
-  const handleSubmit = (room) => {
-    if (room.id) {
-      // Update room
-      const roomRef = doc(db, 'rooms', room.id);
-      updateDoc(roomRef, room);
-    } else {
-      // Add new room
-      const roomsCollection = collection(db, 'rooms');
-      addDoc(roomsCollection, room);
-    }
-  };
-
-  const handleDelete = (roomId) => {
-    const roomRef = doc(db, 'rooms', roomId);
-    deleteDoc(roomRef);
-  };
+    
+  const handleSubmit = (room) => 
+    {
+        if (room.id) 
+        {
+          // Update room
+          const roomRef = doc(db, 'rooms', room.id);
+          updateDoc(roomRef, room);
+        }
+        else 
+        {
+          // Add new room
+          const roomsCollection = collection(db, 'rooms');
+          addDoc(roomsCollection, room);
+        }
+    };
 
   return (
-    <div className='container'>
-      <h1>Admin Panel</h1>
-      <RoomForm onSubmit={handleSubmit} room={newRoom} />
-      <h2>Available Rooms</h2>
-      <ul>
-        {rooms.map((room) => (
-          <li key={room.id}>
-            {room.room_name} ({room.capacity} guests)
-            <button onClick={() => handleDelete(room.id)}>Delete</button>
-            <button onClick={() => setNewRoom(room)}>Edit</button>
-          </li>
-        ))}
-      </ul>
+
+    <div className={styles.container}>
+      <div className={styles.sidebar}>
+        <ul>
+          <li><Link to='#'>My Profile</Link></li>
+          <li><Link to='#'>Notifications</Link></li>
+          <li><Link to='Admin'>Rooms</Link></li>
+          <li><Link to='#'>Bookings</Link></li>
+          <li><Link to='#'>Customers</Link></li>
+          <li><Link to='#'>Settings</Link></li>
+        </ul>
+      </div>    
+      
+      <div className={styles.content}> 
+        
+        <RoomForm onSubmit={handleSubmit} room={newRoom} />
+
+        <h2>All Rooms</h2>
+        <BookingList />
+       
+
+      </div>
     </div>
   );
 };

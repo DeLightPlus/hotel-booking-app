@@ -1,19 +1,19 @@
-import '../App.css'; 
-import './signin_up.css';
+import '../../App.css'; 
+import './auth.css';
 
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
-import { createUserWithEmailAndPassword, sendEmailVerification } from 'firebase/auth';
-import { auth, db } from '../config/firebase';
-import { setDoc, doc } from 'firebase/firestore';
 
-import SocialButton from './SocialButton';
+import SocialButton from '../SocialButton';
+import { registerUser } from '../../redux/authSlice';
 
-const Register = () => 
+
+const Signup = () => 
 {
-  const naviate = useNavigate();
-
+ const dispatch = useDispatch();
+ 
   const [firstname, setFirstname] = useState("");  
   const [lastname, setLastname] = useState("");
 
@@ -22,35 +22,8 @@ const Register = () =>
 
   const handleSignup = async (e) =>
   {
-    e.preventDefault();    
-    try
-    {   
-      const userCredential = await createUserWithEmailAndPassword(auth, email, password);
-
-      const user = userCredential.user;  
-      console.log(user);
-      if(user)
-      {  
-        await sendEmailVerification(user)
-        .then(async ()=>
-          { 
-          
-            const docRef = doc(db, "users", user.uid);
-            await setDoc(docRef,
-            {
-              email: user.email,
-              firstname: firstname,
-              lastname: lastname,
-            });
-
-            alert('Check your email for verification')
-            naviate('/login');
-          });   
-        
-      }      
-    }
-    catch (error) { alert( error.message ); }
-
+    e.preventDefault(); 
+    dispatch(registerUser({ firstname, lastname, email, password }));  
   }
   
 
@@ -83,7 +56,7 @@ const Register = () =>
             <h2 className="form-title">Sign up to Rest-Le-BnB</h2>
             <p className="form-subtitle">
               Don’t have an account?{' '}
-              <Link to="/login" className="create-account-link">Login</Link>
+              <Link to="/signin" className="create-account-link">Login</Link>
             </p>
             <form className="form" onSubmit={handleSignup}>
               <div className="form-field">
@@ -124,7 +97,7 @@ const Register = () =>
             <span>...or continue with </span>
             <div className="social-buttons">
               <SocialButton provider="Google" color="#DB4437" action='signup'/>
-              <SocialButton provider="Facebook" color="#4267B2" action='signup'/>
+              {/* <SocialButton provider="Facebook" color="#4267B2" action='signup'/> */}
             </div>
           </div>
         </div>
@@ -133,4 +106,4 @@ const Register = () =>
   )
 }
 
-export default Register;
+export default Signup;

@@ -1,51 +1,32 @@
-import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useDispatch, useSelector } from 'react-redux';
-import { signInUser } from '../redux/userSlice';
+import './auth.css';
 
-import './signin_up.css'; // Make sure to create this CSS file
-import { signInWithEmailAndPassword } from 'firebase/auth';
-import { auth, db } from '../config/firebase';
-import SocialButton from './SocialButton';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { loginUser, setUser } from '../../redux/authSlice';
 
-const Login = () => 
+import SocialButton from '../SocialButton';
+
+const Signin = () => 
 {
-  const navigate = useNavigate();
-
+  const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [verified, setVerified] = useState(false);
 
   const handleSignin = async (e) =>
   {
     e.preventDefault();
-    
-    try 
+
+    try
     {
-      await signInWithEmailAndPassword(auth, email, password)
-      .then((userCreds)=>
-        { 
-          const user = userCreds.user;
-          console.log(user);
-          
-          setVerified(userCreds.user.verified);
-
-          if(userCreds.user.verified)
-          {
-            alert('Login Successful!!!')
-            navigate('/profile');
-          }
-          else
-          {
-            alert('Please verify your email address');
-          }
-        })
-      .catch((error)=>{console.error(error.message); });
-
+      const res = await dispatch(loginUser({email, password})); 
+      console.log('signin res', res);
+      // dispatch(setUser(res.payload));
       
-      // navigate('/profile');
     }
-    catch (error) { console.error(error.message) }    
+    catch(error){ console.error(error);
+    }   
+    
   }
 
 
@@ -78,7 +59,7 @@ const Login = () =>
             <h2 className="form-title">Sign in to Rest-Le-BnB</h2>
             <p className="form-subtitle">
               Don’t have an account?{' '}
-              <Link to="/register" className="create-account-link">Create a free account</Link>
+              <Link to="/signup" className="create-account-link">Create a free account</Link>
             </p>
             <form className="form" onSubmit={handleSignin}>
               <div className="form-field">
@@ -103,7 +84,7 @@ const Login = () =>
 
             <div className="social-buttons">
               <SocialButton provider="Google" color="#DB4437" action='signin'/>
-              <SocialButton provider="Facebook" color="#4267B2" action='signin'/>
+              {/* <SocialButton provider="Facebook" color="#4267B2" action='signin'/> */}
             </div>
           </div>
         </div>
@@ -112,4 +93,4 @@ const Login = () =>
   );
 };
 
-export default Login;
+export default Signin;

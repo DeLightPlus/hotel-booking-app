@@ -39,20 +39,23 @@
   /* margin-right: 50%;
   margin-top: 10%; */
   border-radius: 25px;
+  width: 45px;
+  height: 45px;
 }
-.userBtn button
+.userBtn a
 {
   background: #9e9e9e42;
   border-radius: 25px;
   border: solid black 1px;
   width: 45px;
   height: 45px;
+  
 }
 .userBtn img
 {
   border-radius: 50%;
   width: 43px;
-  height:43px;
+  height:43px; 
 }
 
 
@@ -376,16 +379,108 @@
     border-radius: 16px;
 }
   
-  .form-link:hover 
-  {
-    color: #23527c;
-  }
+.form-link:hover 
+{
+  color: #23527c;
+}
   
-  /* Dashboard Styles */
-  
-  .dashboard {
+/* Dashboard Styles */  
+.dashboard 
+{
     max-width: 800px;
     margin: 40px auto;
     padding: 20px;
     background-color:azure
+}
+
+.form-container
+{
+  max-width: 800px;
+  background: #7e7e7e;
+
+  padding: 10px;
+  
+}
+
+.form-container form
+{
+  display: flex;
+  flex-direction: column;
+}
+.form-container form .label
+{
+  display: flex;
+  flex-direction: column;
+}
+
+.form-container
+{
+  max-width: 500px;
+  margin: 10px auto;
+  padding: 10px;
+  background-color: #fff;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Header Styles */
+
+.form-container h4 
+{
+  margin-bottom: 1px;
+  text-align: center;
+}
+
+/* Label and Input Styles */
+
+label {
+  display: block;
+  margin-bottom: 1px;
+}
+
+label input[type="text"],
+label input[type="number"] 
+{
+  width: 100%;
+  height: 32px;
+  margin-bottom: 4px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label input[type="text"]:focus,
+label input[type="number"]:focus 
+{
+  border-color: #aaa;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Button Styles */
+
+button[type="submit"] 
+{
+  width: 100%;
+  height: 40px;
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button[type="submit"]:hover 
+{
+  background-color: #3e8e41;
+}
+
+/* Error Message Styles */
+
+.error-message 
+{
+  color: #f00;
+  font-size: 12px;
+  margin-bottom: 10px;
 }
