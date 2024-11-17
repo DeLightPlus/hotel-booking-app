@@ -1,0 +1,210 @@
+
+/* Grid Layout */
+.grid 
+{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+  
+  @media (min-width: 1024px) {
+    .grid {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  
+  /* Image and Text Section */
+  .image-text-section {
+    position: relative;
+    padding: 60px 16px 10px;
+    background-color: #f9f9f9;
+  }
+  
+  .background-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('../assets/valeriia.jpg');
+    background-size: cover;
+  }
+  
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, black, transparent);
+  }
+  
+  .content {
+    position: relative;
+    color: white;
+    max-width: 800px;
+    margin: 0 auto;
+    padding-right: 24px;
+  }
+  
+  .headline 
+  {
+    font-size: 2.5rem;
+    font-weight: bold;
+  }
+  
+  .hidden-break 
+  {
+    display: none;
+  }
+  
+  @media (min-width: 1280px) {
+    .hidden-break {
+      display: block;
+    }
+  }
+  
+  .features-list {
+    margin-top: 10px;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .feature-item {
+    display: flex;
+    align-items: center;
+    font-size: 1.125rem;
+    font-weight: 500;
+    margin-bottom: 8px;
+  }
+  
+  .check-icon {
+    width: 14px;
+    height: 14px;
+    margin-right: 8px;
+    color: #1d4ed8; /* Adjust color as needed */
+  }
+  
+  /* Sign In Form Section */
+  .sign-in-form-section 
+  {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+    background-color: white;
+  }
+  
+  .form-container 
+  {
+    max-width: 400px;
+    width: 100%;
+  }
+
+  .form-container span
+  {
+color: #858585;
+  }
+  
+  .form-title 
+  {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 4px;
+  }
+  
+  .form-subtitle 
+  {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #4b5563;
+  }
+  
+  .create-account-link 
+  {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+  
+  .form 
+  {
+    margin-top: 16px;
+  }
+  
+  .form-field 
+  {
+    margin-bottom: 16px;
+  }
+  
+  .form-label 
+  {
+    margin-left: 10px;
+    font-size: 1rem;
+    text-align: start;
+    font-weight: 700;
+    color: #111827;
+  }
+  
+  .form-input 
+  {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #d1d5db;
+    border-radius: 4px;
+    background-color: #f9fafb;
+    color: #111827;
+    font-size: 0.86rem;
+  }
+  
+  .submit-button 
+  {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: white;
+    background: linear-gradient(to right, #858585, #202020);
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover 
+  {
+    opacity: 0.8;
+  }
+  
+  /* Social Buttons */
+.social-buttons 
+{
+    margin-top: 12px;
+}
+  
+.social-button 
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    margin-top: 4px;
+    padding: 10px;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #111827;
+    border: 2px solid;
+    border-radius: 4px;
+    background-color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .social-button:hover 
+  {
+    background-color: #f3f4f6;
+  }
+  
+  .social-icon 
+  {
+    margin-right: 8px;
+    width: 24px;
+    height: 24px;
+  }
