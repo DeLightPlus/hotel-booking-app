@@ -1,5 +1,9 @@
 import '../index.css';
 
+import restauantPic1 from "../assets/rest-hall-with-table.jpg";
+import restauantPic2 from "../assets/reserved-sign.avif";
+import restauantPic3 from "../assets/wine-glass.jpg";
+
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
@@ -111,7 +115,6 @@ const HomePage = () =>
                 </fieldset>
 
                 <fieldset className="check-compare">
-                  {/* <label htmlFor="kids">Kids</label> */}
                   <select
                     id="kids"
                     name="kids"
@@ -124,23 +127,7 @@ const HomePage = () =>
                       </option>
                     ))}
                   </select>
-                </fieldset>
-
-                {/* <fieldset className="check-compare">
-                  <label htmlFor="adults">Adults</label>
-                  <select
-                    id="adults"
-                    name="adults"
-                    value={adults}
-                    onChange={handleSelectChange}
-                  >
-                    {[...Array(5).keys()].map((value) => (
-                      <option key={value} value={value}>
-                        ADULTS ({value})
-                      </option>
-                    ))}
-                  </select>
-                </fieldset> */}
+                </fieldset>               
 
                 <div className="check-compare">
                   <button>COMPARE NOW</button>
@@ -156,16 +143,19 @@ const HomePage = () =>
         </div>
 
         <div className="restaurant-showcase">            
-            <div className="restaurant-showcase-title">
-              <small>Rest-Le-BnB</small> | Restaurent
-              <hr/>              
-            </div>
+            
 
             <div className="grid-content">              
 
-              <div className="grid-item item1">Item 1</div>
-              <div className="grid-item item2">Item 2</div>
-              <div className="grid-item item3">Item 3</div>
+              <div className="grid-item item1">
+                <div className="restaurant-showcase-title">
+                  <small>Rest-Le-BnB</small> | Restaurent                           
+                </div>
+                <img src={restauantPic1} height={600}/>
+              </div>
+              
+              <div className="grid-item item2"><img src={restauantPic2} height={300}/></div>
+              <div className="grid-item item3"><img src={restauantPic3} height={300}/></div>
 
             </div>
             

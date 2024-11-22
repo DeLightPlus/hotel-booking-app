@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "restlebnb-hotel-app",
+  "private_key_id": "abc1853ae6588d16f7ab6d45175e0e8f216e30c9",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvwIBADANBgkqhkiG9w0BAQEFAASCBKkwggSlAgEAAoIBAQCoQAyPy2NGuS7M\nehQSWvcit5jApnjCItUm+RyndA8u6EYHU9nbLokxlX2sWZ5tHr/Ues3+VTjTJONd\ngvZGEYhpy6YaAwYyqeiXacrGYX04/rz1O32xWVRhEIYeHBszWu1l+AsAPf+xiM8s\nn+KrAg+K4WXg3snaFzJK0KTa/opULoiTWoJBPNWgtxlMuQ+aTv533C60Yts1RHdm\nBgYY/oiEb45BL2kMzjTOGQLSVPFCcggrcVVN5uErG9dw98YlVtQBPXfc9xmuQ97q\nHpXyx5L/IXmt41F/5MvxpGSi4FPrN9NOOG8pa65tOnA0y8ulkAvpTZl3+RkUSIGn\nx50IZ/EXAgMBAAECggEARLVvS9Ov1aRvR6K9CqfqT9uxPk9ddk56RIGr4XiEcM/7\nNSfZimhNL5oQae9pQr+xcCi8cdZEr/la/oeqYf/r+ORpDytX/x2i9h6GaBBM7pcc\n/HrQgDnuOvtgAfDRbN3/n8o1V+J5xnsLu/oJO3PKfBlDHRtuTCl36NSe1i3nuKtk\nqci//A4UJhwR1hVIGm/Gm846qm9xX4gnv1pXBfTH/yd6uGPtTH47NeaZoVz15wIP\n8mcAg0tym32QOm7suK2jaJegO6bksHX6jfbwaY6977u9LzKyS9eo3tbOh38D8oVC\n+ccHehI1EpEIiyhDE85f9i1Kbo9g7Q2sR2KTMYyrKQKBgQDPpfFogB7N4urPfaVk\nsz9XeSx5/SPYhlQOeu+WXbJbSPXJiKQizbCjEd5eJTEWm5xX6HbtTD+dAr6VZM22\nsKBsPYLISGgsk32CyFPBltqPNxoorqTdnjKBvEbUBhZSmGCowIo8lRq4dPuHWBtS\n3KHGjMjnbkkIJIZTe9dkt6ox/wKBgQDPbY/hYiI0GnHwqzEM4KTdgay2Vx+tLzkw\ndFf1r4Fl9bKAUO1IeKLNSsltsNTVOUUMO2S0tR4GVUpsAW48PolEGSgDhIQiIFIy\n+5a0bOv9yL/DoypBcsmgiPWdmWSatQL4a+fME7baezZcq/THqM+gROnj4Qv4KIvr\nD6j465+Q6QKBgQDD0G8o5rkl2rkn1grkPYycBq8Eksz84R/fT9sj51PMda8iz/JI\nx8Os46rZCSWTdkcnNxb/jAnpHK9w3lCH2WRO7mqoSG/EqYmQjS0+v+13ZLUMbDUY\nsJhcc5ovU1Y1qXBtcrRpkQpTrC2OYm3R5DHCtPy4Ee5Y+WiazYw/dFvRLQKBgQCS\nVT69x9dNXqKnIH5YEVr9kW/gqxIDwV7dGha7knb9ERo+f9kF2WUw4uO7aJadXeui\nN3xSJ7vox97a1x+HjK6VxhF+ecwlrxuOMAMfgf/yZ98xCzjSN0Ka6EQuTHq20aAo\n1ScPx5CmDWpKcl0bRbJD5JoEU014YlJjIAcapE9LkQKBgQCuqDKxaS1WCuQJuPBC\nNb6dSCyyCh4Vk6FS2wViOqTPbBWrFA/UuveT9FK7gxpNATW5dPq4sTaFarU51oNK\nAXmnPEyu/NRKsbVQxxqbmO0Mc0+KC7g6hH0t6c+lkDyqK6TbKC0qZMstZ//KT9fL\ndyr1mY4RglBW470STiDPaA3knA==\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-1ijzz@restlebnb-hotel-app.iam.gserviceaccount.com",
+  "client_id": "112752507656345063083",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-1ijzz%40restlebnb-hotel-app.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}

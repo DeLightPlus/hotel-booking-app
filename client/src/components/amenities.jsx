@@ -1,4 +1,6 @@
-const Amenities = () => {
+
+const Amenities = () =>
+{
     return ( 
         <div className="amenities">
               <h3>Hotel Amenities</h3><hr/>

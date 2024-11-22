@@ -18,7 +18,7 @@ const RoomBookingModal = ({room}) =>
     const [children, setChildren] = useState(0);
     const [roomDescription, setRoomDescription] = useState('');
 
-    const [checkoutInfo, setCheckoutInfo] = useState({ uid:user.uid, room:room.id, deposit: 0, success: false })
+    const [checkoutInfo, setCheckoutInfo] = useState({ uid:user.uid, room:room.id, amount: room.price, success: false })
     const [paymentProcessed, setPaymentProcessed] = useState(false);
 
     const handleAdultsChange = (event) => {
@@ -36,15 +36,15 @@ const RoomBookingModal = ({room}) =>
     };
 
 
-  const handlePaymentProcessed = (success) => 
-  {
-    setPaymentProcessed(success);
-    if (success) 
+    const handlePaymentProcessed = (success) => 
     {
-      // Proceed with booking after payment
-      handleBookingSubmit();
-    }
-  };
+        setPaymentProcessed(success);
+        if (success) 
+        {
+        // Proceed with booking after payment
+        handleBookingSubmit();
+        }
+    };
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -73,129 +73,61 @@ const RoomBookingModal = ({room}) =>
             </div>
         </div>
         
-        <form onSubmit={handleSubmit}>
-
-            <div className='checkin-rectangle'>
-
-              <div className="check-compare">
-                <label>
-                    {/* Room Type: */}
-                    <select value={roomType} onChange={handleRoomTypeChange}>
-                    <option value="">Room Type</option>
-                    <option value="single">Single</option>
-                    <option value="double">Double</option>
-                    <option value="suite">Suite</option>
-                    </select>
-                </label>
-              </div>
-
-              <div className="check-compare">
-                {/* <small>Check-In</small> */}
-                <input type="date" min={new Date().toISOString().split('T')[0]}
-                    onChange={(event) => { setCheckInDate(event.target.value) }} /><br/>
-              </div>
-
-              <div className="check-compare">
-                {/* Check-Out */}
-                <input type="date" min={checkInDate}
-                   onChange={(event) => { setCheckOutDate(event.target.value) }} /><br/>
-             </div>              
-
-              <div className="check-compare"
-                onChange={handleAdultsChange} >
-                <select>
-                    <option value="0">ADULTS (0)</option>
-                    <option value="1">ADULTS (1)</option>
-                    <option value="2">ADULTS (2)</option>
-                    <option value="3">ADULTS (3)</option>
-                    <option value="4">ADULTS (4)</option>
-                  </select>
-                  {/* Adults(0) */}
-              </div>
-
-              <div className="check-compare"
-                onChange={handleChildrenChange}>
-                <select>
-                  <option value="0">KIDS (0)</option>
-                  <option value="1">KIDS (1)</option>
-                  <option value="2">KIDS (2)</option>
-                  <option value="3">KIDS (3)</option>
-                  <option value="4">KIDS (4)</option>
-                </select>
-                {/* Kids(0) */}
-              </div>  
-
-              <div className="check-compare">
-                <label htmlFor=""> Guests[{guests}]</label>
-                {/* Kids(0) */}
-              </div>            
-            </div>
+        <form onSubmit={handleSubmit}>           
 
             <div className="grid-content"> 
-                <div className="grid-item item1">
-                    <div className='booking-pay'>
-
-                        <div className='who-checking'>
-                            <strong>Who's checking in?</strong><br/>
-                            <div>
-                                {console.log(user)}
-                                <input type='text' id='fname' 
-                                    placeholder={ 
-                                        userData !== null ? `eg.(${userData.firstname})` 
-                                            : adminUserData !== null ? `eg.(${adminUserData.firstname})` : 'Firstname' }/> 
-                                <input type='text' id='lname' 
-                                    placeholder={ 
-                                        userData !== null ? `eg.(${userData.lastname})` 
-                                            : adminUserData !== null ? `eg.(${adminUserData.lastname})` : 'Lastname' }/> 
-                            </div>
-                            <input text='email' id='email' value={user.email} placeholder={user !== null ? `eg.(${user.email})` : 'Email address'} /><br/>
-                            
-                            <div>
-                                <select name="" id="code">                                    
-                                    <option value="ZAR +27">ZAR +27</option>
-                                </select><input type='text' placeholder=' 00 000 0000'/>
-                            </div>
-
-                            <div>
-                                <input type="checkbox" />{' '}
-                                    <small> 
-                                        Receive text alerts about this trip.
-                                        <h5> Message and data rates may apply.</h5>
-                                    </small>
-                            </div>
-                        </div>
-
-                        <PaymentMethod 
-                            checkoutInfo={checkoutInfo} 
-                            setCheckoutInfo={setCheckoutInfo}
-                            onPaymentProcessed={handlePaymentProcessed}
-                        />
-
-                        {/* <div className='pay-method'>
-                            <strong>Payment Method</strong>
-                            <h6>Name on Card</h6>
-                            <input type='text' id='cardname'/><br/>
-                            <h6>Debit/Credit card number</h6>
-                            <input type='number' id='cardnumber' placeholder="0000 0000 0000 0000"/><br/>
-                            <h6>Expiration date</h6>
-                            <select id='exp-mon'>
-                                <option value="Month">Month</option>
-                                <option value="1">01</option>
-                                <option value="2">02</option>
-                            </select>/ 
-                            <select id='exp-yr'>
-                                <option value="Year">Year</option>
-                                <option value="1">01</option>
-                                <option value="2">02</option>
-                            </select>                            
-                            <h6>security code</h6>
-                            <input id='sec-code' placeholder='cvc'/> 
-                            <button onClick={handleCheckout}> checkout</button>
-                        </div> */}
-                          
-                    </div>
+                <div className="grid-item item1">                  
 
                     <div className="room-showcase">
+                        <div className='checkin-rectangle'>
+                        <div className="check-compare">
+                            <label>
+                                {/* Room Type: */}
+                                <select value={roomType} onChange={handleRoomTypeChange}>
+                                <option value="">Room Type</option>
+                                <option value="single">Single</option>
+                                <option value="double">Double</option>
+                                <option value="suite">Suite</option>
+                                </select>
+                            </label>
+                        </div>
+
+                        <div className="check-compare">                       
+                            <input type="date" min={new Date().toISOString().split('T')[0]}
+                                onChange={(event) => { setCheckInDate(event.target.value) }} 
+                            />
+                        </div>
+
+                        <div className="check-compare">                       
+                            <input type="date" min={checkInDate}
+                                onChange={(event) => { setCheckOutDate(event.target.value) }} 
+                            />
+                        </div>              
+
+                        <div className="check-compare">
+                            <select onChange={handleAdultsChange}>
+                                <option value="1">ADULTS (1)</option>
+                                <option value="2">ADULTS (2)</option>
+                                <option value="3">ADULTS (3)</option>
+                                <option value="4">ADULTS (4)</option>
+                            </select>                            
+                        </div>
+
+                        <div className="check-compare">
+                            <select onChange={handleChildrenChange}>
+                                <option value="0">KIDS (0)</option>
+                                <option value="1">KIDS (1)</option>
+                                <option value="2">KIDS (2)</option>
+                                <option value="3">KIDS (3)</option>
+                                <option value="4">KIDS (4)</option>
+                            </select>                        
+                        </div>  
+
+                        <div className="check-compare">
+                            <strong> Guests[{guests}]</strong>                       
+                        </div>            
+                        </div>
+
                         <div className="amenities">                        
                             <ul style={{flexDirection:'row'}}>
                                 <strong>Amenities:</strong>
@@ -206,7 +138,7 @@ const RoomBookingModal = ({room}) =>
                         </div>
 
                         <img width='100%' src="https://cdn.pixabay.com/photo/2016/10/18/09/02/hotel-1749602_960_720.jpg"/>
-                        <br/>
+                        
                         <select>
                             <option value="">Bedding Request(optional)</option>   
                             <option value="">1 Double Bed</option>   
@@ -254,10 +186,51 @@ const RoomBookingModal = ({room}) =>
                             <small>Estimated by {checkInDate}</small>
                             
                         </>
-                    </div> 
-
+                    </div>                     
                     {paymentProcessed && <div><button>Submit Booking</button></div>}           
                 </div>
+
+                <div className='booking-pay'>
+
+                        <div className='who-checking'>
+                            <strong>Who's checking in?</strong><br/>
+                            <div>
+                                {console.log(user)}
+                                <input type='text' id='fname' 
+                                    placeholder={ 
+                                        userData !== null ? `eg.(${userData.firstname})` 
+                                            : adminUserData !== null ? `eg.(${adminUserData.firstname})` : 'Firstname' }/> 
+                                <input type='text' id='lname' 
+                                    placeholder={ 
+                                        userData !== null ? `eg.(${userData.lastname})` 
+                                            : adminUserData !== null ? `eg.(${adminUserData.lastname})` : 'Lastname' }/> 
+                            </div>
+                            <input text='email' id='email' value={user.email} placeholder={user !== null ? `eg.(${user.email})` : 'Email address'} /><br/>
+                            
+                            <div>
+                                <select name="" id="code">                                    
+                                    <option value="ZAR +27">ZAR +27</option>
+                                </select><input type='text' placeholder=' 00 000 0000'/>
+                            </div>
+
+                            <div>
+                                <input type="checkbox" />{' '}
+                                    <small> 
+                                        Receive text alerts about this trip.
+                                        <h5> Message and data rates may apply.</h5>
+                                    </small>
+                            </div>
+                        </div>
+
+                        {console.log(checkoutInfo)}
+
+                        <PaymentMethod 
+                            checkoutInfo={checkoutInfo} 
+                            setCheckoutInfo={setCheckoutInfo}
+                            onPaymentProcessed={handlePaymentProcessed}
+                        />                       
+                          
+                    </div>
             </div>  
             
         </form>

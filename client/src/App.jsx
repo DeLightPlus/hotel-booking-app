@@ -9,19 +9,18 @@ import { auth, db } from './config/firebase';
 import { getDoc, doc } from 'firebase/firestore';
 import { onAuthStateChanged } from 'firebase/auth';
 
-import Header from './components/Header.jsx';
+import Header from './components/Header/Header.jsx';
 import HomePage from './components/HomePage.jsx';
-// import Profile from './components/dashboard/dashboard.jsx';
 import Signup from './components/auth/signup.jsx';
 import Signin from './components/auth/signin.jsx';
 
-import AdminPanel from './components/admin/AdminPanel.jsx';
 import Dashboard from './components/dashboard/dashboard.jsx';
 import RoomDetails from './components/RoomDetails.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { clearUser, setUser } from './redux/authSlice.js';
 import { fetchRooms } from "./redux/roomsSlice.js";
+import Rooms from './components/Rooms.jsx';
 
 
 function App() {
@@ -78,7 +77,7 @@ function App() {
     <div className='Hotel-App'>
       <BrowserRouter>
         {console.log('user?, ', user)  }
-        {console.log('userData?, ', userData)  }
+        
         
         <Header handleLogout={handleLogout} />
         <Routes>
@@ -88,7 +87,8 @@ function App() {
           <Route path='/signin' element={ user ? <Navigate to={'/dashboard'} /> : <Signin /> } /> 
           
           <Route exact path='/dashboard' element={ user ? <Dashboard /> : <Navigate to={'/'}/> } />
-          <Route path='/bookings/:id' element={<RoomDetails/>} />
+          <Route path='/rooms' element={<Rooms/>} />
+          {/* <Route path='/rooms/:id' element={<RoomDetails/>} /> */}
           
         </Routes>
       </BrowserRouter>

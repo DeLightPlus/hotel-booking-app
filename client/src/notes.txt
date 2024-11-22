@@ -1,3 +1,11 @@
 https://d9hhrg4mnvzow.cloudfront.net/try.matterport.com/matterport-contact-cart-module/7b024b27-vt-footer_10cr0do000000000000000.png
 
 ebullienttheory30@gmail.com | * default-password
+
+
+----------------Rooms-----------------
+room-1: {
+    https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1823.jpg?t=st=1732263087~exp=1732266687~hmac=1fa546fe2611c247a7b2f1f289df7649a3781baed9a51a6da1501cb0b9a1ae42&w=1380,
+    https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1822.jpg?t=st=1732263128~exp=1732266728~hmac=6b5321554794621b528caa15ab98c238dd2261825fa970ea0cf87da667219bcf&w=1380,
+
+}

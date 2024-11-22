@@ -3,8 +3,8 @@
   margin-top: 10px;
   display: flex;
   flex-direction: column;  
-  gap: 10px; /* Space between grid items */
-  background-color: #a8a8a8;
+  gap: 10px;
+  /* background-color: #a8a8a8; */
   height: fit-content;
   align-items: center;
 }
@@ -25,6 +25,7 @@
   box-shadow: 0 4px 8px rgba(0,0,0,0.1);
   
   overflow: auto;
+  scrollbar-width: none;
 }
 
 .rooms-ul .hv
@@ -104,12 +105,13 @@
 
   display: flex;
   /* flex-wrap: wrap; */
-
   gap: 16px; /* Space between grid items */
+
+  margin-top: 16px;
 
   background: #a5966d00;
   color: black;
-  border: #3333334b solid 1px;
+  /* border: #3333334b solid 1px; */
   border-radius: 5px;
 
   max-height: 680px; /* Fixed height for scrollable container */
@@ -154,6 +156,8 @@
 
 .bottom-section
 {  
+  display: flex;
+  flex-direction: column;
   padding-right: 16px;
   padding-left: 8px;
   width: 100%;
@@ -163,12 +167,14 @@
   color: #252525;
   font-weight: 600;
   overflow: hidden;
+  gap: 8px
 }
 .bottom-section p
 {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  gap: 8px;
 }
 
 
@@ -179,14 +185,16 @@
   font-weight: 500;
 }
 .bottom-section small
-{
+{  
   text-decoration: none;
   font-weight: 500;
+  width: 35px;
 }
 .bottom-section span
 {
+  font-size: 12px;
   font-weight: 500;
-  padding: 25%;
+  padding:0;
   text-decoration: overline;
   cursor: pointer;
 }

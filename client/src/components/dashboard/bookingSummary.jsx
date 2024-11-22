@@ -54,7 +54,7 @@ const BookingSummary = ({ room }) =>
 
       <div className="bottom-section">
         <p>{room.room_name}<small> ⭐{room.rating}</small></p>
-        <small>{room.capacity} guests • {room.room_description}</small>
+        <span>{room.capacity} guests • {room.room_description}</span>
         <p>
           <small><i>R1800</i></small>  <strong>R{room.price} per night</strong>
           <button onClick={()=> setShowModal(true)}>BOOK NOW</button>

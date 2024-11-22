@@ -11,7 +11,6 @@ import {
   signInWithEmailAndPassword, 
   signOut } from 'firebase/auth';  
 
-
 const serializeUser = (user) => {
     return {
       uid: user.uid,

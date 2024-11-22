@@ -1,4 +1,5 @@
-#root {
+#root 
+{
   max-width: 100%;
   height: 100%;
   margin: 0 auto;
@@ -13,6 +14,7 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  width: 100%;
 }
 
 body 
@@ -200,7 +202,7 @@ hr
   background:linear-gradient(0deg, #c9c9c9, #e4e4e4c5, #fff, #fff, transparent);
   padding: 20px;
   margin: 16px;
-  margin-top: -128px;
+  margin-top: -112px;
   border: 1px solid #ddd;
   /* border-radius: 25px; */
   width: 98%;  

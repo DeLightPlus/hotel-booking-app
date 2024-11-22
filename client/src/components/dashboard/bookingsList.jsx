@@ -16,25 +16,26 @@ const BookingList = () =>
     const rooms_all = useSelector((state) => state.rooms.rooms_all);
     
     // const [rooms, setRooms] = useState([]);
-    // const [newRoom, setNewRoom] = useState({});
-   
+    // const [newRoom, setNewRoom] = useState({});   
 
     return(       
         <div>
             {console.log('all-rooms', rooms_all)        }
-            <>Rooms 
-            [<select>
-                <option value="all">All</option>
-                <option value="available">Available</option>
-                <option value="booked">Booked</option>
-             </select>]</>
+            <>
+            [
+                <select style={{width:"127px"}}>
+                    <option value="all">All</option>
+                    <option value="available">Available</option>
+                    <option value="booked">Booked</option>
+                </select>
+             ]</>
 
-            <div className="available-rooms-container">            
+            <div className="available-rooms-container">           
 
-                <div className={`rooms-ul ${adminUserData ? 'hv' : '' }`}> 
+                <div className={`rooms-ul ${userData ? 'hv' : '' }`}> 
                 {   
                     rooms_all.length == 0 ? <>Loading Rooms</> :             
-                    rooms_all.map((room) => (  <BookingSummary key={room.id} room={room} /> ))   
+                    rooms_all.map((room) => ( <BookingSummary key={room.id} room={room} /> ))   
                 }
                 </div>                       
                         
