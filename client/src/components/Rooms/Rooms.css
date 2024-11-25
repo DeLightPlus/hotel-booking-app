@@ -1,0 +1,149 @@
+.available-rooms-container
+{
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;  
+  gap: 10px;
+  /* background-color: #a8a8a8; */
+  height: fit-content;
+  align-items: center;
+}
+
+.available-rooms-container button#view
+{
+    width: 236px;
+    padding: 8px;
+    background: #252525;
+    color: #e7e7e7;
+    font-weight: 800;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.rooms-ul 
+{
+  display: flex;
+  gap: 75px; 
+  justify-content: start;
+  padding: 16px;
+  width: 86vw;
+  height: 100%;  
+
+  /* background-color: #c4c4c4;  */
+  color: white;  
+  text-align: center;
+
+  border-radius: 5px;
+  /* box-shadow: 0 4px 8px rgba(0,0,0,0.1); */
+  
+  overflow: auto;
+  scrollbar-width: none;
+}
+
+.rooms-ul .hv
+{
+  max-width: 80vw;
+  width: 100%;
+}
+
+.rooms-li
+{
+  display: flex;
+  flex-direction: column;
+  background-color: #e7e7e7; /* Green background */
+  color: white;  
+  text-align: center;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  height: 300px; 
+  padding: 1px;
+  gap: 8px;
+  border-radius: 20px;
+}
+
+.rooms-li button
+{
+    background-color: #252525;
+    color: #e7e7e7;
+    padding: 4px 0; 
+    border-radius: 2px;
+    cursor: pointer;
+}
+
+.booking-modal .pricing-info
+{
+  /* width: 98%; */
+}
+.pricing-info label
+{
+  display: flex;
+  width: 100%;
+  height: 16px;
+  text-align:start;
+  justify-content: space-between;
+  font-size: 12px;
+}
+.pricing-info span
+{
+  align-self: end;
+}
+.pricing-info h6, h5
+{
+  text-align: start;
+}
+
+
+.bottom-section
+{  
+  display: flex;
+  flex-direction: column;
+  padding-right: 16px;
+  padding-left: 8px;
+  width: 100%;
+  height: 100%;
+  background: #dddddd02;
+  text-align: start;
+  color: #252525;
+  font-weight: 600;
+  overflow: hidden;
+  gap: 8px
+}
+.bottom-section p
+{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+
+
+.bottom-section i
+{
+  text-decoration: line-through;
+  font-weight: 500;
+}
+.bottom-section small
+{  
+  text-decoration: none;
+  font-weight: 500;
+  width: 35px;
+}
+.bottom-section span
+{
+  font-size: 12px;
+  font-weight: 500;
+  padding:0;
+  text-decoration: overline;
+  cursor: pointer;
+}
+.bottom-section span:hover
+{ 
+  text-decoration: underline;
+  color: black;
+}
+
+.bottom-section strong
+{
+  font-size: 16px;
+}

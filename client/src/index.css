@@ -1,38 +1,57 @@
-.available-rooms-container
+.getStarted
 {
-  margin-top: 10px;
+  position: fixed;
+  top: 127px;
+  right: 4%;
+  width: max-content;
   display: flex;
-  flex-direction: column;  
-  gap: 10px;
-  /* background-color: #a8a8a8; */
-  height: fit-content;
+  flex-direction: column;
+  justify-content: end;
   align-items: center;
+  gap: 8px;
+
 }
-
-.rooms-ul 
-{
-  display: flex;
-  gap: 16px; 
-  padding: 10px;
-  width: 91vw;
-  height: 100%;  
-
-  background-color: #c4c4c4; /* Green background */
-  color: white;  
-  text-align: center;
-
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+.getStarted button
+{ 
+  padding: 8px 1px; 
+  width: 150px;
+  border: none;   
+  border-radius: 25px;
+  background: #333;
+  color: #ccc;
+  font-size: medium;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.getStarted button:hover
+{ 
+  padding: 8px; 
+  border: 2px solid #2c2c2c; 
+  background: #aaaaaa;
+  color: #222222;
+  font-size: small;
+  font-weight: 800;
   
-  overflow: auto;
-  scrollbar-width: none;
+}
+.getStarted a
+{   
+  color: #0084ff;
+  font-size: medium;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+}
+.getStarted a:hover
+{ 
+  color: #e20000;
+  font-size: medium;
+  font-weight: 700;
+  text-decoration: underline;
+  cursor: pointer;
 }
 
-.rooms-ul .hv
-{
-  max-width: 80vw;
-  width: 100%;
-}
+
 
 .item1 
 {
@@ -40,20 +59,7 @@
   
 }
 
-.rooms-li
-{
-  display: flex;
-  flex-direction: column;
-  background-color: #e7e7e7; /* Green background */
-  color: white;  
-  text-align: center;
-  border-radius: 5px;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-  height: 300px; 
-  padding: 1px;
-  gap: 8px;
-  border-radius: 20px;
-}
+
 
 /* src/GridBox.css */
 .grid-container 
@@ -82,7 +88,7 @@
   grid-template-rows: auto auto; /* Adjust the height of rows */
   gap: 10px; /* Space between grid items */
   background-color: #ffffff23;
-  height: 70vh;
+  height: 100%;
 }
 
 .grid-item 
@@ -104,13 +110,14 @@
   grid-area: item1;
 
   display: flex;
-  /* flex-wrap: wrap; */
+  flex-wrap: wrap;
   gap: 16px; /* Space between grid items */
 
   margin-top: 16px;
 
   background: #a5966d00;
   color: black;
+  text-align: start;
   /* border: #3333334b solid 1px; */
   border-radius: 5px;
 
@@ -118,6 +125,42 @@
   overflow: auto; 
   
 }
+
+.item1 .restaurant-showcase-title
+{
+  display: flex;
+  width: max-content;
+  align-items: center;
+}
+
+.item1 .restaurant-showcase-title small
+{
+  background: #aaaaaa;
+  padding: 28px;
+  padding-right: 64px;
+  font-weight: 700;
+  width: 256px;
+}
+
+.item1 .restaurant-showcase-title span
+{
+  background: #504f4f;
+  color: #aaaaaa;
+  padding: 8px;
+  text-align: center;
+  font-size: larger;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-weight: 700;
+  margin-left: -32px;  
+
+}
+
+.item1 img
+{
+  width: 100%;
+  height: 86%;
+}
+
 
 .grid-li
 {
@@ -153,74 +196,20 @@
   width: 32px;
   height: 32px; 
 }
-
-.bottom-section
-{  
-  display: flex;
-  flex-direction: column;
-  padding-right: 16px;
-  padding-left: 8px;
-  width: 100%;
-  height: 100%;
-  background: #dddddd02;
-  text-align: start;
-  color: #252525;
-  font-weight: 600;
-  overflow: hidden;
-  gap: 8px
-}
-.bottom-section p
-{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-}
-
-
-
-.bottom-section i
-{
-  text-decoration: line-through;
-  font-weight: 500;
-}
-.bottom-section small
-{  
-  text-decoration: none;
-  font-weight: 500;
-  width: 35px;
-}
-.bottom-section span
-{
-  font-size: 12px;
-  font-weight: 500;
-  padding:0;
-  text-decoration: overline;
-  cursor: pointer;
-}
-.bottom-section span:hover
-{ 
-  text-decoration: underline;
-  color: black;
-}
-
-.bottom-section strong
-{
-  font-size: 16px;
-}
-
-
 .item2 
 {
   grid-area: item2;
   padding: 4px;
   align-items: start;
   color: black;  
+  background: none;
 }
 .item2 iframe
 {
   border-radius: 4px;
 }
+
+
 
 .item3 
 {
@@ -228,28 +217,6 @@
   padding: 10px;
   align-items: start;
   color: black;
-height: 360px;
+  height: 360px;
 }
 
-.booking-modal .pricing-info
-{
-  /* width: 98%; */
-}
-.pricing-info label
-{
-  display: flex;
-  width: 100%;
-  height: 16px;
-  text-align:start;
-  justify-content: space-between;
-  font-size: 12px;
-}
-.pricing-info span
-{
-  align-self: end;
-}
-
-.pricing-info h6, h5
-{
-  text-align: start;
-}

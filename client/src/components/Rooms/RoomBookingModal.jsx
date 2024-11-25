@@ -152,13 +152,7 @@ const RoomBookingModal = ({room}) =>
                 </div>
 
                 <div className="grid-item item2">                   
-                    <div className="gmap-frame">    
-                        <h4>Polokwane, Limpopo Connexion</h4>                    
-                        <iframe width="100%" height="100%" frameBorder="0" scrolling="yes" marginHeight="0" marginWidth="0" 
-                            src="https://maps.google.com/maps?width=100%&amp;height=100%&amp;hl=en&amp;q=polokwane+(Limpopo%20Connexion)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
-                            <Link href="https://www.gps.ie/">gps trackers</Link>
-                        </iframe>                        
-                    </div>  
+                    
                 </div>
 
 

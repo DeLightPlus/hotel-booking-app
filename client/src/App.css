@@ -66,7 +66,6 @@ body
 }
 .showcase-container p
 {
-  width: 500px;
   font-size: 18px;
 }
 
@@ -234,6 +233,7 @@ hr
   display: flex;
   flex-direction: column;
   width: 98%;
+  height: max-content;
   justify-self: center;
   margin-bottom: 16px;
 }
@@ -384,3 +384,4 @@ hr
   width: 88vw;
   height: 100%;
 }
+

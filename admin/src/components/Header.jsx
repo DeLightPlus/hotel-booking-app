@@ -10,9 +10,9 @@ const Header = ({ handleLogout }) => {
 
   return (
     <div className='HeaderContainer'>
-      <div className='HeaderTitle-Logo'>        
+      <div className='HeaderTitle-Logo'>    
+            
       </div>
-
       <nav className="nav">
         <ul className="nav-list">
           <li>

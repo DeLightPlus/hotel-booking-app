@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router';
 import RoomBookingModal from '../Rooms/RoomBookingModal';
 
 
-const BookingSummary = ({ room }) => 
+const RoomSummary = ({ room }) => 
 {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -66,4 +66,4 @@ const BookingSummary = ({ room }) =>
   );
 };
 
-export default BookingSummary;
+export default RoomSummary;

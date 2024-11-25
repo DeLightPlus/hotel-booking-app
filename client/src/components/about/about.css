@@ -1,0 +1,112 @@
+
+  /* About Us Section */
+  .about-us {
+    width: 90%;
+    max-width: 1200px;
+    margin: auto;
+    padding: 30px;
+  }
+  
+  /* Title Styling */
+  .about-title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  /* Grid Layout for About Us Container */
+  .about-container 
+  {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Always 2 columns on desktop/tablet */
+    gap: 20px; /* Space between grid items */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Individual Grid Item Styling */
+  .about-grid-item 
+  {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+  }
+  
+  /* Hover effect for grid items */
+  .about-grid-item:hover 
+  {
+    transform: translateY(-10px);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  /* Image Styling */
+  .grid-image 
+  {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    object-fit: cover; /* Makes the image cover the area while maintaining aspect ratio */
+  }
+  
+  /* Text Block Styles */
+  .text-block p {
+    font-size: 16px;
+    color: #333;
+    line-height: 1.6;
+    margin: 0;
+    text-align: center;
+  }
+  
+  /* Responsive Design - Tablet Mode */
+  @media (max-width: 1024px) 
+  {
+    .about-container {
+      grid-template-columns: repeat(2, 1fr); /* Enforce 2x2 grid on tablet */
+    }
+  }
+  
+  /* Mobile Version */
+  @media (max-width: 680px) {
+    .about-container {
+      grid-template-columns: 1fr; /* 1 column on mobile screens */
+    }
+  
+    .about-container .about-grid-item 
+    {
+      width: 86%;
+    }
+  }
+  
+  /* Last Item - Full Width Styling */
+  .last-grid-item 
+  {
+    width: 100%; 
+    height: 600px;
+    margin-top: 20px; /* Add space between grid and the last item */
+  }
+  .last-grid-item img
+  {
+    width: 100%; 
+    height: 200px;
+    height: auto;
+    margin-top: 20px; /* Add space between grid and the last item */
+  }
+  
+  /* Optional: To make the last item on desktop behave like a 100% width element (optional for style consistency) */
+  @media (min-width: 1024px) 
+  {
+    .last-grid-item {
+      width: 100%; /* Last item spans full width on desktop */
+    }
+  }
+  

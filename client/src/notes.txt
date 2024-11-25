@@ -3,6 +3,17 @@ https://d9hhrg4mnvzow.cloudfront.net/try.matterport.com/matterport-contact-cart-
 ebullienttheory30@gmail.com | * default-password
 
 
+Unforgettable Escapes
+
+Imagine a vacation where every moment is crafted for relaxation and indulgence, 
+where luxury meets comfort, and every detail is designed to leave a lasting impression. 
+From serene beachfront resorts to majestic mountain retreats, 
+our exclusive escapes promise to take you on a journey of unparalleled beauty and tranquility. 
+Whether you're seeking adventure, relaxation, or a mix of both, 
+your dream getaway awaits. Let us guide you to destinations that redefine luxury living, 
+where unforgettable memories are made and every experience is beyond expectation.
+
+
 ----------------Rooms-----------------
 room-1: {
     https://img.freepik.com/free-photo/interior-modern-comfortable-hotel-room_1232-1823.jpg?t=st=1732263087~exp=1732266687~hmac=1fa546fe2611c247a7b2f1f289df7649a3781baed9a51a6da1501cb0b9a1ae42&w=1380,

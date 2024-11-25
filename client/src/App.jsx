@@ -15,12 +15,13 @@ import Signup from './components/auth/signup.jsx';
 import Signin from './components/auth/signin.jsx';
 
 import Dashboard from './components/dashboard/dashboard.jsx';
-import RoomDetails from './components/RoomDetails.jsx';
+import RoomDetails from './components/Rooms/RoomDetails.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { clearUser, setUser } from './redux/authSlice.js';
 import { fetchRooms } from "./redux/roomsSlice.js";
-import Rooms from './components/Rooms.jsx';
+import Rooms from './components/Rooms/Rooms.jsx';
+import Footer from './components/Footer/Footer.jsx';
 
 
 function App() {
@@ -91,6 +92,7 @@ function App() {
           {/* <Route path='/rooms/:id' element={<RoomDetails/>} /> */}
           
         </Routes>
+        <Footer />
       </BrowserRouter>
     </div>
   )

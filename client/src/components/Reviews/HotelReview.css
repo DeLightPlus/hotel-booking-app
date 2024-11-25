@@ -1,0 +1,78 @@
+.hotel-review {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+  }
+  
+  .review-card {
+    display: flex;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 20px;
+    max-width: 800px;
+    width: 100%;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .review-header {
+    display: flex;
+    align-items: center;
+  }
+  
+  .review-image {
+    width: 120px;
+    height: 120px;
+    border-radius: 8px;
+    object-fit: cover;
+    margin-right: 20px;
+  }
+  
+  .review-text {
+    max-width: 600px;
+  }
+  
+  .review-title {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .review-body {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 10px;
+  }
+  
+  .review-author {
+    margin-top: 10px;
+  }
+  
+  .author-name {
+    font-weight: bold;
+    font-size: 1.2rem;
+    color: #333;
+  }
+  
+  .author-role {
+    font-size: 1rem;
+    color: #777;
+  }
+  
+  .review-rating {
+    display: flex;
+    margin-top: 10px;
+  }
+  
+  .star-icon {
+    width: 20px;
+    height: 20px;
+    fill: #ddd;
+    margin-right: 4px;
+  }
+  
+  .star-icon.filled {
+    fill: #ffbc00;
+  }
+  
