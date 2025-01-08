@@ -3,7 +3,7 @@ import './auth.css';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { loginUser, setUser } from '../../redux/authSlice';
+import { loginAdmin } from '../../redux/authSlice';
 
 import SocialButton from '../SocialButton';
 
@@ -19,13 +19,10 @@ const Signin = () =>
 
     try
     {
-      const res = await dispatch(loginUser({email, password})); 
+      const res = await dispatch( loginAdmin({email, password}) ); 
       console.log('signin res', res);
-      // dispatch(setUser(res.payload));
-      
     }
-    catch(error){ console.error(error);
-    }   
+    catch(error){ console.error(error); }   
     
   }
 

@@ -12,9 +12,8 @@ const Rooms = () => {
     return (  
         <div className="rooms">            
             <div className='showcase-container'> 
-                {/* <Amenities /> */}
-                <div className="showcase">
-                    
+              
+                <div className="showcase">                    
                     <br />    
                 </div>
                         

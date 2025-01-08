@@ -7,22 +7,24 @@ import { Link } from 'react-router-dom';
 import Sidebar from './sidebar.jsx';
 import BookingList from './bookingsList.jsx';
 
-const Dashboard = () => {
+// eslint-disable-next-line react/prop-types
+const Dashboard = ({ handleLogout }) => {
   const user = useSelector((state) => state.auth.user);
 
   const [selectedPage, setSelectedPage] = useState('dashboard');
 
   return (
     <div className={styles.container}>      
-      <Sidebar setSelectedPage={setSelectedPage} />
+      <Sidebar 
+        setSelectedPage={setSelectedPage} 
+        handleLogout={handleLogout}
+      />
 
-      <div className="dashboard-content">
+      <div className={styles.dashboard_content}>
         <div className={styles.content}>
           <div>
-            {
-              user && (` ${user.email} `)
-            }
-            <hr/>
+            <h4>Dashboard/ </h4>
+
             <div className={styles.summary_grid}>         
 
               <div className={styles.summary_card}>
@@ -42,9 +44,7 @@ const Dashboard = () => {
 
 
               <div className={styles.summary_card}>checked</div>
-              <div className={styles.summary_card}>6</div>
-              <div className={styles.summary_card}>7</div>
-              <div className={styles.summary_card}>8</div>
+              
             </div>        
         </div> 
 

@@ -55,8 +55,7 @@
 
 .item1 
 {
-  grid-area: item1;  
-  
+  grid-area: item1;   
 }
 
 
@@ -112,8 +111,6 @@
   display: flex;
   flex-wrap: wrap;
   gap: 16px; /* Space between grid items */
-
-  margin-top: 16px;
 
   background: #a5966d00;
   color: black;

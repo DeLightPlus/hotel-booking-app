@@ -51,7 +51,7 @@ body
   align-items: center;
   justify-content: center;  
   padding: 8%;
-  /* height: 100%; */
+  height: 100vh;
 }
 
 .showcase-container 
@@ -157,62 +157,18 @@ hr
 }
 
 
-.amenities
-{
-  background-color: #d9d9d900;
-  padding: 0px 16px;
-  text-align: start;
-}
-
-.amenities ul
-{
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  
-  margin-top: 10px;
-  text-align: start;
-  list-style: none;
-  width: 250px;
-}
-
-.amenities li
-{
-  display: flex;  
-  justify-content: space-between;
-  align-items: center;
-  gap: 2px;
-  font-size: 12px;
-  font-weight: 600;
-  text-align: start;
-  list-style: none;
-  width: 90%;
-  padding: 1px 4px;
-  background: #7e7e7e17;
-}
-
-.amenities  i
-{
-  font-size: 14px;
-  width: 32px;
-}
-
-.amenities h3
-{
-  margin-left: 16px;
-}
-
 .rooms-container
 {
   display: grid;
   grid-template-columns: 1fr;
   gap: 2px;
-  background-color: #fff;
+  background:linear-gradient(0deg, #c9c9c9, #e4e4e4c5, #fff, #fff, transparent);
   padding: 20px;
   border: 1px solid #ddd;
-  border-radius: 25px;
-  width: 100%;
-  
+  /* border-radius: 25px; */
+  width: 99%;  
+  height: 72%;
+  overflow-y: hidden;
 }
 
 .rooms-showcase

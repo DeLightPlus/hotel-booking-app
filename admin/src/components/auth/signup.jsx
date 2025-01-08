@@ -5,10 +5,8 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-
 import SocialButton from '../SocialButton';
-import { registerUser } from '../../redux/authSlice';
-
+import { registerAdmin } from '../../redux/authSlice';
 
 const Signup = () => 
 {
@@ -23,7 +21,7 @@ const Signup = () =>
   const handleSignup = async (e) =>
   {
     e.preventDefault(); 
-    dispatch(registerUser({ firstname, lastname, email, password }));  
+    dispatch(registerAdmin({ firstname, lastname, email, password }));  
   }
   
 

@@ -22,6 +22,9 @@ import { clearUser, setUser } from './redux/authSlice.js';
 import { fetchRooms } from "./redux/roomsSlice.js";
 import Rooms from './components/Rooms/Rooms.jsx';
 import Footer from './components/Footer/Footer.jsx';
+import CompletePayment from './components/Paypal/CompletePayment.jsx';
+import CancelPayment from './components/Paypal/CancelPayment.jsx';
+import PayPalPayment from './components/Paypal/PayPalPayment.jsx';
 
 
 function App() {
@@ -80,16 +83,20 @@ function App() {
         {console.log('user?, ', user)  }
         
         
-        <Header handleLogout={handleLogout} />
+        <Header  />
         <Routes>
           <Route exact path='/' element={<HomePage/>  } />
           
           <Route path='/signup' element={!user ? <Signup /> : <Navigate to={'/dashboard'}/>} />
           <Route path='/signin' element={ user ? <Navigate to={'/dashboard'} /> : <Signin /> } /> 
           
-          <Route exact path='/dashboard' element={ user ? <Dashboard /> : <Navigate to={'/'}/> } />
+          <Route exact path='/dashboard' element={ user ? <Dashboard handleLogout={handleLogout} /> : <Navigate to={'/'}/> } />
           <Route path='/rooms' element={<Rooms/>} />
           {/* <Route path='/rooms/:id' element={<RoomDetails/>} /> */}
+
+          <Route path='/make-payment' element={<PayPalPayment />} />          
+          <Route path='/complete-payment' element={<CompletePayment />} />
+          <Route path='/cancel-payment' element={<CancelPayment />} />
           
         </Routes>
         <Footer />

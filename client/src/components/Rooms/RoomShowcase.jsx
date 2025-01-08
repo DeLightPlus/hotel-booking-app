@@ -41,9 +41,7 @@ const RoomShowcase = ({page}) =>
     // console.log('home-user?, ',user);
     // console.log('home-userData?, ',userData);
     // console.log('home-adminUserData?, ',adminUserData);
-    console.log('rooms_all', rooms_all);
-
- 
+    console.log('rooms_all', rooms_all); 
 
     const handleBookingModal = () =>
     {
@@ -57,7 +55,34 @@ const RoomShowcase = ({page}) =>
                 <section className="rooms-showcase">
                     
                 <div className="checkin-rectangle">
-                    <fieldset className="check-compare">
+
+                    <div className="date-picker-wrapper">
+                        <label htmlFor="checkin" className="label">
+                        Checkin Date
+                        </label>
+                        <input
+                        type="date"
+                        id="checkin"
+                        name="checkin"
+                        className="date-input"
+                        aria-describedby="checkin-description"
+                        />                        
+                    </div>
+
+                    <div className="date-picker-wrapper">
+                        <label htmlFor="checkout" className="label">
+                        Checkout date
+                        </label>
+                        <input
+                        type="date"
+                        id="checkout"
+                        name="checkout"
+                        className="date-input"
+                        aria-describedby="checkout-description"
+                        />                        
+                    </div>
+
+                    {/* <fieldset className="check-compare">
                         <label htmlFor="checkIn">Check-In</label>
                         <input
                         type="date"
@@ -77,7 +102,7 @@ const RoomShowcase = ({page}) =>
                         value={checkOutDate}
                         onChange={handleDateChange}
                         />
-                    </fieldset>
+                    </fieldset> */}
 
                     <fieldset className="check-compare">
                         <select
@@ -101,11 +126,11 @@ const RoomShowcase = ({page}) =>
 
 
                 { page == "homepage" &&
-                <div className="rooms-showcase-title">
-                    <small>Rest-Le-BnB</small> | Available Rooms (8)
-                    <hr />
-                    <RoomsList />
-                </div> 
+                    <div className="rooms-showcase-title">
+                        <small>Rest-Le-BnB</small> / Available Rooms )
+                        <hr />
+                        <RoomsList />
+                    </div> 
                 }
                 
                 </section>

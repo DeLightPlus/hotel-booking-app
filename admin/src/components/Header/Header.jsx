@@ -1,12 +1,24 @@
-import './styles.css';
+import './Header.css';
 
 import { useSelector } from 'react-redux';
 import { Link, Navigate } from 'react-router-dom';
+import { getIcon } from '../../utils/icons';
 
 const Header = ({ handleLogout }) => {
-  const user = useSelector((state) => state.auth.user);
-  const userData = useSelector((state) => state.auth.userData); 
-  const adminUserData = useSelector((state) => state.auth.adminUserData);
+  const { user, adminData, loading, error } = useSelector((state) => state.auth);
+  {console.log('u:', user) }
+  {console.log('au.dat:', adminData) }
+
+  if (loading) 
+  {
+    return <div>Loading...</div>;  // or a more sophisticated loading spinner
+  }
+
+  if (!user || !adminData) 
+  {
+    // handleLogout()
+    // return <div>Admin data is not available or user is not authenticated</div>;
+  }
 
   return (
     <div className='HeaderContainer'>
@@ -15,7 +27,7 @@ const Header = ({ handleLogout }) => {
       </div>
       <nav className="nav">
         <ul className="nav-list">
-          <li>
+          {/* <li>
             <div className='search-group'>
               <select placeholder={``}>
                 <option value="">Location</option>
@@ -25,11 +37,9 @@ const Header = ({ handleLogout }) => {
                 <i className="fas fa-search"/>
               </button>
             </div>
-          </li>
+          </li> */}
 
-          <li className="nav-item">
-            <Link to="/" className="nav-link">Home</Link>
-          </li>
+          
           <li className="nav-item">
             <Link to="/" className="nav-link">Rooms</Link>
           </li>
@@ -39,11 +49,9 @@ const Header = ({ handleLogout }) => {
         </ul>
         
         {
-          adminUserData ? (
+          adminData ? (
           <ul className="nav-list">
-            <li className="nav-item">
-              <Link to="/" className="nav-link">_</Link>
-            </li>
+           
             <li className="nav-item">
               <Link to="/Admin" className="nav-link">Admin</Link>
             </li>
@@ -64,47 +72,44 @@ const Header = ({ handleLogout }) => {
               </li>
             </ul>
           ) 
+        }        
+      </nav>
 
-        }
         
-
-
-        {console.log('u:', user) }
-        {console.log('u.dat:', userData, ' | au.dat:', adminUserData) }
         {
           user && (
-          <li className="nav-item">
-            <div className='userBtn'>
-              <Link>
-                {user.photoURL ? (
-                  <img src={user.photoURL}/>
-                ) : (
-                  <i className="fa fa-user" style={{ fontSize: 32}}/>
-                )}
-              </Link>
-            </div>
+            <div className="userProfile">
+              <div className='userIcon'>               
+                  {
+                    user.photoURL ? 
+                    ( <img src={user.photoURL}/>
+                    ) : 
+                    ( 
+                      <div className="icn">
+                        {/* <i className="fa fa-user" style={{ fontSize: 32}}/> */}
+                        { getIcon("fa-user", 32) }
+                      </div> 
+                    )
+                  }                               
+              </div>  
+              
+              <div className='nameNemail'> 
+                  <div>
+                    {
+                      adminData && 
+                      ( `${adminData.firstname.substring(0, 1).toUpperCase()} ${adminData.lastname}` ) 
+                    }
+                  </div>  
+                  <small>             
+                    { user && ( ` ${user.email} ` ) }
+                  </small> 
+                  {/* <button className='signOut' onClick={handleLogout}>
+                    Logout
+                  </button>   */}
+              </div>               
 
-            <Link to="/dashboard" className="nav-link">
-              <span>                 
-              {
-                (userData) ? (
-                  `${userData.firstname.substring(0, 1).toUpperCase()} ${userData.lastname}`
-                ) : (
-                  (adminUserData) ? (
-                    `${adminUserData.firstname.substring(0, 1).toUpperCase()} ${adminUserData.lastname}`
-                  ) : (
-                    ` ${user.email} `
-                  )
-                )
-              }
-              </span>
-            </Link>
-            <button className='signOut' onClick={handleLogout}>
-              Logout
-            </button>
-          </li>
+            </div>  
         )}
-      </nav>
     </div>
   );
 };

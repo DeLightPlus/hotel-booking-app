@@ -17,34 +17,36 @@ const NavLinks = ({ links }) => (
 );
 
 // User Profile Component
-const UserProfile = ({ user, userData, handleLogout }) => {
-  const displayName = userData
-    ? `${userData.firstname[0].toUpperCase()} ${userData.lastname}`
-    : user.email;
-
+const UserProfile = ({ user, userData }) => {
   return (
-    <li className="nav-item" id="profile">
-      <div className='userBtn'>
-        <Link>
+   
+    <Link to="/dashboard" className="profile" id="profile">      
+      <div className='userIcon'>        
           {user.photoURL ? (
             <img src={user.photoURL} alt="User Avatar" />
           ) : (
-            <i className="fa fa-user" style={{ fontSize: 32 }} />
-          )}
-        </Link>
-      </div>
+            <div className="icn">
+              <i className="fa fa-user" style={{ fontSize: 32 }} />
+            </div>
+          )}     
+      </div>  
 
-      <Link to="/dashboard" className="nav-link">
-        <span>{displayName}</span>
-      </Link>
-      <button className='signOut' onClick={handleLogout}>
-        Logout
-      </button>
-    </li>
+      <div className='nameNemail'> 
+          <div>
+          {
+            userData
+            && ( `${userData.firstname[0].toUpperCase()} ${userData.lastname}` )
+          }
+          </div>  
+          <small>             
+            { user && ( ` ${user.email} ` ) }
+          </small>                  
+      </div>       
+    </Link>   
   );
 };
 
-const Header = ({ handleLogout }) => {
+const Header = () => {
   const [isShrunk, setIsShrunk] = useState(false);  // State to manage shrink effect
   const user = useSelector((state) => state.auth.user);
   const userData = useSelector((state) => state.auth.userData);
@@ -67,19 +69,16 @@ const Header = ({ handleLogout }) => {
   const headerClass = isShrunk ? 'HeaderContainer shrink' : 'HeaderContainer';
 
   // Common navigation links
-  const commonLinks = [
-    { to: '/', label: 'Home', key: 'home' }, 
+  const commonLinks = [  
+    { to: '/', label: 'Home', key: 'home' },
     { to: '/rooms', label: 'Rooms', key: 'rooms' },
-    { to: '/booking', label: 'Book Now', key: 'booking' },
-    { to: '/', label: 'Restaurant', key: 'restaurant' },
+    { to: '#restaurent', label: 'Restaurant', key: 'restaurant' },
   ];
 
   // Additional links for logged-in users
-  const userLinks = [
-    
+  const userLinks = [    
     { to: '/reviews', label: 'Reviews', key: 'reviews' },
-    { to: '/contact', label: 'Contact', key: 'contact' },
- 
+    { to: '/contact', label: 'Contact', key: 'contact' }, 
   ];
 
   // Links for logged-in users only
@@ -89,25 +88,22 @@ const Header = ({ handleLogout }) => {
 
   return (
     <div className={headerClass}>
-      <div className='HeaderTitle-Logo'>
+      <div className='HeaderTitle-Logo' >
         <img src={logo} alt="Logo" />
       </div>
 
       <nav className="nav">
         {/* Common Links */}
         <NavLinks links={commonLinks} />
-
         {/* Additional Links for All Users */}
         <NavLinks links={userLinks} />
-
-        {/* Render User Profile and Logged-In Links */}
-        {user && (
-          <>
-            <NavLinks links={loggedInLinks} />
-            <UserProfile user={user} userData={userData} handleLogout={handleLogout} />
-          </>
-        )}
       </nav>
+
+      {/* { user && (   <Link to={"/dashboard"} className="nav-link" id="dashboard">Dashboard</Link> ) } */}
+      { user && (     
+        <UserProfile user={user} userData={userData} />    
+      )}
+
     </div>
   );
 };

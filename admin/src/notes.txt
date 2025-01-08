@@ -1,1 +1,10 @@
 https://d9hhrg4mnvzow.cloudfront.net/try.matterport.com/matterport-contact-cart-module/7b024b27-vt-footer_10cr0do000000000000000.png
+
+
+
+▫Flow Diagram:
+ ▪User Selects Room ➔ Booking Information (Check availability)
+ ▪User Submits Booking ➔ Frontend Redux (Store booking info in Redux)
+ ▪Payment Initiation ➔ PayPal API (Process payment)
+ ▪Backend Booking API ➔ Create/Update Booking (Save booking in DB)
+ ▪Booking Confirmation ➔ Frontend Confirmation Page

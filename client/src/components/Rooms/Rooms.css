@@ -1,3 +1,17 @@
+.rooms-container
+{
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2px;
+  background:linear-gradient(0deg, #c9c9c9, #e4e4e4c5, #fff, #fff, transparent);
+  padding: 20px;
+  margin: 16px;
+  margin-top: -8%;
+  border: 1px solid #ddd;
+  /* border-radius: 25px; */
+  width: 98%;  
+}
+
 .available-rooms-container
 {
   margin-top: 10px;
@@ -68,28 +82,6 @@
     padding: 4px 0; 
     border-radius: 2px;
     cursor: pointer;
-}
-
-.booking-modal .pricing-info
-{
-  /* width: 98%; */
-}
-.pricing-info label
-{
-  display: flex;
-  width: 100%;
-  height: 16px;
-  text-align:start;
-  justify-content: space-between;
-  font-size: 12px;
-}
-.pricing-info span
-{
-  align-self: end;
-}
-.pricing-info h6, h5
-{
-  text-align: start;
 }
 
 

@@ -1,9 +1,9 @@
-import React from 'react';
+import styles from './dashboard.module.css';
+
 import Notifications from './notifications';
 import BookingList from './bookingsList';
 import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import styles from './dashboard.module.css';
 
 const Dashboard = () => {
   const user = useSelector((state) => state.auth.user);
@@ -21,53 +21,37 @@ const Dashboard = () => {
           <li><Link to='#'>Settings</Link></li>
         </ul>
       </div>
-      
-      
-      
-      <div className={styles.content}>
-        <div>Admin Dashboard | 
-        {
-          adminUserData ? (            
-              <> {adminUserData.email} </>            
-          ) : (` ${user.email} `)
-        }
 
-        <hr/>
+      <div className={styles.content}>        
+        
         <div className={styles.summary_grid}>
           <div className={styles.summary_card}>
-            Customers <hr/>
+            Customers: 
             <strong>3</strong>
           </div>
 
           <div className={styles.summary_card}>
-            Rooms <hr/>
+            Rooms:
             <strong>8</strong>
           </div>
 
           <div className={styles.summary_card}>
-            Available <hr/>
+            Available:
             <strong>3</strong>
           </div>
 
           <div className={styles.summary_card}>
-            Booked<hr/>
+            Booked:
             <strong>3</strong>            
           </div>
-
-
-          <div className={styles.summary_card}>checked</div>
-          <div className={styles.summary_card}>6</div>
-          <div className={styles.summary_card}>7</div>
-          <div className={styles.summary_card}>8</div>
+                  
         </div>
+
+        <BookingList />
+        {/* <Notifications /> */}
         
       </div> 
 
-
-      {/* <Notifications /> */}
-      <BookingList />
-        
-    </div>
     </div>
   );
 };

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createBooking, fetchUserBookings } from '../../redux/bookingSlice';
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
-import RoomBookingModal from '../Rooms/RoomBookingModal';
+import RoomBookingModal from './Room Booking Modal/RoomBookingModal';
 
 
 const RoomSummary = ({ room }) => 
@@ -55,12 +55,12 @@ const RoomSummary = ({ room }) =>
       <div className="bottom-section">
         <p>{room.room_name}<small> ⭐{room.rating}</small></p>
         <span>{room.capacity} guests • {room.room_description}</span>
-        <p>
+        <div>
           <small><i>R1800</i></small>  <strong>R{room.price} per night</strong>
           <button onClick={()=> setShowModal(true)}>BOOK NOW</button>
 
-          { showModal && <RoomBookingModal room={room} />}
-        </p>
+          { showModal && <RoomBookingModal room={room} setShowModal={setShowModal}/>}
+        </div>
       </div>
     </div>
   );

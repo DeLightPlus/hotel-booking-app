@@ -8,14 +8,13 @@ import { useNavigate } from "react-router";
 
 
 const RoomsList = () =>
-{
+{ 
+    const dispatch = useDispatch();
     const navigate = useNavigate();
 
     const user = useSelector((state) => state.auth.user);
-    const userData = useSelector((state) => state.auth.userData); 
-    const adminUserData = useSelector((state) => state.auth.adminUserData);
-
-    const dispatch = useDispatch();
+    const userData = useSelector((state) => state.auth.userData);   
+   
     const rooms_all = useSelector((state) => state.rooms.rooms_all);
     
     // const [rooms, setRooms] = useState([]);
@@ -27,7 +26,7 @@ const RoomsList = () =>
             <>
             [
                 <select style={{width:"127px"}}>
-                    <option value="all">All</option>
+                    <option value="all">All ({rooms_all.length})</option>
                     <option value="available">Available</option>
                     <option value="booked">Booked</option>
                 </select>
@@ -43,9 +42,9 @@ const RoomsList = () =>
                 }
                 </div> 
                 <button id="view" onClick={()=>{
-                    navigate("/rooms")
-                }}>
-                    View More
+                        navigate("/rooms")
+                    }}
+                > View More
                 </button>
             </div>
             

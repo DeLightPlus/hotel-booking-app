@@ -1,0 +1,233 @@
+
+.booking-modal
+{
+  position: fixed;
+  top: 1%; 
+  bottom: 1%;
+  left: 0; 
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+  background: #f0f0f0;
+  padding: 16px 32px;
+  align-items: center;
+  width: 99vw;
+  height: 98.5vh;
+  /* border-radius: 10px; */
+  overflow: auto;
+  scrollbar-width: none;
+  z-index: 100;
+}
+.booking-modal .room-details-block
+{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  border: #4d4d4d7e solid 1px;
+  border-radius: 5px;
+  padding: 8px;
+  width: 98%;
+  height: 18%;
+  margin-bottom: 4px;
+}
+
+.room-details-block .header
+{
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+}
+
+.grid-content
+{
+  margin-top: 1px;
+  display: grid;
+  grid-template-areas:
+        "item1 item2"
+        "item1 item3";
+  grid-template-columns: 70% 30%; /* Adjust the width of columns */
+  grid-template-rows: auto auto; /* Adjust the height of rows */
+  gap: 10px; /* Space between grid items */
+  background-color: #ffffff23;
+  height: 100%;
+}
+
+.item1 .room-details
+{
+    display:flex; 
+    flex-direction:column;
+    background: #ddd;
+    padding: 8px;
+    
+}
+
+.images-container
+{
+    display: flex;
+    flex-direction: row;
+    height: 50%;
+}
+
+.preview-img
+{
+    /* flex: 1; */
+    width: 75%;
+    height: 100%;
+}
+
+.item1 .preview-img img
+{  
+  width: 100%;
+  height: 100%;
+}
+
+.v-thumbnails
+{
+    padding: 4px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 55%;
+    width: 127px;
+    gap: 8px;
+}
+
+
+
+
+.v-thumbnails img
+{
+    width: 112px;
+}
+
+.booking-modal .item2 
+{
+height: max-content;
+  grid-area: item2;
+  padding: 4px;
+  align-items: start;
+  color: black;  
+  background: none;
+}
+
+.booking-modal .item3 
+{
+  grid-area: item3;
+  padding: 10px;
+  align-items: start;
+  color: black;
+  height: max-content;
+}
+
+
+/* .booking-modal form
+{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  width: 100%;
+  height: 100%;
+} */
+
+.booking-modal .grid-content
+{
+  height: 98%;
+  width: 90%;
+  /* transform: translateY(-10px);   */
+}
+
+.booking-modal .who-checking
+{
+  padding: 4px 8px;
+  background: #ddd;
+  border: 1px solid grey;
+  text-align: start;
+  border-radius: 5px;
+}
+.who-checking input[type='text']
+{
+  padding: 2px;
+  margin: 0px 4px 2px 0px;
+  width: 124px;
+}
+.who-checking input#email
+{
+  padding: 2px;
+  margin: 0px 4px 4px 0px;
+  width: 252px;
+}
+.who-checking select
+{
+  width: 74px;
+  margin-right: 2px;
+  padding: 2px;
+}
+.who-checking small
+{
+    font-weight: 700;
+}
+
+.booking-modal .check-alerts
+{
+    display:flex; 
+    align-items: center;
+    gap:4px;   
+
+}
+
+.check-alerts input
+{
+    width: 16px;
+    height: 16px;
+}
+
+.check-alerts small
+{
+    display:flex; width: 100%;
+   
+}
+
+
+.process_payment
+{
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: #333;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 88vw;
+  height: 100%;
+}
+
+
+
+.booking-modal .pricing-info
+{
+  /* width: 98%; */
+}
+.pricing-info label
+{
+  display: flex;
+  width: 100%;
+  height: 16px;
+  text-align:start;
+  justify-content: space-between;
+  font-size: 12px;
+}
+
+.pricing-info span
+{
+  align-self: end;
+}
+.pricing-info h6, h5
+{
+  text-align: start;
+}
