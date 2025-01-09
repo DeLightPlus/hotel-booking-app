@@ -29,6 +29,7 @@ const RoomBookingModal = ({room, setShowModal}) =>
          amount: room.price 
     });
     const [checkoutStatus, setCheckoutStatus] = useState(null);
+    const [paymentDetails, setPaymentDetails] =useState({})
 
     const handleAdultsChange = (event) => {
         setAdults(event.target.value);
@@ -238,7 +239,11 @@ const RoomBookingModal = ({room, setShowModal}) =>
                     >Proceed to Checkout</button> */}
                     <h6>Proceed to Checkout</h6>
 
-                    <PayPalPayment checkoutInfo={checkoutInfo} setCheckoutStatus={setCheckoutStatus} /> 
+                    <PayPalPayment 
+                        checkoutInfo={checkoutInfo} 
+                        setCheckoutStatus={setCheckoutStatus} 
+                        setPaymentDetails={setPaymentDetails}
+                    /> 
                     
                 </div>                     
                             

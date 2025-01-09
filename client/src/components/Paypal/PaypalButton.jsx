@@ -1,27 +1,23 @@
 import React, { useEffect, useState } from "react";
 import { PayPalScriptProvider, PayPalButtons } from "@paypal/react-paypal-js";
 
-const PayPalPayment = ({checkoutInfo, setCheckoutStatus}) => {
-
+const PayPalPayment = ({ checkoutInfo, setCheckoutStatus, setPaymentDetails }) => {
   const [accessToken, setAccessToken] = useState(null);
   const { amount, uid, room } = checkoutInfo;
 
+  // Fetch the PayPal access token when the component mounts
   useEffect(() => {
-    // Fetch the access token from your server
-    async function fetchAccessToken() 
-    {
-      try 
-      {
+    async function fetchAccessToken() {
+      try {
         const response = await fetch('http://localhost:3000/paypal/getAccessToken');
         const data = await response.json();
 
-        if (data.accessToken) 
-        {
+        if (data.accessToken) {
           setAccessToken(data.accessToken);
-        } 
-        else { console.error('Failed to get access token'); }
-      } 
-      catch (error) {
+        } else {
+          console.error('Failed to get access token');
+        }
+      } catch (error) {
         console.error('Error fetching access token:', error);
       }
     }
@@ -31,18 +27,17 @@ const PayPalPayment = ({checkoutInfo, setCheckoutStatus}) => {
 
   // PayPal ScriptProvider options
   const initialOptions = {
-    clientId: import.meta.env.VITE_PAYPAL_CLIENTID, // PayPal Client ID from Vite environment variables
+    clientId: import.meta.env.VITE_PAYPAL_CLIENTID, // PayPal Client ID from environment variables
     currency: "USD",
   };
 
-  // Create PayPal order when the user clicks the PayPal button
+  // Create PayPal order using the access token and amount
   const onCreateOrder = async (data, actions) => {
     try {
       if (!accessToken) {
         throw new Error("Access token is missing");
       }
 
-      // Create PayPal order using the client-side API
       const response = await fetch("https://api.sandbox.paypal.com/v2/checkout/orders", {
         method: "POST",
         headers: {
@@ -55,13 +50,13 @@ const PayPalPayment = ({checkoutInfo, setCheckoutStatus}) => {
             {
               amount: {
                 currency_code: "USD",
-                value: amount.toString(), // The amount for the booking
+                value: amount.toString(),
               },
               description: `Booking for room ${room} by user ${uid}`,
             },
           ],
           application_context: {
-            brand_name: "Your Hotel",
+            brand_name: "RestLeBnB",
             return_url: "http://localhost:3000/payment-success", // PayPal return URL
             cancel_url: "http://localhost:3000/payment-cancel", // PayPal cancel URL
           },
@@ -69,6 +64,8 @@ const PayPalPayment = ({checkoutInfo, setCheckoutStatus}) => {
       });
 
       const order = await response.json();
+      console.log("Order created: ", order);
+
       if (order.id) {
         return order.id; // Return the PayPal order ID to PayPal button
       } else {
@@ -82,30 +79,45 @@ const PayPalPayment = ({checkoutInfo, setCheckoutStatus}) => {
 
   // Callback when the user approves the payment
   const onApprove = async (data, actions) => {
-    try 
-    {
-      console.log("onApprove data:", data);
-      const orderID = data.orderID;
-
-      // Capture the order
-      const result = await actions.order.capture();
+    try {
+      const result = await actions.order.capture(); // Capture the payment
       console.log("Capture Result: ", result);
 
       if (result.status === "COMPLETED") 
       {
         console.log("Payment successful!");
         setCheckoutStatus("Payment_Successful");
+
+       
+        const paymentDetails = result.purchase_units?.[0]?.payments?.captures?.[0];
+
+        // If paymentDetails exist, log the relevant information
+        if (paymentDetails) 
+        {
+          console.log("Payment Details: ", paymentDetails);
+        
+          // Access and log the transaction fee (if available)
+          const transactionFee = paymentDetails.transaction_fee?.value || "No fee information";
+          console.log("Transaction Fee: ", transactionFee);
+        
+          // Access and log the capture ID
+          const captureID = paymentDetails.id;
+          console.log("Capture ID: ", captureID);
+        
+          // Access and log the amount
+          const amount = paymentDetails.amount?.value || "No amount information";
+          console.log("Amount: ", amount);
+        } 
+        else { console.error("No payment details found in the capture result"); }
       } 
       else 
       {
         console.log("Failure Processing Payment!!!");
-        setCheckoutStatus("Payment_Failure")
+        setCheckoutStatus("Payment_Failure");
       }
-    } 
-    catch (error) 
-    {
+    } catch (error) {
       console.error("Error capturing payment: ", error);
-      setCheckoutStatus("Error_Capturing_Payment")
+      setCheckoutStatus("Error_Capturing_Payment");
     }
   };
 
@@ -123,10 +135,11 @@ const PayPalPayment = ({checkoutInfo, setCheckoutStatus}) => {
   return (
     <div>
       <PayPalScriptProvider options={initialOptions}>
-        <PayPalButtons 
+        <PayPalButtons
           style={{ shape: "pill", layout: "vertical", color: "blue" }}
-          onApprove={onApprove}
-          onError={onError}
+          createOrder={onCreateOrder}  // Create the order using the access token
+          onApprove={onApprove}         // Capture the payment after approval
+          onError={onError}            // Handle errors
         />
       </PayPalScriptProvider>
     </div>
