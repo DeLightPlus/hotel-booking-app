@@ -7,7 +7,7 @@ import RoomSummary from "./RoomSummary";
 import { useNavigate } from "react-router";
 
 
-const RoomsList = () =>
+const RoomsList = ({filteredRooms}) =>
 { 
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -23,7 +23,7 @@ const RoomsList = () =>
     return(       
         <div>
             {console.log('all-rooms', rooms_all)        }
-            <>
+            {/* <>
             [
                 <select style={{width:"127px"}}>
                     <option value="all">All ({rooms_all.length})</option>
@@ -31,16 +31,17 @@ const RoomsList = () =>
                     <option value="booked">Booked</option>
                 </select>
             ]
-            </>
+            </> */}
 
             <div className="available-rooms-container">           
 
                 <div className={`rooms-ul ${userData ? 'hv' : '' }`}> 
                 {   
-                    rooms_all.length == 0 ? <>Loading Rooms</> :             
-                    rooms_all.map((room) => ( <RoomSummary key={room.id} room={room} /> ))   
+                    filteredRooms.length == 0 ? <>Loading Rooms</> :             
+                    filteredRooms.map((room) => ( <RoomSummary key={room.id} room={room} /> ))   
                 }
                 </div> 
+
                 <button id="view" onClick={()=>{
                         navigate("/rooms")
                     }}

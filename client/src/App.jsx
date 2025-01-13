@@ -19,7 +19,7 @@ import RoomDetails from './components/Rooms/RoomDetails.jsx';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { clearUser, setUser } from './redux/authSlice.js';
-import { fetchRooms } from "./redux/roomsSlice.js";
+import { fetchRooms, updateAllRoomsAvailabilityDaily } from "./redux/roomsSlice.js";
 import Rooms from './components/Rooms/Rooms.jsx';
 import Footer from './components/Footer/Footer.jsx';
 import CompletePayment from './components/Paypal/CompletePayment.jsx';
@@ -29,6 +29,8 @@ import PayPalPayment from './components/Paypal/PayPalPayment.jsx';
 
 function App() {
   const { user, userData } = useSelector((state) => state.auth);
+  const rooms_all = useSelector((state) => state.rooms.rooms_all);
+
   const dispatch = useDispatch();
 
   useEffect(() => 
@@ -64,7 +66,15 @@ function App() {
       }      
       fetchRoomsAsynch();
       
-    }, [dispatch])
+    }, [dispatch]);
+
+  // Once rooms are fetched, update availability
+  useEffect(() => {
+    if (rooms_all.length > 0) 
+    {
+      dispatch(updateAllRoomsAvailabilityDaily());
+    }
+  }, [rooms_all, dispatch]);
 
   const handleLogout = async () => 
   {
@@ -79,10 +89,7 @@ function App() {
 
   return (
     <div className='Hotel-App'>
-      <BrowserRouter>
-        {console.log('user?, ', user)  }
-        
-        
+      <BrowserRouter>  
         <Header  />
         <Routes>
           <Route exact path='/' element={<HomePage/>  } />

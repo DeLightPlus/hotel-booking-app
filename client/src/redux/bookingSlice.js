@@ -1,6 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
+import { collection, query, where, getDocs, doc, setDoc, updateDoc, serverTimestamp, arrayUnion } from 'firebase/firestore';
 import { db } from '../config/firebase';
-import { doc, setDoc, getDoc, updateDoc, arrayUnion } from 'firebase/firestore';
+
 
 // Async action to fetch user bookings from Firestore
 export const fetchUserBookings = createAsyncThunk(
@@ -22,26 +23,75 @@ export const fetchUserBookings = createAsyncThunk(
   }
 );
 
-// Async action to create a new booking
+
+
 export const createBooking = createAsyncThunk(
   'bookings/createBooking',
-  async ({ userId, bookingDetails }) => {
-    const userBookingsRef = doc(db, 'bookings', userId);
+  async ({ bookingDetails }, { rejectWithValue }) => {
+    try 
+    {
+      const userBookingsRef = collection(db, 'users', bookingDetails.userId, 'bookings');
+      const q = query(userBookingsRef, where("status", "==", "active"));
 
-    // If the user already has a booking document, update it, else create a new one
-    const userBookingsDoc = await getDoc(userBookingsRef);
-    if (userBookingsDoc.exists()) {
-      await updateDoc(userBookingsRef, {
-        bookings: arrayUnion(bookingDetails),  // Add the new booking to the user's bookings array
-      });
-    } else {
-      // If no booking document exists for the user, create a new one with the booking
-      await setDoc(userBookingsRef, {
-        bookings: [bookingDetails],
-      });
+      const querySnapshot = await getDocs(q);
+      const activeBookings = querySnapshot.docs.length;
+
+      // Check if the user already has 2 active bookings
+      if (activeBookings >= 2) 
+      {
+        return rejectWithValue('You can only have 2 active bookings at a time.');
+      }
+
+      // If the user has less than 2 active bookings, proceed to create a new booking
+      const newBooking = {
+        roomId: bookingDetails.roomId,
+        checkInDate: bookingDetails.checkInDate,
+        checkOutDate: bookingDetails.checkOutDate,
+        status: "active",  // The status is "active" when the booking is in progress
+        bookingDate: bookingDetails.paymentDetails.update_time,
+      };
+
+      // Create new booking for the user
+      const newBookingRef = doc(userBookingsRef);
+      await setDoc(newBookingRef, newBooking);
+
+      return newBooking;
     }
+    catch (error) 
+    {
+      console.error('Error creating booking: ', error);
+      return rejectWithValue(error.message);
+    }
+  }
+);
 
-    return bookingDetails;  // Return the newly created booking
+// Function to handle expired bookings and free up space
+export const checkExpiredBookings = createAsyncThunk(
+  'bookings/checkExpiredBookings',
+  async (userId, { rejectWithValue }) => {
+    try {
+      const userBookingsRef = collection(db, 'users', userId, 'bookings');
+      const q = query(userBookingsRef, where("status", "==", "active"));
+
+      const querySnapshot = await getDocs(q);
+      const now = new Date();
+      
+      // Check for expired bookings and update their status to "expired"
+      querySnapshot.forEach(async (docSnap) => {
+        const bookingData = docSnap.data();
+        if (bookingData.checkOutDate.toDate() < now) {
+          // If the booking's check-out date has passed, mark it as expired
+          const bookingRef = doc(userBookingsRef, docSnap.id);
+          await updateDoc(bookingRef, {
+            status: 'expired',
+          });
+        }
+      });
+      
+    } catch (error) {
+      console.error('Error checking expired bookings: ', error);
+      return rejectWithValue(error.message);
+    }
   }
 );
 

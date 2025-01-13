@@ -5,6 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 // import PayPalPayment from '../../Paypal/PayPalPayment';
 import PayPalPayment from '../../Paypal/PaypalButton';
+import { createBooking } from '../../../redux/bookingSlice';
+import { updateRoomAfterBooking } from '../../../redux/roomsSlice';
 
 
 const RoomBookingModal = ({room, setShowModal}) => 
@@ -15,17 +17,26 @@ const RoomBookingModal = ({room, setShowModal}) =>
     const user = useSelector((state) => state.auth.user);
     const userData = useSelector((state) => state.auth.userData);     
     
+    const [roomName, setRoomName] = useState(room.room_name);
     const [roomType, setRoomType] = useState('');
+    const [roomDescription, setRoomDescription] = useState(room.room_description);
+    const [stayPerNight, setStayPerNight] = useState(room.avail_night);
+
     const [checkInDate, setCheckInDate] = useState(`${new Date().toISOString().split('T')[0]}`);
-    const [checkOutDate, setCheckOutDate] = useState('');
-    const [guests, setGuests] = useState(0);
-    const [adults, setAdults] = useState(0);
+    const [checkOutDate, setCheckOutDate] = useState('');    
+
+    const [guests, setGuests] = useState(room.capacity);
+    const [adults, setAdults] = useState(room.capacity);
     const [children, setChildren] = useState(0);
-    const [roomDescription, setRoomDescription] = useState('');
+
+    const [phone, setPhoneNumber] = useState();
+    
 
     const [checkoutInfo, setCheckoutInfo] = useState({
-         uid:user.uid, 
-         room:room.id, 
+         uid: user.uid, 
+         email: user.email,
+         room: room.id, 
+         roomName,
          amount: room.price 
     });
     const [checkoutStatus, setCheckoutStatus] = useState(null);
@@ -46,9 +57,34 @@ const RoomBookingModal = ({room, setShowModal}) =>
     };
 
 
-    const handleSubmit = () => {
-        // Call API or perform booking logic here
-        console.log('Booking submitted:', roomType, checkInDate, checkOutDate, guests, adults, children, roomDescription);
+    const handleSubmit = () => {             
+        console.log("onPayment Success: ", checkoutInfo, " | ", paymentDetails);
+        const bookingDetails = {
+            roomType,
+            checkInDate,
+            checkOutDate,
+            guests,
+            adults,
+            children,
+            roomDescription,
+            amount: room.price,
+            roomId: room.id,
+            roomName: room.room_name,
+            userId: user.uid,
+            paymentDetails: paymentDetails,
+            bookingStatus: paymentDetails.status ? "Paid" : "Completed", // This can be updated based on the payment status
+          };
+      
+          // Dispatch the createBooking action to save the booking in Firestore
+          dispatch(createBooking({ bookingDetails }));
+          dispatch(updateRoomAfterBooking({
+            roomId: room.id,
+            bookingDetails: {
+              checkInDate: checkInDate,
+              checkOutDate: checkOutDate, 
+              numberOfNights: room.avail_night,  // Example number of nights
+            }
+          }));
         
         setShowModal(false);
         navigate("/dashboard");
@@ -57,11 +93,11 @@ const RoomBookingModal = ({room, setShowModal}) =>
     // Watch for checkout status changes
     useEffect(() => {
         if (checkoutStatus !== null) {
-            if (checkoutStatus === "Payment_Successful") {
+            if (checkoutStatus === "Payment_Successful") 
+            {
                 handleSubmit();  // Proceed with booking submission
-            } else {
-                alert("Error processing payment! Please try again.");
-            }
+            } 
+            else { alert("Error processing payment! Please try again."); }
         }
     }, [checkoutStatus]);
    
@@ -109,6 +145,7 @@ const RoomBookingModal = ({room, setShowModal}) =>
 
                         <div className="check-compare">                       
                             <input type="date" min={new Date().toISOString().split('T')[0]}
+                                value={checkInDate}
                                 onChange={(event) => { setCheckInDate(event.target.value) }} 
                             />
                         </div>
@@ -184,9 +221,11 @@ const RoomBookingModal = ({room, setShowModal}) =>
                     <div>
                         {console.log(user)}
                         <input type='text' id='fname' 
+                            value={userData.firstname}
                             placeholder={ userData !== null ? `eg.(${userData.firstname})`: 'Firstname' }
                         /> 
                         <input type='text' id='lname' 
+                            value={userData.lastname}
                             placeholder={ userData !== null ? `eg.(${userData.lastname})` : 'Lastname' }
                         /> 
                     </div>
@@ -195,14 +234,15 @@ const RoomBookingModal = ({room, setShowModal}) =>
                     
                     <div>
                         <select name="" id="code">                                    
-                            <option value="ZAR +27">ZAR +27</option>
-                        </select><input type='text' placeholder=' 00 000 0000'/>
+                            <option value="+27">(+27)</option>
+                        </select><input type='text' placeholder='00 000 0000' maxLength={9}
+                            onChange={(e)=> setPhoneNumber(e.target.value)}/>
                     </div>
 
                     <div className="check-alerts">
                         <input type="checkbox" />
                         <small> 
-                            Receive text alerts about this trip.                                        
+                            Receive text alerts for this trip.                                        
                         </small>
                     </div>
                     <small> Message and data rates may apply.</small>
@@ -216,13 +256,13 @@ const RoomBookingModal = ({room, setShowModal}) =>
                     <strong>Pricing Information</strong>
                     <hr/>
                     <label> 
-                        R{room.price} room x {room.avail_night} nights
+                        ${room.price } room x {room.avail_night} nights
                         {/* <strong>R{room.price * room.avail_night}</strong> */}
                     </label>
 
-                    <label> Taxes <>R200</></label>
+                    <label> Taxes ${room.price/4}</label>
                     <hr/>
-                    <p>Total <b>R{room.price * room.avail_night + 200}</b></p> 
+                    <p>Total <b>${room.price }</b></p> 
                     <h6>Deposits collected by property</h6>
                     
                     <small>Your first payment: <b>R1000</b></small>

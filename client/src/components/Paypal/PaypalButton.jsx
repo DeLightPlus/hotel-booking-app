@@ -66,12 +66,14 @@ const PayPalPayment = ({ checkoutInfo, setCheckoutStatus, setPaymentDetails }) =
       const order = await response.json();
       console.log("Order created: ", order);
 
-      if (order.id) {
+      if (order.id) 
+      {
         return order.id; // Return the PayPal order ID to PayPal button
-      } else {
-        throw new Error("Error creating PayPal order");
-      }
-    } catch (error) {
+      } 
+      else { throw new Error("Error creating PayPal order"); }
+    } 
+    catch (error) 
+    {
       console.error("Error creating PayPal order:", error);
       throw new Error("Failed to create PayPal order");
     }
@@ -79,7 +81,8 @@ const PayPalPayment = ({ checkoutInfo, setCheckoutStatus, setPaymentDetails }) =
 
   // Callback when the user approves the payment
   const onApprove = async (data, actions) => {
-    try {
+    try 
+    {
       const result = await actions.order.capture(); // Capture the payment
       console.log("Capture Result: ", result);
 
@@ -97,16 +100,18 @@ const PayPalPayment = ({ checkoutInfo, setCheckoutStatus, setPaymentDetails }) =
           console.log("Payment Details: ", paymentDetails);
         
           // Access and log the transaction fee (if available)
-          const transactionFee = paymentDetails.transaction_fee?.value || "No fee information";
-          console.log("Transaction Fee: ", transactionFee);
+          // const transactionFee = paymentDetails.transaction_fee?.value || "No fee information";
+          // console.log("Transaction Fee: ", transactionFee);
         
-          // Access and log the capture ID
-          const captureID = paymentDetails.id;
-          console.log("Capture ID: ", captureID);
+          // // Access and log the capture ID
+          // const captureID = paymentDetails.id;
+          // console.log("Capture ID: ", captureID);
         
-          // Access and log the amount
-          const amount = paymentDetails.amount?.value || "No amount information";
-          console.log("Amount: ", amount);
+          // // Access and log the amount
+          // const amount = paymentDetails.amount?.value || "No amount information";
+          // console.log("Amount: ", amount);
+
+          setPaymentDetails(paymentDetails);
         } 
         else { console.error("No payment details found in the capture result"); }
       } 

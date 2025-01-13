@@ -1,6 +1,6 @@
 import "./Rooms.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router";
 import RoomsList from "./RoomsList";
@@ -11,61 +11,73 @@ const RoomShowcase = ({page}) =>
     const user = useSelector((state) => state.auth.user);
     const userData = useSelector((state) => state.auth.userData); 
     
-    const rooms_all = useSelector((state) => state.rooms.rooms_all);
+    const rooms_all = useSelector((state) => state.rooms.rooms_all);    
 
-    const [checkInDate, setCheckInDate] = useState('');
-    const [checkOutDate, setCheckOutDate] = useState('');
-    const [kids, setKids] = useState(0);
-    const [adults, setAdults] = useState(0);
+    const today = new Date().toISOString().split('T')[0];
 
-  // Handler for date change
-    const handleDateChange = (event) => {
-        const { name, value } = event.target;
-        if (name === 'checkIn') {
-        setCheckInDate(value);
-        } else if (name === 'checkOut') {
-        setCheckOutDate(value);
-        }
-    };
+    const [filteredRooms, setFilteredRooms] = useState(rooms_all);
+    const [checkInDate, setCheckInDate] = useState(today);
+    const [checkOutDate, setCheckOutDate] = useState(new Date( new Date(today).setDate(new Date(today).getDate() + 1) ).toISOString().split('T')[0]);
+    const [adults, setAdults] = useState(2);
 
-    // Handler for select change
-    const handleSelectChange = (event) => {
-        const { name, value } = event.target;
-        if (name === 'kids') {
-        setKids(value);
-        } else if (name === 'adults') {
-        setAdults(value);
-        }
-    };
+    // Filter rooms based on guests and dates
+    useEffect(() => {
+        const filterRooms = () => {
+            const filtered = rooms_all.filter(room => {
+                // Check if room has enough capacity for the number of guests
+                const hasCapacity = room.capacity >= adults;
+
+                // Check if the room is available for the selected date range
+                const isAvailable = (
+                    (new Date(room.avail_check_in) <= new Date(checkInDate)) &&
+                    (new Date(room.avail_check_out) >= new Date(checkOutDate))
+                );
+
+                return hasCapacity && isAvailable;
+            });
+
+            // Sort the filtered rooms by capacity (ascending)
+            const sortedRooms = filtered.sort((a, b) => a.capacity - b.capacity);
+            setFilteredRooms(sortedRooms);
+        };
+
+        filterRooms();
+    }, [rooms_all, checkInDate, checkOutDate, adults]);
+   
 
     // console.log('home-user?, ',user);
     // console.log('home-userData?, ',userData);
-    // console.log('home-adminUserData?, ',adminUserData);
-    console.log('rooms_all', rooms_all); 
 
-    const handleBookingModal = () =>
-    {
-        navigate('/booking');
-    }
+    console.log('rooms_all: ', rooms_all); 
+    console.log('filtered_rooms: ', filteredRooms); 
 
     return ( 
-        <>
-            <div className="rooms-container">
-                    
-                <section className="rooms-showcase">
-                    
+        
+        <div className="rooms-container">                    
+            <section className="rooms-showcase">                    
                 <div className="checkin-rectangle">
+                    <div className="check-compare">
+                        <button>COMPARE NOW</button>
+                    </div>
 
                     <div className="date-picker-wrapper">
                         <label htmlFor="checkin" className="label">
                         Checkin Date
                         </label>
                         <input
-                        type="date"
-                        id="checkin"
-                        name="checkin"
-                        className="date-input"
-                        aria-describedby="checkin-description"
+                            type="date"
+                            id="checkin"
+                            name="checkin"
+                            className="date-input"
+                            aria-describedby="checkin-description"
+                            value={ checkInDate }
+                            onChange={(e)=> {
+                                setCheckInDate(e.target.value);
+                                const newCheckOutDate = new Date(e.target.value);
+                                newCheckOutDate.setDate(newCheckOutDate.getDate() + 1);
+                                setCheckOutDate(newCheckOutDate.toISOString().split('T')[0]);
+                            }}
+                            min={today} 
                         />                        
                     </div>
 
@@ -74,11 +86,13 @@ const RoomShowcase = ({page}) =>
                         Checkout date
                         </label>
                         <input
-                        type="date"
-                        id="checkout"
-                        name="checkout"
-                        className="date-input"
-                        aria-describedby="checkout-description"
+                            type="date"
+                            id="checkout"
+                            name="checkout"
+                            className="date-input"
+                            aria-describedby="checkout-description"
+                            value={ checkOutDate }
+                            onChange={(e)=>{ setCheckOutDate(e.target.value);  }}
                         />                        
                     </div>
 
@@ -106,36 +120,32 @@ const RoomShowcase = ({page}) =>
 
                     <fieldset className="check-compare">
                         <select
-                        id="kids"
-                        name="kids"
-                        value={kids}
-                        onChange={handleSelectChange}
+                        id="guests"
+                        name="guests"
+                        value={adults}
+                        onChange={(e)=>{ setAdults(e.target.value) }}
                         >
-                        {[...Array(5).keys()].map((value) => (
-                            <option key={value} value={value}>
-                            Guests ({value})
+                        {[...Array(4).keys()].map((value) => (
+                            <option key={value+1} value={value+1}>
+                            Guests ({value+1})
                             </option>
                         ))}
                         </select>
                     </fieldset>               
-
-                    <div className="check-compare">
-                        <button>COMPARE NOW</button>
-                    </div>
+                    
                 </div>
-
 
                 { page == "homepage" &&
                     <div className="rooms-showcase-title">
-                        <small>Rest-Le-BnB</small> / Available Rooms )
+                        <small>Rest-Le-BnB</small> / 
                         <hr />
-                        <RoomsList />
+                        <RoomsList filteredRooms={filteredRooms}/>
                     </div> 
                 }
-                
-                </section>
-            </div>
-        </>
+            
+            </section>
+        </div>
+        
      );
 }
  

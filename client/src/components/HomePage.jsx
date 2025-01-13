@@ -38,8 +38,7 @@ const HomePage = () =>
         
         {/* <Socials />     */}
 
-        <div className='showcase-container'>        
-          
+        <div className='showcase-container' id="rooms"> 
             {/* <Amenities /> */}
             <div className="showcase">
               {/* <p><i className="fa fa-map-pin"/> 
@@ -56,11 +55,9 @@ const HomePage = () =>
              
               <br />    
             </div>
-                  
-            <RoomShowcase page="homepage"/>     
-        </div>       
 
-       
+            <RoomShowcase page="homepage"/>     
+        </div> 
 
         <div className="restaurant-showcase">            
             
@@ -80,6 +77,7 @@ const HomePage = () =>
             </div>
             
         </div>
+
         <Testimonials />
         <Contact />
         <FAQ />
